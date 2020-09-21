@@ -26,6 +26,23 @@
         height: 50px;
         width: 100%;
         background-color: #0072bc;
+        display: flex;
+    }
+    .main .header .account{
+      display: flex;
+    }
+    .main .header .account .account-notify{
+      background-image: url();
+    }
+    .main .header .account .account-avatar{
+      width: 25px;
+      height: 25px;
+      background-image: url('/content/img/EmployeeImage.png');
+      border-radius: 10px;
+    }
+    .main .header .account .account-name{
+      background-image: url();
+
     }
     .main .content{
         width: 100%;
