@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\content\img\" />
-    <Folder Include="wwwroot\content\font\" />
     <Folder Include="wwwroot\content\icon\" />
     <Folder Include="wwwroot\css\common\" />
     <Folder Include="wwwroot\css\page\" />
