@@ -1,0 +1,54 @@
+﻿.form-dialog{
+
+}
+
+.dialog-model{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: .4
+}
+.dialog{
+    position: fixed;
+    width: 600px;
+    height: 400px;
+    background-color: #ffffff;
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+    border-radius: 5px;
+    border: 5px solid #0072bc;
+}
+.dialog .dialog-titlebar{
+    width: 100%;
+    background-color: #0072bc;
+    height: 30px;
+    color: white;
+}
+    .dialog .dialog-titlebar .title{
+        float: left;
+        line-height: 25px;
+        padding-left: 4px;
+    }
+    .dialog .dialog-titlebar .btn-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        float: right;
+        line-height: 13px;
+        border-radius: 50%;
+        font-weight: 500;
+        background-color: #ffffff;
+        color: #0072bc;
+        cursor: pointer;
+    }
+.dialog .dialog-body{
+    width: 100%;
+    border: 1px solid #000000;
+}
+    

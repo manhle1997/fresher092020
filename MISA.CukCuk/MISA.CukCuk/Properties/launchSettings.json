@@ -20,7 +20,7 @@
     "MISA.CukCuk": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "index.html",
+      "launchUrl": "page/category/customer.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

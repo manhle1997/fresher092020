@@ -1,51 +1,236 @@
-﻿body {
-    margin: 0px;
-    font-family: 'tahoma_regular';
+body {
+  margin: 0px;
+  font-family: 'tahoma_regular';
 }
 
 @font-face {
-    font-family: 'fontello';
-    src: url('../../content/fonts/fontello.woff') format('woff');
-}
-@font-face {
-    font-family: 'tahoma_bold';
-    src: url('../../content/fonts/tahoma_bold.woff') format('woff');
-}
-@font-face {
-    font-family: 'tahoma_regular';
-    src: url('../../content/fonts/tahoma_regular.woff') format('woff');
-}
-.main{
-    width: calc(100% - 200px);
-    background-color: aqua;
-    margin-left: 200px;
-    height: 100vh;
+  font-family: 'fontello';
+  src: url('../../content/fonts/fontello.woff') format('woff');
 }
 
-    .main .header {
-        height: 50px;
+@font-face {
+  font-family: 'tahoma_bold';
+  src: url('../../content/fonts/tahoma_bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'tahoma_regular';
+  src: url('../../content/fonts/tahoma_regular.woff') format('woff');
+}
+
+.main {
+  width: calc(100% - 200px);
+  background-color: aqua;
+  margin-left: 200px;
+  height: 100vh;
+  margin-right: 50px;
+}
+
+/* main header */
+.main .header {
+  height: 50px;
+  width: 100%;
+  background-color: #0072bc;
+  display: flex;
+}
+
+.main .header .select_restaurant {
+  margin-left: 20px;
+}
+
+.main .header .select_restaurant .select {
+  margin-top: 13px;
+  background-color: rgb(5, 77, 186);
+  height: 25px;
+  width: 300px;
+  color: white;
+}
+
+.main .header .select_restaurant .select option {
+  background-color: #08436f;
+}
+
+.main .header .account {
+  display: flex;
+  margin-left: auto;
+  margin-top: 13px;
+}
+
+.main .header .account .account-notify {
+  background-image: url();
+}
+
+.main .header .account .account-avatar {
+  width: 25px;
+  height: 25px;
+  background-image: url('/content/img/EmployeeImage.png');
+  border-radius: 10px solid;
+  margin-top: -3px;
+}
+
+.main .header .account .account-name {
+  margin-right: 50px;
+  margin-left: 11px;
+  color: white;
+}
+
+/*Main content*/
+.main .content {
+  width: 100%;
+  height: calc(100% - 50px);
+  background-color: white;
+  padding-top: 20px;
+}
+
+.main .content .header-content {
+  display: flex;
+  margin-left: 10px;
+  line-height: 1px;
+
+}
+
+.main .content .header-content .back-respond{
+  margin-left: auto;
+  display: flex;
+}
+
+.main .content .header-content .back-respond .back{
+  border: 1px solid #cccccc;
+  height: 32px;
+  padding-left: 18px;
+  padding-right: 18px;
+  line-height: 1px;
+
+}
+.main .content .header-content .back-respond .back:hover{
+    cursor: pointer;
+
+}
+.main .content .header-content .back-respond .respond {
+  display: flex;
+  border: 1px solid #cccccc;
+  height: 32px;
+  width: 100px;
+  padding-left: 18px;
+  padding-right: 18px;
+  margin-right: 10px;
+  line-height: 1px;
+  align-items: center;
+}
+
+.main .content .header-content .back-respond .respond img{
+  width: 20px;
+  height: 25px;
+}
+.main .content .header-content .back-respond .respond p{
+margin: auto;
+}
+
+.main .content .body-content .toolbar {
+width: calc(100% - 14px);
+height: 25px;
+border: 1px solid #ccc;
+padding: 2px;
+background: #ededed;
+display: flex;
+margin-left:10px;
+}
+
+    .main .content .body-content .toolbar button {
+        height: 100%;
+        border-radius: unset;
+        border-style: solid;
+        border-width: 1px;
+        border-color: transparent;
+        background: none;
+        display:flex;
+        align-items: center;
+        
+    }
+    .main .content .body-content .toolbar button:hover{
+        border-color: #1e32d0;
+        background-color: white;
+        cursor: pointer;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: -1px -2416px;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon-copy {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: -1px -1888px;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon-edit {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: 0px -1872px;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon-delete {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: -2px -2683px;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon-pull {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: 0px -2568px;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon-import {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: -1px -1552px;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon-export {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: -1px -1552px;
+    }
+    .main .content .body-content .toolbar .toolbar-item-icon-help {
+        width: 16px;
+        height: 16px;
+        background-image: url('/content/img/iconsprite.png');
+        background-position: 0px -1600px;
+    }
+
+    .main .content .body-content .toolbar .toolbar-item-text {
+        line-height: 25px;
+    }
+
+    .main .content .body-content .grid {
         width: 100%;
-        background-color: #0072bc;
-        display: flex;
+        height: 100%;
+        border: 1px solid #ccc;
+        border-top: none;
+        margin-left: 10px;
     }
-    .main .header .account{
-      display: flex;
-    }
-    .main .header .account .account-notify{
-      background-image: url();
-    }
-    .main .header .account .account-avatar{
-      width: 25px;
-      height: 25px;
-      background-image: url('/content/img/EmployeeImage.png');
-      border-radius: 10px;
-    }
-    .main .header .account .account-name{
-      background-image: url();
+        .main .content .body-content .grid table {
+            border: none;
+            border-collapse: collapse;
+            border-color: #ccc;
+            
+        }
+        .main .content .body-content .grid table thead {
+            border-top: none;
+            background: #ededed;
+            font-weight: normal;
 
-    }
-    .main .content{
-        width: 100%;
-        height: calc(100% - 50px);
-        background-color: burlywood;
-    }
+        }
+        .main .content .body-content .grid table tr td {
+            padding: 2px 4px;
+            border: 1px solid #ccc;
+        }
+        .main .content .body-content .grid table tr .align-center{
+            text-align: center;
+        }
+        .main .content .body-content .grid table tr .align-right{
+            text-align: right;
+        }
