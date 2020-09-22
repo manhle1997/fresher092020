@@ -51,4 +51,27 @@
     width: 100%;
     border: 1px solid #000000;
 }
+
+    .dialog .dialog-body label{
+
+    }
     
+.dialog .dialog-footer{
+    display: flex;
+    border: 1px solid #ccc;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: aqua;
+    padding: 8px;
+    height: 20px;
+}
+    .dialog .dialog-footer .footer-left{
+        position: absolute;
+        left: 0;
+    }
+    .dialog .dialog-footer .footer-right{
+        position: absolute;
+        right: 0;
+    }

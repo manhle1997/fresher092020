@@ -143,22 +143,24 @@
             <table width="100%" border="1">
                 <thead>
                     <tr>
-                      <th width="100px">Mã khách hàng</th>
-                      <th>Tên khách hàng</th>
-                      <th width="100px">Ngày sinh</th>
-                      <th>Số điện thoại</th>
-                      <th>Số tiền nợ</th>
-                      <th width="100px">Là thành viên 5Food</th>
+                        <th>Mã khách hàng</th>
+                        <th>Tên khách hàng</th>
+                        <th>Tên công ty</th>
+                        <th>Mã số thuế</th>
+                        <th>Địa chỉ</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>KH000001</td>
                         <td>Lê Quốc Mạnh</td>
-                        <td class="align-center">11/06/1997</td>
+                        <td>11/06/1997</td>
                         <td>0854681997</td>
                         <td class="align-right">0</td>
                         <td class="align-center"><input type="checkbox" checked /></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>KH000002</td>
@@ -167,6 +169,7 @@
                         <td>0854681997</td>
                         <td class="align-right">0</td>
                         <td class="align-center"><input type="checkbox" checked /></td>
+                        <td></td>  
                     </tr>
                     <tr>
                         <td>KH000003</td>
@@ -175,6 +178,7 @@
                         <td>0854681997</td>
                         <td class="align-right">0</td>
                         <td class="align-center"><input type="checkbox" checked /></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -191,8 +195,58 @@
               <div class="btn-close">x</div>
           </div>
           <div class="dialog-body">
-              <label>Mã Khách hàng</label>
-              <input type="text" id="txtCustomerCode" />
+              <div class="row">
+                  <label>Mã Khách hàng</label>
+                  <input type="text" id="customer-code" />
+
+                  <label>Tên khách hàng</label>
+                  <input type="type" id="customer-name" />
+              </div>
+              <div class="row">
+                  <label>Mã thẻ thành viên</label>
+                  <input type="type" />
+                  <label>Hạng thẻ</label>
+                  <input type="type" name="name" value="" />
+              </div>
+              <div class="row">
+                  <label>Nhóm khách hàng</label>
+                  <input type="type" name="name" value="" />
+              </div>
+              <div class="row">
+                  <label>Số điện thoại</label>
+                  <input type="type" name="name" value="" />
+              </div>
+              <div class="row">
+                  <label>Ngày sinh</label>
+                  <input type="type" name="name" value="" />
+              </div>
+              <div class="row">
+                  <label>Tên công ty</label>
+                  <input type="type" name="name" value="" />
+              </div>
+              <div class="row">
+                  <label>Mã số thuế</label>
+                  <input type="type" name="name" value="" />
+              </div>
+              <div class="row">
+                  <label>Địa chỉ</label>
+                  <input type="type" name="name" value="" />
+              </div>
+              <div class="row">
+                  <label>Ghi chú</label>
+                  <input type="type" name="name" value="" />
+              </div>
+          </div>
+          <div class="dialog-footer">
+              <div class="footer-left">
+                  <button id="btn_save">Giúp</button>
+              </div>
+              <div class="footer-right">
+                  <button id="btn_save">Cất</button>
+                  <button id="btn_save">Cất & Thêm</button>
+                  <button id="btn_save">Đóng</button>
+              </div>
+
           </div>
       </div>
   </div>
