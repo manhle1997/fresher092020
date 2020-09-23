@@ -1,6 +1,6 @@
 body {
   margin: 0px;
-  font-family: 'tahoma_regular';
+  font-family: 'fontello';
   
 }
 
@@ -80,13 +80,14 @@ body {
   width: 100%;
   height: calc(100% - 50px);
   background-color: white;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 .main .content .header-content {
   display: flex;
   margin-left: 10px;
   line-height: 1px;
+  margin-bottom: 10px;
 
 }
 
@@ -107,35 +108,42 @@ body {
     cursor: pointer;
 
 }
-.main .content .header-content .back-respond .respond {
-  display: flex;
-  border: 1px solid #cccccc;
-  height: 32px;
-  width: 100px;
-  padding-left: 18px;
-  padding-right: 18px;
-  margin-right: 10px;
-  line-height: 1px;
-  align-items: center;
-}
+    .main .content .header-content .back-respond .respond {
+        display: flex;
+        border: 1px solid #cccccc;
+        height: 32px;
+        width: 100px;
+        padding-left: 18px;
+        padding-right: 18px;
+        margin-right: 10px;
+        line-height: 1px;
+        align-items: center;
+        margin-left: 11px;
+    }
 
 .main .content .header-content .back-respond .respond img{
-  width: 20px;
-  height: 25px;
+  width: 19px;
+  height: 23px;
 }
 .main .content .header-content .back-respond .respond p{
 margin: auto;
 }
 
-.main .content .body-content .toolbar {
-width: calc(100% - 14px);
-height: 25px;
-border: 1px solid #ccc;
-padding: 2px;
-background: #ededed;
-display: flex;
-margin-left:10px;
-}
+    .main .content .body-content {
+        margin-left: 10px;
+        border: 1px solid #cccccc;
+        width: calc(100% - 22px);
+        height: calc(100% - 74px);
+    }
+
+    .main .content .body-content .toolbar {
+        width: calc(100% - 4px);
+        height: 25px;
+        border: 1px solid #ccc;
+        padding: 1px;
+        background: #ededed;
+        display: flex;
+    }
 
     .main .content .body-content .toolbar button {
         height: 100%;
@@ -175,13 +183,13 @@ margin-left:10px;
         width: 16px;
         height: 16px;
         background-image: url('/content/img/iconsprite.png');
-        background-position: -2px -2683px;
+        background-position: -2px -2681px;
     }
     .main .content .body-content .toolbar .toolbar-item-icon-pull {
         width: 16px;
         height: 16px;
         background-image: url('/content/img/iconsprite.png');
-        background-position: 0px -2568px;
+        background-position: 0px -2586px;
     }
     .main .content .body-content .toolbar .toolbar-item-icon-import {
         width: 16px;
@@ -209,9 +217,8 @@ margin-left:10px;
     .main .content .body-content .grid {
         width: 100%;
         height: 100%;
-        border: 1px solid #ccc;
+        /*border: 1px solid #ccc;*/
         border-top: none;
-        margin-left: 10px;
     }
         .main .content .body-content .grid table {
             border: none;
@@ -225,9 +232,16 @@ margin-left:10px;
             font-weight: normal;
 
         }
+        .main .content .body-content .grid table tr th{
+            border: 1px solid #cccccc;
+            text-decoration-style: solid;
+        }
         .main .content .body-content .grid table tr td {
             padding: 2px 4px;
             border: 1px solid #ccc;
+        }
+        .main .content .body-content .grid table tbody tr:hover{
+            background-color: #d7e4f0;
         }
         .main .content .body-content .grid table tr .align-center{
             text-align: center;
@@ -235,3 +249,4 @@ margin-left:10px;
         .main .content .body-content .grid table tr .align-right{
             text-align: right;
         }
+

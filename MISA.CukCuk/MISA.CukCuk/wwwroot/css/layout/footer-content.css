@@ -1,0 +1,80 @@
+﻿.footer-content {
+    display: flex;
+    height: 30px;
+    width: calc(100% - 22px);
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    margin-top: -32px;
+    align-items: center;
+}
+    .footer-content .icon-first-prev{
+        display: flex;
+    }
+
+        .footer-content .icon-first-prev .icon-first {
+            background-image: url('/content/img/grid/page-first.png');
+            width: 16px;
+            height: 16px;
+            margin-left: 6px;
+        }
+        .footer-content .icon-first-prev .icon-prev {
+            background-image: url('/content/img/grid/page-prev.png');
+            width: 16px;
+            height: 16px;
+            margin-left: 15px;
+        }
+    .footer-content .page-number {
+        display: flex;
+        margin-left: 23px;
+    }
+        .footer-content .page-number p {
+            margin-left: 9px;
+            margin-top: 14px;
+        }
+        .footer-content .page-number input {
+            margin-left: 10px;
+            width: 30px;
+            height: 21px;
+            margin-top: 12px;
+            border: 0.5px solid #808080;
+        }
+
+    .footer-content .icon-last-next{
+        display: flex;
+    }
+        .footer-content .icon-last-next .icon-next {
+            background-image: url('/content/img/grid/page-next.png');
+            width: 16px;
+            height: 16px;
+            margin-left: 39px
+        }
+        .footer-content .icon-last-next .icon-last {
+            background-image: url('/content/img/grid/page-last.png');
+            width: 16px;
+            height: 16px;
+            margin-left: 15px;
+        }
+
+    .footer-content .refresh {
+        background-image: url('../../content/img/grid/refresh.png');
+        width: 16px;
+        height: 16px;
+        margin-left: 31px;
+    }
+
+    .footer-content .record-number{
+        display: flex;
+    }
+        .footer-content .record-number p{
+            margin-left: 31px;
+        }
+        .footer-content .record-number input {
+            margin-left: 15px;
+            margin-top: 12px;
+            height: 21px;
+            width: 56px;
+        }
+    .footer-content .show-infor {
+        margin-left: auto;
+        margin-right: 7px;
+    }

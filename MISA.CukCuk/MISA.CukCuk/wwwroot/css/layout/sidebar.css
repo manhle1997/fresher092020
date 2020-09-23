@@ -3,7 +3,10 @@
    width: 200px;
    background-color: #0072bc;
    height: 100vh;
+   overflow-y: scroll;
 }
+
+
 
   .sidebar .logo {
     display: flex;
@@ -17,6 +20,10 @@
     height: calc(100% - 50px);
 
   }
+.sidebar::-webkit-scrollbar{
+    width: 0;
+    display: none;
+}
 .logo .icon-left-header {
     width: 25px;
     height: 100%;
@@ -41,6 +48,7 @@
   border-top: 1px solid #076aac;
   border-bottom: 1px solid #076aac;
   line-height: 43px;
+  cursor: pointer;
 }
 
   .menu .menu-item:hover{
@@ -66,31 +74,36 @@
   background-position-y:-37px;
 }
 .menu #menu-item-5{
-  background-position-y:-75px;
+  background-position-y:-77px;
 }
-.menu #menu-item-6{
-  background-position-y:-191px;
+.menu #menu-item-6 {
+  background-image: url('/content/img/icon-deposit.png');
+  background-position: 4px 3px;
 }
-.menu #menu-item-7{
-  background-position-y:-191px;
+.menu #menu-item-7 {
+    background-image: url('/content/img/icon-cost.png');
+    background-position: 1px 2px;
 }
 .menu #menu-item-8{
-  background-position-y:-191px;
+  background-position-y:-117px;
 }
-.menu #menu-item-9{
-  background-position-y:-191px;
+.menu #menu-item-9 {
+    background-image: url('/content/img/vector-smart-object.png');
+    background-position: 4px;
 }
 .menu #menu-item-10{
   background-position-y:-153px;
 }
 .menu #menu-item-11{
-  background-position-y:-191px;
+  background-position: 0px -232px;
 }
-.menu #menu-item-12{
-  background-position-y:-191px;
+.menu #menu-item-12 {
+    background-image: url('/content/img/iconhelp.png');
+    background-position: 2px;
 }
-.menu #menu-item-13{
-  background-position-y:-191px;
+.menu #menu-item-13 {
+    background-image: url('../../content/img/icon-subscriber.png');
+    background-position: 1px 2px;
 }
 
 
