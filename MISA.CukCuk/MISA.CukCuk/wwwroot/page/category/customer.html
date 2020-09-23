@@ -225,55 +225,69 @@
             </div>
             <div class="dialog-body">
                 <div class="row">
-                    <label>Mã khách hàng</label>
-                    <input type="text" id="customer-code" />
+                    <label>Mã khách hàng <span style="color: red">(*)</span></label>
+                    <input type="text" id="customer-code" class="input-left"/>
 
-                    <label>Tên khách hàng</label>
-                    <input type="type" id="customer-name" />
+                    <label class="label-right">Tên khách hàng <span style="color: red">(*)</span></label>
+                    <input type="text" id="customer-name" class="input-right"/>
                 </div>
                 <div class="row">
                     <label>Mã thẻ thành viên</label>
-                    <input type="type" />
-                    <label>Hạng thẻ</label>
-                    <input type="type" name="name" value="" />
+                    <input type="text" class="input-left"/>
+                    <label class="label-right">Hạng thẻ</label>
+                    <input type="text" name="name" value="" class="input-right"/>
                 </div>
                 <div class="row">
                     <label>Nhóm khách hàng</label>
-                    <input type="type" name="name" value="" />
+                    <input type="text" name="name" value="" class="input-left"/>
                 </div>
                 <div class="row">
                     <label>Số điện thoại</label>
-                    <input type="type" name="name" value="" />
+                    <input type="number" name="name" value="" class="input-left"/>
                 </div>
                 <div class="row">
                     <label>Ngày sinh</label>
-                    <input type="type" name="name" value="" />
+                    <input type="date" name="name" value="" class="input-left"/>
                 </div>
                 <div class="row">
                     <label>Tên công ty</label>
-                    <input type="type" name="name" value="" />
+                    <input type="text" name="name" id="company" class="input-left"/>
                 </div>
                 <div class="row">
                     <label>Mã số thuế</label>
-                    <input type="type" name="name" value="" />
+                    <input type="text" name="name" value="" class="input-left"/>
+                    <label class="label-right">Email</label>
+                    <input type="email" name="name" value="" class="input-right"/>
                 </div>
                 <div class="row">
                     <label>Địa chỉ</label>
-                    <input type="type" name="name" value="" />
+                    <input type="text" name="name" value="" class="input-left"/>
                 </div>
                 <div class="row">
                     <label>Ghi chú</label>
-                    <input type="type" name="name" value="" />
+                    <input type="text" name="name" id="comment" class="input-left"/>
                 </div>
             </div>
             <div class="dialog-footer">
                 <div class="footer-left">
-                    <button id="btn_save">Giúp</button>
+                    <div id="btn_help">
+                        <div class="help_icon"></div>
+                        <p class="help-text">Giúp</p>
+                    </div>
                 </div>
                 <div class="footer-right">
-                    <button id="btn_save">Cất</button>
-                    <button id="btn_save">Cất & Thêm</button>
-                    <button id="btn_save">Đóng</button>
+                    <div id="btn_save">
+                        <div class="save_icon"></div>
+                        <p>Cất</p>
+                    </div>
+                    <div id="btn_save_and_add">
+                        <div class="save_and_add_icon"></div>
+                        <p>Cất & Thêm</p>
+                    </div>
+                    <div id="btn_close">
+                        <div class="close_icon"></div>
+                        <p>Hủy bỏ</p>
+                    </div>
                 </div>
 
             </div>

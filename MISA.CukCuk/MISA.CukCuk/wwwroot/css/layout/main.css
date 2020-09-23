@@ -36,7 +36,7 @@ body {
 }
 
 .main .header .select_restaurant {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .main .header .select_restaurant .select {
@@ -119,6 +119,9 @@ body {
         line-height: 1px;
         align-items: center;
         margin-left: 11px;
+    }
+    .main .content .header-content .back-respond .respond:hover{
+        cursor:pointer;
     }
 
 .main .content .header-content .back-respond .respond img{
