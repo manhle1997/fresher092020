@@ -1,5 +1,5 @@
 ﻿.form-dialog{
-    /*display: none;*/
+    display: none;
 }
 
 .dialog-model{
@@ -13,7 +13,7 @@
 }
 .dialog{
     position: fixed;
-    width: 660px;
+    width: 684px;
     height: 400px;
     background-color: #ffffff;
     top: calc(50% - 200px);
@@ -61,26 +61,40 @@
 
     .dialog .dialog-body .row .input-left {
         position: absolute;
-        left: 146px;
+        left: 155px;
         margin-top: 4px;
-        height: 20px
+        height: 20px;
+        border: 1px solid #ccc;
     }
     .dialog .dialog-body .row .input-right {
         position: absolute;
-        left: 485px;
+        /*left: 473px;*/
         margin-top: 4px;
         height: 20px;
+        border: 1px solid #ccc;
     }
-    .dialog .dialog-body .row .label-right{
+    .dialog .dialog-body .row #customer-name{
+        margin-left: 356px;
+    }
+    .dialog .dialog-body .row #customer-rankcard {
+        margin-left: 362px;
+    }
+    .dialog .dialog-body .row #customer-email{
+        margin-left: 409px;
+    }
+    .dialog .dialog-body .row #input-ngay-sinh {
+        width: 172px;
+    }
+    .dialog .dialog-body .row .label-right {
         position: absolute;
-        left: 348px;
+        left: 351px;
     }
     .dialog .dialog-body #comment {
-        width: calc(100% - 174px);
+        width: calc(100% - 182px);
         height: calc(100% - 180px);
     }
     .dialog .dialog-body #company {
-        width: calc(100% - 174px);
+        width: calc(100% - 182px);
     }
     
 .dialog .dialog-footer{

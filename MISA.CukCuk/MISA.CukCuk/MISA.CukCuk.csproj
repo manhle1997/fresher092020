@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\content\icon\" />
     <Folder Include="wwwroot\css\common\" />
-    <Folder Include="wwwroot\css\page\" />
     <Folder Include="wwwroot\page\report\" />
   </ItemGroup>
 

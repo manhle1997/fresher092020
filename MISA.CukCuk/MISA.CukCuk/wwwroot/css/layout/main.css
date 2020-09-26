@@ -1,22 +1,22 @@
 body {
   margin: 0px;
-  font-family: 'fontello';
+  font-family: lqmanh3;
   
 }
 
 @font-face {
-  font-family: 'fontello';
-  src: url('../../content/fonts/fontello.woff') format('woff');
+  font-family: 'lqmanh';
+  src: url('/content/fonts/fontello.woff') format('woff');
 }
 
 @font-face {
   font-family: 'tahoma_bold';
-  src: url('../../content/fonts/tahoma_bold.woff') format('woff');
+  src: url('/content/fonts/tahoma_bold.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'tahoma_regular';
-  src: url('../../content/fonts/tahoma_regular.woff') format('woff');
+  font-family: 'lqmanh3';
+  src: url('/content/fonts/tahoma_regular.woff') format('woff');
 }
 
 .main {
@@ -65,7 +65,7 @@ body {
   width: 25px;
   height: 25px;
   background-image: url('/content/img/EmployeeImage.png');
-  border-radius: 10px solid;
+  border-radius: 10px;
   margin-top: -3px;
 }
 
@@ -142,8 +142,8 @@ margin: auto;
     .main .content .body-content .toolbar {
         width: calc(100% - 4px);
         height: 25px;
-        border: 1px solid #ccc;
-        padding: 1px;
+        border: 0px solid #ccc;
+        padding: 2px;
         background: #ededed;
         display: flex;
     }
@@ -224,10 +224,15 @@ margin: auto;
         border-top: none;
     }
         .main .content .body-content .grid table {
+            
             border: none;
             border-collapse: collapse;
             border-color: #ccc;
-            
+        }
+        .main .content .body-content .grid table .thead{
+            text-align: center;
+            border: 0px solid #ccc;
+            height: 36px;
         }
         .main .content .body-content .grid table thead {
             border-top: none;
@@ -238,10 +243,35 @@ margin: auto;
         .main .content .body-content .grid table tr th{
             border: 1px solid #cccccc;
             text-decoration-style: solid;
+            
         }
         .main .content .body-content .grid table tr td {
             padding: 2px 4px;
-            border: 1px solid #ccc;
+            border-right: 1px solid rgb(204, 204, 204);
+            border-bottom: 1px solid rgb(204, 204, 204);
+            border-top: 1px solid rgb(204, 204, 204);
+        }
+        .main .content .body-content .grid table tr td:nth-child(1){
+            width: 106px;
+        }
+        .main .content .body-content .grid table tr td:nth-child(2){
+            width: 175px;
+        }
+        .main .content .body-content .grid table tr td:nth-child(3){
+            width: 140px;
+        }
+        .main .content .body-content .grid table tr td:nth-child(4){
+            width: 140px;
+        }
+        .main .content .body-content .grid table tr td:nth-child(5){
+            width: 250px;
+        }
+        .main .content .body-content .grid table tr td:nth-child(6){
+            width: 175px;
+        }
+        .main .content .body-content .grid table tr td:nth-child(7) {
+            border-right: 0px;
+            width:189px;
         }
         .main .content .body-content .grid table tbody tr:hover{
             background-color: #d7e4f0;

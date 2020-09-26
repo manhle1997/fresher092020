@@ -7,8 +7,9 @@
     <title></title>
     <link href="/css/layout/main.css" rel="stylesheet" />
     <link href="/css/layout/sidebar.css" rel="stylesheet" />
-    <link href="/css/layout/dialog.css" rel="stylesheet" />
-    <link href="/css/layout/footer-content.css" rel="stylesheet" />
+    <link href="/css/page/customer/dialog.css" rel="stylesheet" />
+    <link href="/css/page/customer/footer-content.css" rel="stylesheet" />
+    <link href="/css/element/table.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -122,7 +123,7 @@
                         <div class="toolbar-item-icon-delete"></div>
                         <div class="toolbar-item-text">Xóa</div>
                     </button>
-                    <button class="">
+                    <button class="" id="toolbar-item-reload">
                         <div class="toolbar-item-icon-pull"></div>
                         <div class="toolbar-item-text">Nạp</div>
                     </button>
@@ -141,43 +142,25 @@
                 </div>
                 <div class="grid-div">
                     <div class="grid">
-                        <table width="100%">
+                        <table width="100%" id="tbCustomer">
                             <thead>
-                                <tr>
-                                    <th>Mã khách hàng</th>
-                                    <th>Tên khách hàng</th>
-                                    <th>Tên công ty</th>
-                                    <th>Mã số thuế</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Email</th>
+                                <tr class="thead">
+                                    <td>Mã khách hàng</td>
+                                    <td>Tên khách hàng</td>
+                                    <td>Tên công ty</td>
+                                    <td>Mã số thuế</td>
+                                    <td>Địa chỉ</td>
+                                    <td>Số điện thoại</td>
+                                    <td>Email</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>KH000001</td>
                                     <td>Lê Quốc Mạnh</td>
-                                    <td>11/06/1997</td>
-                                    <td>0854681997</td>
-                                    <td>0</td>
-                                    <td>0854681997</td>
-                                    <td>lqmanhddt@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td>KH000002</td>
-                                    <td>Lê Quốc Mạnh</td>
-                                    <td>11/06/1997</td>
-                                    <td>0854681997</td>
-                                    <td>0</td>
-                                    <td>0854681997</td>
-                                    <td>lqmanhddt@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td>KH000003</td>
-                                    <td>Lê Quốc Mạnh</td>
-                                    <td>11/06/1997</td>
-                                    <td>0854681997</td>
-                                    <td>0</td>
+                                    <td>Đại Học Bách Khoa</td>
+                                    <td>1111</td>
+                                    <td>157B, đường Chùa Láng, Hà Nội</td>
                                     <td>0854681997</td>
                                     <td>lqmanhddt@gmail.com</td>
                                 </tr>
@@ -212,7 +195,7 @@
                     </div>
                 </div>
                 <div class="show-infor">Hiển thị 1 - 5 trên 5 kết quả</div>
-                
+
             </div>
         </div>
     </div>
@@ -226,46 +209,46 @@
             <div class="dialog-body">
                 <div class="row">
                     <label>Mã khách hàng <span style="color: red">(*)</span></label>
-                    <input type="text" id="customer-code" class="input-left"/>
+                    <input type="text" id="customer-code" class="input-left" />
 
                     <label class="label-right">Tên khách hàng <span style="color: red">(*)</span></label>
-                    <input type="text" id="customer-name" class="input-right"/>
+                    <input type="text" id="customer-name" class="input-right" />
                 </div>
                 <div class="row">
                     <label>Mã thẻ thành viên</label>
-                    <input type="text" class="input-left"/>
+                    <input type="text" class="input-left" />
                     <label class="label-right">Hạng thẻ</label>
-                    <input type="text" name="name" value="" class="input-right"/>
+                    <input type="text" name="name" value="" class="input-right" id="customer-rankcard"/>
                 </div>
                 <div class="row">
                     <label>Nhóm khách hàng</label>
-                    <input type="text" name="name" value="" class="input-left"/>
+                    <input type="text" name="name" value="" class="input-left" id=""/>
                 </div>
                 <div class="row">
                     <label>Số điện thoại</label>
-                    <input type="number" name="name" value="" class="input-left"/>
+                    <input type="number" name="name" value="" class="input-left" />
                 </div>
                 <div class="row">
                     <label>Ngày sinh</label>
-                    <input type="date" name="name" value="" class="input-left"/>
+                    <input type="date" name="name" value="" class="input-left" id="input-ngay-sinh" />
                 </div>
                 <div class="row">
                     <label>Tên công ty</label>
-                    <input type="text" name="name" id="company" class="input-left"/>
+                    <input type="text" name="name" id="company" class="input-left" />
                 </div>
                 <div class="row">
                     <label>Mã số thuế</label>
-                    <input type="text" name="name" value="" class="input-left"/>
+                    <input type="text" name="name" value="" class="input-left" />
                     <label class="label-right">Email</label>
-                    <input type="email" name="name" value="" class="input-right"/>
+                    <input type="email" name="name" value="" class="input-right" id="customer-email"/>
                 </div>
                 <div class="row">
                     <label>Địa chỉ</label>
-                    <input type="text" name="name" value="" class="input-left"/>
+                    <input type="text" name="name" value="" class="input-left" />
                 </div>
                 <div class="row">
                     <label>Ghi chú</label>
-                    <input type="text" name="name" id="comment" class="input-left"/>
+                    <input type="text" name="name" id="comment" class="input-left" />
                 </div>
             </div>
             <div class="dialog-footer">
@@ -273,16 +256,19 @@
                     <div id="btn_help">
                         <div class="help_icon"></div>
                         <p class="help-text">Giúp</p>
+                        
                     </div>
                 </div>
                 <div class="footer-right">
                     <div id="btn_save">
                         <div class="save_icon"></div>
                         <p>Cất</p>
+                       
                     </div>
                     <div id="btn_save_and_add">
                         <div class="save_and_add_icon"></div>
                         <p>Cất & Thêm</p>
+
                     </div>
                     <div id="btn_close">
                         <div class="close_icon"></div>
@@ -296,6 +282,7 @@
 
     <script src="/js/lib/jquery-3.5.1.min.js"></script>
     <script src="/js/lib/dialog.js"></script>
+    <script src="/js/lib/customer.js"></script>
 </body>
 
 </html>

@@ -36,7 +36,7 @@
             width: 30px;
             height: 21px;
             margin-top: 12px;
-            border: 0.5px solid #808080;
+            border: 0.5px solid #ccc;
         }
 
     .footer-content .icon-last-next{
@@ -56,7 +56,7 @@
         }
 
     .footer-content .refresh {
-        background-image: url('../../content/img/grid/refresh.png');
+        background-image: url('/content/img/grid/refresh.png');
         width: 16px;
         height: 16px;
         margin-left: 31px;
@@ -73,6 +73,7 @@
             margin-top: 12px;
             height: 21px;
             width: 56px;
+            border: 1px solid #ccc;
         }
     .footer-content .show-infor {
         margin-left: auto;
