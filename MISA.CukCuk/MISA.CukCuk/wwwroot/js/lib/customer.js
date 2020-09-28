@@ -1,45 +1,23 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     //load dữ liệu
-    var customer = new CustomerJS; 
+    var customerJS = new CustomerJS();
 })
 
 /**
  * class quản lí các function cho trang customer
  * */
 
-class CustomerJS {
+class CustomerJS extends BaseJS {
     constructor() {
-        this.loadData();
-        this.initEvents();
+        super();
     }
-
-    /**
-     * Hàm tạo sự kiện 
-     * */
-
-    initEvents() {
-        $("#toolbar-item-add").click(function () {
-            $(".form-dialog").show();
-        });
-        $(".btn-close, #btn_close").click(function () {
-            $(".form-dialog").hide();
-        });
-        $('#tbCustomer').on('click', 'tr', this, this.rowOnClick);
-
-        $('#toolbar-item-reload').click(this.btnReloadDataOnClick.bind(this))
+    getData() {
+        debugger;
+        this.Data = data;
     }
-
-
-    /**
-     * Load dữ liệu 
-     * */
-    loadData() {
-        //lấy dữ liệu về
-
-    try {
-        var customers = data;
-        $.each(customers, function (index, customer) {
-            var trHTML = $(`<tr>
+    makeTrHTML(customer) {
+        var trHTML = $(`<tr>
                                     <td>`+ customer["customerCode"] + `</td>
                                     <td>`+ customer["customerName"] + `</td>
                                     <td>`+ customer["customerCompany"] + `</td>
@@ -49,27 +27,10 @@ class CustomerJS {
                                     <td>`+ customer["email"] + `</td>
                                 </tr>`);
 
-            $("#tbCustomer tbody").append(trHTML);
-        })
-    }
-    catch (e) {
-        console.log('error');
-    }
-    }
-
-    //TODO: btn ReloadData
-    btnReloadDataOnClick() {
-        this.loadData();
-    }
-
-    //TODO: can sua
-    rowOnClick() {
-        $(this).siblings().removeClass('row-selected')
-        $(this).addClass('row-selected');
+        return trHTML;
     }
 
 }
-
 
 var data = [
     {
@@ -77,7 +38,7 @@ var data = [
         customerName : "Lê Quốc Mạnh",
         customerCompany : "Đại Học Bách Khoa",
         taxCode : "1111",
-        address : "!57B, đường Chùa Láng, Hà Nội",
+        address : "157B, đường Chùa Láng, Hà Nội",
         phoneNumber : "0854681997",
         email : "lqmanhddt@gmail.com"
     },
