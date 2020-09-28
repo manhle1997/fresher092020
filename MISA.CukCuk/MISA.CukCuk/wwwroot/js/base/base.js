@@ -15,6 +15,7 @@ $(document).ready(function () {
 class BaseJS {
 
     constructor() {
+        debugger;
         this.getData();
         this.loadData();
         this.initEvents();
@@ -55,6 +56,10 @@ class BaseJS {
             console.log('error from load data');
         }
     }
+
+    /**
+     * hàm lấy dữ liệu
+     * */
     getData() {
         this.Data = [];
     }
@@ -108,5 +113,6 @@ var data = [
         address: "157B, đường Chùa Láng, Hà Nội",
         phoneNumber: "0854681997",
         email: "lqmanhddt@gmail.com"
+
     }
 ];
