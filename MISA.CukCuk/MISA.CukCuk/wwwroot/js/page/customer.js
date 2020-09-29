@@ -7,7 +7,6 @@ $(document).ready(function () {
 /**
  * class quản lí các function cho trang customer
  * */
-
 class CustomerJS extends BaseJS {
     constructor() {
         super();
@@ -18,9 +17,13 @@ class CustomerJS extends BaseJS {
 
 }
 
+
+/**
+ *Data customer 
+ * */
 var data = [
     {
-        CustomerCode: "KH000001",
+        CustomerCode: "KH0001",
         CustomerName: "Lê Quốc Mạnh",
         CustomerCompany: "Đại Học Bách Khoa",
         TaxCode: "1111",
@@ -31,7 +34,7 @@ var data = [
 
     },
     {
-        CustomerCode: "KH000002",
+        CustomerCode: "KH0002",
         CustomerName: "Lê Quốc Cường",
         CustomerCompany: "Đại Học Bách Khoa",
         TaxCode: "1111",
@@ -42,7 +45,7 @@ var data = [
 
     },
     {
-        CustomerCode: "KH000003",
+        CustomerCode: "KH0003",
         CustomerName: "Lê Quốc Hùng",
         CustomerCompany: "Đại Học Bách Khoa",
         TaxCode: "1111",

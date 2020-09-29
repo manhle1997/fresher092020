@@ -1,6 +1,6 @@
 body {
     margin: 0px;
-    font-family: lqmanh3;
+    font-family: lqmanh;
 }
 
 @font-face {
@@ -9,7 +9,7 @@ body {
 }
 
 @font-face {
-    font-family: 'tahoma_bold';
+    font-family: 'lqmanh2';
     src: url('/content/fonts/tahoma_bold.woff') format('woff');
 }
 
@@ -224,5 +224,3 @@ body {
                 .main .content .body-content .toolbar .toolbar-item-text {
                     line-height: 25px;
                 }
-
-            
