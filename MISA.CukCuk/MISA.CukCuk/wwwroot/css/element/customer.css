@@ -1,2 +1,90 @@
-﻿body {
+﻿.main .content .body-content {
+    margin-left: 10px;
+    border: 1px solid #cccccc;
+    width: calc(100% - 22px);
+    height: calc(100% - 74px);
 }
+
+
+
+    .main .content .body-content .grid {
+        width: 100%;
+        height: 100%;
+        /*border: 1px solid #ccc;*/
+        border-top: none;
+    }
+
+        .main .content .body-content .grid table {
+            border: none;
+            border-collapse: collapse;
+            border-color: #ccc;
+        }
+
+            .main .content .body-content .grid table .thead {
+                text-align: center;
+                border: 0px solid #ccc;
+                height: 36px;
+            }
+
+            .main .content .body-content .grid table thead {
+                border-top: none;
+                background: #ededed;
+                font-weight: normal;
+            }
+
+            .main .content .body-content .grid table tr th {
+                border: 1px solid #cccccc;
+                text-decoration-style: solid;
+            }
+
+            .main .content .body-content .grid table tr td {
+                padding: 2px 4px;
+                border-right: 1px solid rgb(204, 204, 204);
+                border-bottom: 1px solid rgb(204, 204, 204);
+                border-top: 1px solid rgb(204, 204, 204);
+            }
+
+                .main .content .body-content .grid table tr td:nth-child(1) {
+                    width: 106px;
+                }
+
+                .main .content .body-content .grid table tr td:nth-child(2) {
+                    width: 175px;
+                }
+
+                .main .content .body-content .grid table tr td:nth-child(3) {
+                    width: 160px;
+                }
+
+                .main .content .body-content .grid table tr td:nth-child(4) {
+                    width: 140px;
+                }
+
+                .main .content .body-content .grid table tr td:nth-child(5) {
+                    width: 250px;
+                }
+
+                .main .content .body-content .grid table tr td:nth-child(6) {
+                    width: 175px;
+                }
+
+                .main .content .body-content .grid table tr td:nth-child(7) {
+                    width: 189px;
+                }
+
+                .main .content .body-content .grid table tr td:last-child {
+                    border-right: 0px;
+                    width: 160px;
+                }
+
+            .main .content .body-content .grid table tbody tr:hover {
+                background-color: #d7e4f0;
+            }
+
+            .main .content .body-content .grid table tr .align-center {
+                text-align: center;
+            }
+
+            .main .content .body-content .grid table tr .align-right {
+                text-align: right;
+            }

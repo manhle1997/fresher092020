@@ -10,6 +10,7 @@
     <link href="/css/page/customer/dialog.css" rel="stylesheet" />
     <link href="/css/page/customer/footer-content.css" rel="stylesheet" />
     <link href="/css/element/table.css" rel="stylesheet" />
+    <link href="/css/element/employee.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -102,7 +103,7 @@
         <!--Content-->
         <div class="content">
             <div class="header-content">
-                <h3>Danh mục > Khách hàng</h3>
+                <h3>Danh mục > Nhân viên</h3>
                 <div class="back-respond">
                     <div class="back">
                         <p>Quay lại thiết lập ban đầu</p>
@@ -156,12 +157,12 @@
                                     <td fieldName="EmployeeCode">Mã nhân viên</td>
                                     <td fieldName="FullName">Tên nhân viên</td>
                                     <td fieldName="Gender">Giới tính</td>
-                                    <td fieldName="DateOfBirth">Ngày sinh</td>
+                                    <td fieldName="DateOfBirth" fieldNumber="DateOfBirth">Ngày sinh</td>
                                     <td fieldName="PhoneNumber">Số điện thoại</td>
                                     <td fieldName="PositionName">Vị trí</td>
                                     <td fieldName="DepartmentName">Phòng ban</td>
                                     <td fieldName="Email">Email</td>
-                                    <td fieldName="Salary">Mức lương</td>
+                                    <td fieldName="Salary" fieldNumber="Salary">Mức lương</td>
                                     <td fieldName="WorkStatus">Tình trạng công việc</td>
                                 </tr>
                             </thead>
@@ -286,6 +287,7 @@
     <script src="/js/base/base.js"></script>
     <script src="/js/lib/dialog.js"></script>
     <script src="/js/lib/employee.js"></script>
+    <script src="/js/helper/common.js"></script>
 </body>
 
 </html>
