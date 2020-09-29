@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     //load dữ liệu
     try {
         var baseJS = new BaseJS();
@@ -15,10 +14,10 @@ $(document).ready(function () {
 class BaseJS {
 
     constructor() {
-        debugger;
         this.getData();
         this.loadData();
         this.initEvents();
+        
     }
 
     /**
@@ -32,7 +31,7 @@ class BaseJS {
         $(".btn-close, #btn_close").click(function () {
             $(".form-dialog").hide();
         });
-        $('#tbCustomer').on('click', 'tr', this, this.rowOnClick);
+        $('#tbCustomer tbody').on('click', 'tr', this, this.rowOnClick);
 
         $('#toolbar-item-reload').click(this.btnReloadDataOnClick.bind(this));
 
@@ -46,26 +45,53 @@ class BaseJS {
      * */
     loadData() {
         //lấy dữ liệu về
+        //try {
+        //    var fields = $('#tbCustomer thead .thead td');
+        //    var data = this.Data;
+        //    var self = this;
+        //    $.each(data, function (index, obj) {
+        //        var tr = $(`<tr></tr>`);
+        //        $.each(fields, function (index, field){
+        //            var fieldName = $(field).attr('fieldName');
+        //            var value = obj[fieldName];
+        //            var td = $(`<td>` + value + `</td>`);
+        //            $(tr).append(td);
+        //        })
+
+        //        //var trHTML = self.makeTrHTML(obj);
+
+        //        $("#tbCustomer tbody").append(tr);
+        //    })
+        //}
+        //catch (e) {
+        //    console.log('error from load data');
+        //}
+
+
         try {
-            var fields = $('#tbCustomer thead .thead td');
             var data = this.Data;
             var self = this;
+            var fields = $('#tbCustomer thead .thead td')
             $.each(data, function (index, obj) {
                 var tr = $(`<tr></tr>`);
-                $.each(fields, function (index, field){
+                $.each(fields, function (index, field) {
                     var fieldName = $(field).attr('fieldName');
+                    var fieldNumber = $(field).attr('fieldNumber');
                     var value = obj[fieldName];
-                    var td = $(`<td>` + value + `</td>`);
+                    if (fieldNumber == 'Salary') {
+                        var td = $(`<td style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
+                    } else if (fieldNumber == 'DateOfBirth') {
+                        var td = $(`<td>` + commonJS.formatDate(value) + `</td>`);
+                    }else {
+                        var td = $(`<td>` + value + `</td>`);
+                    }
+                    
                     $(tr).append(td);
                 })
-
-                //var trHTML = self.makeTrHTML(obj);
-
                 $("#tbCustomer tbody").append(tr);
             })
-        }
-        catch (e) {
-            console.log('error from load data');
+        } catch (e) {
+
         }
     }
 
