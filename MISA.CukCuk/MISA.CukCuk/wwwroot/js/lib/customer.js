@@ -15,55 +15,41 @@ class CustomerJS extends BaseJS {
     getData() {
         this.Data = data;
     }
-    makeTrHTML(customer) {
-        var TrHTML = $(`<tr>
-                                    <td>`+ customer["customerCode"] + `</td>
-                                    <td>`+ customer["customerName"] + `</td>
-                                    <td>`+ customer["customerCompany"] + `</td>
-                                    <td>`+ customer["taxCode"] + `</td>
-                                    <td>`+ customer["address"] + `</td>
-                                    <td>`+ customer["phoneNumber"] + `</td>
-                                    <td>`+ customer["email"] + `</td>
-                                    <td>`+ customer["salary"] + `</td>
-                                </tr>`);
-        return TrHTML;
-    }
-
 
 }
 
 var data = [
     {
-        customerCode: "KH000003",
-        customerName: "Lê Quốc Mạnh",
-        customerCompany: "Đại Học Bách Khoa",
-        taxCode: "1111",
-        address: "157B, đường Chùa Láng, Hà Nội",
-        phoneNumber: "0854681997",
-        email: "lqmanhddt@gmail.com",
-        salary: 20000000
+        CustomerCode: "KH000001",
+        CustomerName: "Lê Quốc Mạnh",
+        CustomerCompany: "Đại Học Bách Khoa",
+        TaxCode: "1111",
+        Address: "157B, đường Chùa Láng, Hà Nội",
+        PhoneNumber: "0854681997",
+        Email: "lqmanhddt@gmail.com",
+        Salary: 20000000
 
     },
     {
-        customerCode: "KH000003",
-        customerName: "Lê Quốc Cường",
-        customerCompany: "Đại Học Bách Khoa",
-        taxCode: "1111",
-        address: "157B, đường Chùa Láng, Hà Nội",
-        phoneNumber: "0854681997",
-        email: "lqmanhddt@gmail.com",
-        salary: 20000000
+        CustomerCode: "KH000002",
+        CustomerName: "Lê Quốc Cường",
+        CustomerCompany: "Đại Học Bách Khoa",
+        TaxCode: "1111",
+        Address: "157B, đường Chùa Láng, Hà Nội",
+        PhoneNumber: "0854681997",
+        Email: "lqmanhddt@gmail.com",
+        Salary: 20000000
 
     },
     {
-        customerCode: "KH000003",
-        customerName: "Lê Quốc Hùng",
-        customerCompany: "Đại Học Bách Khoa",
-        taxCode: "1111",
-        address: "157B, đường Chùa Láng, Hà Nội",
-        phoneNumber: "0854681997",
-        email: "lqmanhddt@gmail.com",
-        salary: 20000000
+        CustomerCode: "KH000003",
+        CustomerName: "Lê Quốc Hùng",
+        CustomerCompany: "Đại Học Bách Khoa",
+        TaxCode: "1111",
+        Address: "157B, đường Chùa Láng, Hà Nội",
+        PhoneNumber: "0854681997",
+        Email: "lqmanhddt@gmail.com",
+        Salary: 20000000
 
     }
 ];

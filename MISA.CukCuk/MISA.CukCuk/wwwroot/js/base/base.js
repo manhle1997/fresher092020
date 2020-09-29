@@ -34,7 +34,10 @@ class BaseJS {
         });
         $('#tbCustomer').on('click', 'tr', this, this.rowOnClick);
 
-        $('#toolbar-item-reload').click(this.btnReloadDataOnClick.bind(this))
+        $('#toolbar-item-reload').click(this.btnReloadDataOnClick.bind(this));
+
+        
+        
     }
 
 
@@ -44,12 +47,21 @@ class BaseJS {
     loadData() {
         //lấy dữ liệu về
         try {
+            var fields = $('#tbCustomer thead .thead td');
             var data = this.Data;
             var self = this;
             $.each(data, function (index, obj) {
-                var trHTML = self.makeTrHTML(obj);
+                var tr = $(`<tr></tr>`);
+                $.each(fields, function (index, field){
+                    var fieldName = $(field).attr('fieldName');
+                    var value = obj[fieldName];
+                    var td = $(`<td>` + value + `</td>`);
+                    $(tr).append(td);
+                })
 
-                $("#tbCustomer tbody").append(trHTML);
+                //var trHTML = self.makeTrHTML(obj);
+
+                $("#tbCustomer tbody").append(tr);
             })
         }
         catch (e) {
@@ -64,6 +76,9 @@ class BaseJS {
         this.Data = [];
     }
 
+    getChoseData() {
+
+    }
 
     /**
      * Build Html for Tr
@@ -83,36 +98,37 @@ class BaseJS {
         $(this).addClass('row-selected');
     }
 
+
 }
 
 
-var data = [
-    {
-        customerCode: "KH000003",
-        customerName: "Lê Quốc Mạnh",
-        customerCompany: "Đại Học Bách Khoa",
-        taxCode: "1111",
-        address: "157B, đường Chùa Láng, Hà Nội",
-        phoneNumber: "0854681997",
-        email: "lqmanhddt@gmail.com"
-    },
-    {
-        customerCode: "KH000003",
-        customerName: "Lê Quốc Cường",
-        customerCompany: "Đại Học Bách Khoa",
-        taxCode: "1111",
-        address: "157B, đường Chùa Láng, Hà Nội",
-        phoneNumber: "0854681997",
-        email: "lqmanhddt@gmail.com"
-    },
-    {
-        customerCode: "KH000003",
-        customerName: "Lê Quốc Hùng",
-        customerCompany: "Đại Học Bách Khoa",
-        taxCode: "1111",
-        address: "157B, đường Chùa Láng, Hà Nội",
-        phoneNumber: "0854681997",
-        email: "lqmanhddt@gmail.com"
+//var data = [
+//    {
+//        customerCode: "KH000003",
+//        customerName: "Lê Quốc Mạnh",
+//        customerCompany: "Đại Học Bách Khoa",
+//        taxCode: "1111",
+//        address: "157B, đường Chùa Láng, Hà Nội",
+//        phoneNumber: "0854681997",
+//        email: "lqmanhddt@gmail.com"
+//    },
+//    {
+//        customerCode: "KH000003",
+//        customerName: "Lê Quốc Cường",
+//        customerCompany: "Đại Học Bách Khoa",
+//        taxCode: "1111",
+//        address: "157B, đường Chùa Láng, Hà Nội",
+//        phoneNumber: "0854681997",
+//        email: "lqmanhddt@gmail.com"
+//    },
+//    {
+//        customerCode: "KH000003",
+//        customerName: "Lê Quốc Hùng",
+//        customerCompany: "Đại Học Bách Khoa",
+//        taxCode: "1111",
+//        address: "157B, đường Chùa Láng, Hà Nội",
+//        phoneNumber: "0854681997",
+//        email: "lqmanhddt@gmail.com"
 
-    }
-];
+//    }
+//];

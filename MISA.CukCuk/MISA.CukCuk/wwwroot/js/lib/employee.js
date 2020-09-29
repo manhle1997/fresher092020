@@ -15,35 +15,20 @@ class EmployeeJS extends BaseJS {
     getData() {
         this.Data = data;
     }
-    makeTrHTML(employee) {
-        var TrHTML = $(`<tr>
-                                    <td>`+ employee["EmployeeCode"] + `</td>
-                                    <td>`+ employee["FullName"] + `</td>
-                                    <td>`+ employee["Gender"] + `</td>
-                                    <td>`+ employee["DateOfBirth"] + `</td>
-                                    <td>`+ employee["Mobile"] + `</td>
-                                    <td>`+ employee["PositionName"] + `</td>
-                                    <td>`+ employee["DepartmenName"] + `</td>
-                                    <td>`+ employee["Email"] + `</td>
-                                    <td style="text-align: right;">`+ employee["Salary"].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + `</td>
-                                    <td>`+ employee["WorkStatus"] + `</td>
-                                </tr>`);
-        return TrHTML;
-    }
-
+    
 
 }
 
 var data = [];
-for (var i = 0; i < 8; i++) {
+for (var i = 1; i < 5; i++) {
     var employee = {
-        EmployeeCode: "KH000" + (i + 1),
+        EmployeeCode: "KH000" + i,
         FullName: "Lê Quốc Manh" + i + 1,
         Gender: "Nam",
-        DateOfBirth: new Date('1997-06-11'),
-        Mobile: "0854681997",
+        DateOfBirth: new Date("11/06/1997"),
+        PhoneNumber: "0854681997",
         PositionName: "Giám đốc",
-        DepartmenName: "Phòng đào tạo",
+        DepartmentName: "Phòng đào tạo",
         Email: "lqmanhddt@gmail.com",
         Salary: 10000000,
         WorkStatus: "Đang làm việc"
