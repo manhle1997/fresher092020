@@ -17,6 +17,30 @@ class CustomerJS extends BaseJS {
         this.Data = data;
 
     }
+    initEvents() {
+        super.initEvents();
+        $('#customer-code').blur(this.validateRequired);
+
+    }
+
+    //#region Validate
+    /**
+     * Validate bắt buộc nhập
+     * Author: lê Mạnh
+     * */
+    validateRequired() {
+        //Lấy dữ liệu
+        var value = $('#customer-code').val();
+        //Thực hiện kiểm tra xem dữ liệu có nhập hay không
+        if (!value || !(value && value.trim())) {
+            $('#customer-code').addClass('not-required');
+        }
+
+        //nếu chưa nhập thì set border màu đỏ
+    }
+    //#endregion
+
+    
 
     /**
      * Hàm thêm mới dữ liệu 

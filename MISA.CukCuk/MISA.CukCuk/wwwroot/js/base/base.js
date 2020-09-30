@@ -21,7 +21,11 @@ class BaseJS {
      * */
     initEvents() {
         $("#toolbar-item-add").click(function () {
+            $(".form-dialog input").empty();
             $(".form-dialog").show();
+            debugger;
+            
+            
         });
         $(".btn-close, #btn_close").click(function () {
             $(".form-dialog").hide();
