@@ -14,7 +14,6 @@ class BaseJS {
         this.getData();
         this.loadData();
         this.initEvents();
-
     }
 
     /**
@@ -42,6 +41,7 @@ class BaseJS {
      * */
     loadData() {
         try {
+            $("#tbCustomer tbody tr").empty();
             var data = this.Data;
             var self = this;
             var fields = $('#tbCustomer thead .thead td')
@@ -52,9 +52,9 @@ class BaseJS {
                     var fieldNumber = $(field).attr('fieldNumber');
                     var value = obj[fieldName];
                     if (fieldNumber == 'Salary') {
-                        var td = $(`<td style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
+                        var td = $(`<td title="` + value +`" style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
                     } else if (fieldNumber == 'DateOfBirth') {
-                        var td = $(`<td>` + commonJS.formatDate(value) + `</td>`);
+                        var td = $(`<td title="` + value +`">` + commonJS.formatDate(value) + `</td>`);
                     } else {
                         var td = $(`<td title="`+value+`">` + value + `</td>`);
                     }
@@ -69,12 +69,26 @@ class BaseJS {
     }
 
     /**
+     * Hàm thêm mới dữ liệu
+     * */
+    addNewData() {
+        var tr = $(`<tr></tr>`);
+    }
+
+
+    
+
+
+    /**
      * Hàm lấy dữ liệu
      * Author: Lê Mạnh
      * */
     getData() {
         this.Data = [];
     }
+
+
+    
 
 
     btnReloadDataOnClick() {
