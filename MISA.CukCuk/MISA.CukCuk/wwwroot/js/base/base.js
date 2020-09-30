@@ -41,7 +41,7 @@ class BaseJS {
      * */
     loadData() {
         try {
-            $("#tbCustomer tbody tr").empty();
+            $("#tbCustomer tbody").empty();
             var data = this.Data;
             var self = this;
             var fields = $('#tbCustomer thead .thead td')
@@ -102,6 +102,9 @@ class BaseJS {
     rowOnClick() {
         $(this).siblings().removeClass('row-selected')
         $(this).addClass('row-selected');
+
+        
+        
     }
 }
 
