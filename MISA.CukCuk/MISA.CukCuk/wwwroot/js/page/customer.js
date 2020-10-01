@@ -20,40 +20,45 @@ class CustomerJS extends BaseJS {
     initEvents() {
         super.initEvents();
         $('[required]').blur(this.validateRequired);
+        $('#btn_save').click(this.btnSaveOnClick)
 
     }
 
-    //
-    //btnSaveOnClick() {
-    //    debugger;
-    //    var isValid = false;
-    //    var inputRequireds = $('input[required]');
-    //    $.each(inputRequireds, function (index, input) {
-    //        if (!validData.validateRequired(input)) {
-    //            isValid = false;
-    //            alert('Chưa validate');
-    //        }
-    //    });
-    //    if (isValid) {
-    //        //Build object Customer
-    //        alert('Ok');
+    /**
+     * Thực hiên lưu dữ liệu
+     * Author: Lê Mạnh
+     * */
+    btnSaveOnClick() {
+        //Validate dữ liệu
+            //Check bắt buộc nhập
+        var isValid = true;
+        var inputRequireds = $('input[required]');
+        $.each(inputRequireds, function (index, input) {
+            if (!validData.validateRequired(input)) {
+                isValid = false
+            }
+        })
+        if (isValid) {
+            var customer = 
+        }
 
 
+        //build object dữ liệu
 
-    //        //Lưu dữ liệu
-
-
-    //        //Xử lý sau khi lưu giữ liệu
-    //    }
-    //}
+        //gọi sẻvice thực hiện lư dữ liệu
+    }
 
     //#region Validate
     /**
      * Validate bắt buộc nhập
      * Author: lê Mạnh
      * */
-    validateRequired() {
-        validData.validateRequired(sender)
+    validateRequired(sender) {
+        //lấy dữ liệu đã nhập\
+
+        validData.validateRequired(sender.currentTarget);
+
+        //nếu chưa nhập thì set border màudor
     }
     //#endregion
 
