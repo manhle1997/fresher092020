@@ -74,16 +74,19 @@
         border: 1px solid #ccc;
     }
     .dialog .dialog-body .row #customer-name{
-        margin-left: 356px;
+        margin-left: 367px;
     }
     .dialog .dialog-body .row #customer-rankcard {
-        margin-left: 362px;
+        margin-left: 373px;
     }
     .dialog .dialog-body .row #customer-email{
-        margin-left: 409px;
+        margin-left: 417px;
     }
     .dialog .dialog-body .row #input-ngay-sinh {
         width: 172px;
+    }
+    .dialog .dialog-body .row #customer-address {
+        width: calc(100% - 182px);
     }
     .dialog .dialog-body .row .label-right {
         position: absolute;

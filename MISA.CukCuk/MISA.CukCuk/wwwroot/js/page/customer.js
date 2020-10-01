@@ -23,76 +23,102 @@ class CustomerJS extends BaseJS {
 
     }
 
+    //
+    //btnSaveOnClick() {
+    //    debugger;
+    //    var isValid = false;
+    //    var inputRequireds = $('input[required]');
+    //    $.each(inputRequireds, function (index, input) {
+    //        if (!validData.validateRequired(input)) {
+    //            isValid = false;
+    //            alert('Chưa validate');
+    //        }
+    //    });
+    //    if (isValid) {
+    //        //Build object Customer
+    //        alert('Ok');
+
+
+
+    //        //Lưu dữ liệu
+
+
+    //        //Xử lý sau khi lưu giữ liệu
+    //    }
+    //}
+
     //#region Validate
     /**
      * Validate bắt buộc nhập
      * Author: lê Mạnh
      * */
     validateRequired() {
-        //Lấy dữ liệu
-        var value = $('#customer-code').val();
-        //Thực hiện kiểm tra xem dữ liệu có nhập hay không
-        if (!value || !(value && value.trim())) {
-            $(this).addClass('not-required');
-        }
-
-        //nếu chưa nhập thì set border màu đỏ
+        validData.validateRequired(sender)
     }
     //#endregion
 
-    
+
 
     /**
      * Hàm thêm mới dữ liệu 
      * Author: Lê Mạnh
      * */
+    //addData() {
+    //    try {
+    //        $('#btn_save').click(function () {
+    //            //Lấy dữ liệu nhập từ input
+    //            var CustomerCode = $('#customer-code').val();
+    //            var CustomerName = $('#customer-name').val();
+    //            var CustomerCompany = $('#customer-company').val();
+    //            var CustomerTaxCode = $('#customer-taxcode').val();
+    //            var CustomerAddress = $('#customer-address').val();
+    //            var CustomerPhonenumber = $('#customer-phonenumber').val();
+    //            var CustomerEmail = $('#customer-email').val();
+
+    //            //tạo đối tượng và lưu thông tin vào mảng data
+    //            var customer = {
+    //                CustomerCode: CustomerCode,
+    //                CustomerName: CustomerName,
+    //                CustomerCompany: CustomerCompany,
+    //                TaxCode: CustomerTaxCode,
+    //                Address: CustomerAddress,
+    //                PhoneNumber: CustomerPhonenumber,
+    //                Email: CustomerEmail,
+    //                Salary: 20000000
+    //            }
+
+    //            //Thêm object customer vào Data
+    //            data.push(customer);
+
+    //            //Hàm xử lý append thêm tr vào bảng
+    //            //var tr = $(`<tr></tr>`);
+    //            //$.each(customer, function (index, value) {
+    //            //    if (index == 'Salary') {
+    //            //        var td = $(`<td title="` + value + `" style="text-align: right">` + commonJS.formatMoney(value) + `</td>`);
+    //            //    } else {
+    //            //        var td = $(`<td title="` + value + `">` + value + `</td>`);
+    //            //    }           
+    //            //    $(tr).append(td);
+    //            //});
+    //            //$("#tbCustomer tbody").append(tr);
+
+    //            //thông báo
+    //            alert("Lưu thông tin thành công");
+    //            this.loadData();
+    //            $(".form-dialog").hide();
+
+    //        }.bind(this));
+    //    } catch (e) {
+    //        alert("Lưu thông tin không thành công");
+    //    }
+
+    //}
     addData() {
         try {
-            $('#btn_save').click(function () {
-                //Lấy dữ liệu nhập từ input
-                var CustomerCode = $('#customer-code').val();
-                var CustomerName = $('#customer-name').val();
-                var CustomerCompany = $('#customer-company').val();
-                var CustomerTaxCode = $('#customer-taxcode').val();
-                var CustomerAddress = $('#customer-address').val();
-                var CustomerPhonenumber = $('#customer-phonenumber').val();
-                var CustomerEmail = $('#customer-email').val();
-
-                //tạo đối tượng và lưu thông tin vào mảng data
-                var customer = {
-                    CustomerCode: CustomerCode,
-                    CustomerName: CustomerName,
-                    CustomerCompany: CustomerCompany,
-                    TaxCode: CustomerTaxCode,
-                    Address: CustomerAddress,
-                    PhoneNumber: CustomerPhonenumber,
-                    Email: CustomerEmail,
-                    Salary: 20000000
-                }
-
-                //Thêm object customer vào Data
-                data.push(customer);
-
-                //Hàm xử lý append thêm tr vào bảng
-                //var tr = $(`<tr></tr>`);
-                //$.each(customer, function (index, value) {
-                //    if (index == 'Salary') {
-                //        var td = $(`<td title="` + value + `" style="text-align: right">` + commonJS.formatMoney(value) + `</td>`);
-                //    } else {
-                //        var td = $(`<td title="` + value + `">` + value + `</td>`);
-                //    }           
-                //    $(tr).append(td);
-                //});
-                //$("#tbCustomer tbody").append(tr);
-
-                //thông báo
-                alert("Lưu thông tin thành công");
-                this.loadData();
-                $(".form-dialog").hide();
-
-            }.bind(this));
+            debugger;
+            $('#btn_save').click(this.btnSaveOnClick); 
         } catch (e) {
-            alert("Lưu thông tin không thành công");
+            
         }
 
     }
@@ -103,18 +129,17 @@ class CustomerJS extends BaseJS {
      * Author: Lê Mạnh
      * */
     //TODO: xoa du lieu đang làm dở
-
     removeData() {
         self = this;
 
         try {
             $('tbody tr').click(function () {
-                var t = this;
+
                 var temp = this;
                 debugger;
                 $('.toolbar-item-icon-delete').click(function () {
                     debugger;
-                    alert(1);
+                    alert('Xóa thành công');
                     var customer = {
                         CustomerCode: temp.valueOf(0).children[0].textContent,
                         CustomerName: temp.valueOf(0).children[1].textContent,
@@ -133,12 +158,12 @@ class CustomerJS extends BaseJS {
 
                     }
                     self.loadData();
-                    
-  
+
+
                 });
                 temp = t;
                 //this.valueOf(0).children[0].textContent
-                
+
 
             });
         } catch (e) {

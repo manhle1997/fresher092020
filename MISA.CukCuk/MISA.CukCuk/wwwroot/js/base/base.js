@@ -21,9 +21,9 @@ class BaseJS {
      * */
     initEvents() {
         $("#toolbar-item-add").click(function () {
-            $(".form-dialog input").empty();
+            $(".form-dialog input").val('');
+            $(".form-dialog input").removeClass('not-required')
             $(".form-dialog").show();
-            debugger;
             
             
         });
@@ -74,9 +74,13 @@ class BaseJS {
 
     /**
      * Hàm thêm mới dữ liệu
+     * Author: Lê Mạnh
      * */
     addNewData() {
-        var tr = $(`<tr></tr>`);
+        var input = $('.dialog input').val();
+        var customer = $.each(input, function (index, fieldName) {
+            
+        })
     }
 
 
