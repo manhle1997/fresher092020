@@ -2,9 +2,10 @@
 
     /**
      * Hàm định đạng tiền tệ
-     * @param {any} money
+     * @param {number} money
      */
     formatMoney(money) {
+        money = parseInt(money);
         return money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
     },
 

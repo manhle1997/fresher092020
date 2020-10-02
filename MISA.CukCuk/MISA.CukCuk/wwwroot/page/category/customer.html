@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -162,7 +161,7 @@
                                     <td fieldName="Address">Địa chỉ</td>
                                     <td fieldName="PhoneNumber">Số điện thoại</td>
                                     <td fieldName="Email">Email</td>
-                                    <td fieldName="Salary" fieldNumber="Salary">Số tiền nợ</td>
+                                    <td fieldName="DebitMoney" fieldNumber="DebitMoney">Số tiền nợ</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -223,12 +222,12 @@
                     <input type="text" name="name" value="" class="input-right" id="customer-rankcard" />
                 </div>
                 <div class="row">
-                    <label>Nhóm khách hàng</label>
-                    <input type="text" name="name" value="" class="input-left" id="" />
+                    <label>Số tiền nợ</label>
+                    <input type="number" name="name" value="" class="input-left" id="customer-debitmoney" fieldName="DebitMoney"/>
                 </div>
                 <div class="row">
                     <label>Số điện thoại</label>
-                    <input type="number" name="name" value="" class="input-left" id="customer-phonenumber" />
+                    <input type="text" name="name" value="" class="input-left" id="customer-phonenumber" required fieldName="PhoneNumber"/>
                 </div>
                 <div class="row">
                     <label>Ngày sinh</label>
@@ -240,13 +239,13 @@
                 </div>
                 <div class="row">
                     <label>Mã số thuế</label>
-                    <input type="text" name="name" value="" class="input-left" id="customer-taxcode" />
+                    <input type="text" name="name" value="" class="input-left" id="customer-taxcode" fieldName="TaxCode"/>
                     <label class="label-right">Email</label>
-                    <input type="email" name="name" value="" class="input-right" id="customer-email" />
+                    <input type="email" name="name" value="" class="input-right" id="customer-email" fieldName="Email   "/>
                 </div>
                 <div class="row">
                     <label>Địa chỉ</label>
-                    <input type="text" name="name" value="" fieldName="CustomerAddress" class="input-left" id="customer-address" />
+                    <input type="text" name="name" value="" fieldName="Address" class="input-left" id="customer-address" />
                 </div>
                 <div class="row">
                     <label>Ghi chú</label>

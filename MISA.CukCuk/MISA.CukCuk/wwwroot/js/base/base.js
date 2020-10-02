@@ -44,28 +44,34 @@ class BaseJS {
      * Author: Lê Mạnh
      * */
     loadData() {
+        
         try {
             $("#tbCustomer tbody").empty();
-            var data = this.Data;
+            var data2 = this.Data;
             var self = this;
             var fields = $('#tbCustomer thead .thead td')
-            $.each(data, function (index, obj) {
+            $.each(data2, function (index, obj) {
                 var tr = $(`<tr></tr>`);
                 $.each(fields, function (index, field) {
                     var fieldName = $(field).attr('fieldName');
                     var fieldNumber = $(field).attr('fieldNumber');
+                    
                     var value = obj[fieldName];
-                    if (fieldNumber == 'Salary') {
+                    if (fieldNumber == 'DebitMoney' || fieldNumber == 'Salary') {
                         var td = $(`<td title="` + value +`" style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
                     } else if (fieldNumber == 'DateOfBirth') {
                         var td = $(`<td title="` + value +`">` + commonJS.formatDate(value) + `</td>`);
                     } else {
                         var td = $(`<td title="`+value+`">` + value + `</td>`);
                     }
-
+                    
                     $(tr).append(td);
+                    
+                    
                 })
+                
                 $("#tbCustomer tbody").append(tr);
+                debugger;
             })
         } catch (e) {
 

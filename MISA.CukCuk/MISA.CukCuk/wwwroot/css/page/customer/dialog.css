@@ -13,7 +13,7 @@
 }
 .dialog{
     position: fixed;
-    width: 684px;
+    width: 660px;
     height: 400px;
     background-color: #ffffff;
     top: calc(50% - 200px);
@@ -56,7 +56,7 @@
     position: relative;
     padding-left: 10px;
     padding-top: 4px;
-    line-height: 1.75;
+    line-height: 2.1;
 }
 
     .dialog .dialog-body .row .input-left {
@@ -74,26 +74,26 @@
         border: 1px solid #ccc;
     }
     .dialog .dialog-body .row #customer-name{
-        margin-left: 367px;
+        margin-left: 358px;
     }
     .dialog .dialog-body .row #customer-rankcard {
-        margin-left: 373px;
+        margin-left: 361px;
     }
     .dialog .dialog-body .row #customer-email{
-        margin-left: 417px;
+        margin-left: 401px;
     }
     .dialog .dialog-body .row #input-ngay-sinh {
         width: 172px;
     }
     .dialog .dialog-body .row #customer-address {
-        width: calc(100% - 182px);
+        width: calc(100% - 181px);
     }
     .dialog .dialog-body .row .label-right {
         position: absolute;
         left: 351px;
     }
     .dialog .dialog-body #comment {
-        width: calc(100% - 182px);
+        width: calc(100% - 181px);
         height: calc(100% - 180px);
     }
     .dialog .dialog-body #company {
@@ -109,7 +109,7 @@
     right: 0;
 
     padding: 8px;
-    height: 20px;
+    height: 33px;
     align-items: center;
 }
     .dialog .dialog-footer .footer-left{

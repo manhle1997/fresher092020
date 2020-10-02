@@ -10,7 +10,7 @@ $(document).ready(function () {
 class CustomerJS extends BaseJS {
     constructor() {
         super();
-        this.addData();
+
         this.removeData();
     }
     getData() {
@@ -20,7 +20,7 @@ class CustomerJS extends BaseJS {
     initEvents() {
         super.initEvents();
         $('[required]').blur(this.validateRequired);
-        $('#btn_save').click(this.btnSaveOnClick)
+        $('#btn_save').click(this.btnSaveOnClick.bind(this))
 
     }
 
@@ -29,21 +29,51 @@ class CustomerJS extends BaseJS {
      * Author: Lê Mạnh
      * */
     btnSaveOnClick() {
+        self = this;
         //Validate dữ liệu
-            //Check bắt buộc nhập
+        //Check bắt buộc nhập
         var isValid = true;
         var inputRequireds = $('input[required]');
         $.each(inputRequireds, function (index, input) {
+            
             if (!validData.validateRequired(input)) {
                 isValid = false
             }
+            
         })
+        
+        //build object dữ liệu
+        //Nếu valid thì gán cho 1 object
         if (isValid) {
-            var customer = 
+            var inputs = $('input[fieldName]')
+            $.each(inputs, function (index.input) {
+                var fieldName
+            });
+
+
+            var customer = {
+                CustomerCode: $('#customer-code').val().trim(),
+                CustomerName: $('#customer-name').val().trim(),
+                CustomerCompany: $('#customer-company').val().trim(),
+                TaxCode: $('#customer-taxcode').val().trim(),
+                Address: $('#customer-address').val().trim(),
+                PhoneNumber: $('#customer-phonenumber').val().trim(),
+                Email: $('#customer-email').val().trim(),
+                DebitMoney: $('#customer-debitmoney').val().trim()
+
+            }
+            data.push(customer);
+            self.Data = data;
+            debugger
+        //Load lại data
+            
+            self.loadData();
+            $(".form-dialog").hide();
+            return;
         }
 
 
-        //build object dữ liệu
+        
 
         //gọi sẻvice thực hiện lư dữ liệu
     }
@@ -118,21 +148,13 @@ class CustomerJS extends BaseJS {
     //    }
 
     //}
-    addData() {
-        try {
-            debugger;
-            $('#btn_save').click(this.btnSaveOnClick); 
-        } catch (e) {
-            
-        }
 
-    }
 
 
     /**
      * Hàm xóa dữ liệu 
      * Author: Lê Mạnh
-     * */
+     * */   
     //TODO: xoa du lieu đang làm dở
     removeData() {
         self = this;
@@ -191,7 +213,7 @@ var data = [
         Address: "157B, đường Chùa Láng, Hà Nội",
         PhoneNumber: "0854681997",
         Email: "lqmanhddt@gmail.com",
-        Salary: 20000000
+        DebitMoney: 20000000
 
     },
     {
@@ -202,7 +224,7 @@ var data = [
         Address: "157B, đường Chùa Láng, Hà Nội",
         PhoneNumber: "0854681997",
         Email: "lqmanhddt@gmail.com",
-        Salary: 20000000
+        DebitMoney: 20000000
 
     },
     {
@@ -213,7 +235,7 @@ var data = [
         Address: "157B, đường Chùa Láng, Hà Nội",
         PhoneNumber: "0854681997",
         Email: "lqmanhddt@gmail.com",
-        Salary: 20000000
+        DebitMoney: 20000000
 
     }
 ];
