@@ -40,6 +40,7 @@ body {
                 width: 300px;
                 color: white;
                 font-family: Helvetica !important;
+                font-size: 13px;
             }
 
                 .main .header .select_restaurant .select option {
