@@ -56,12 +56,24 @@ class BaseJS {
      * Author: Lê Mạnh
      * */
     btnDeleteOnClick() {
+        self = this;
         //Lấy id của bản ghi được chọn
         var id = this.getRecordIdSelected();
 
         // Hiển thị thông báo xác nhận xóa
         var result = confirm("Bạn có muốn xóa khách hàng này");
         if (result) {
+            var recordSelected = $('#tbCustomer tbody tr.row-selected');
+
+            // Lấy dữ liệu chi tiết bản ghi đã chọn
+            var id = recordSelected.data('keyId');
+            var objectDetail = recordSelected.data('data');
+            $.each(data, function (index, obj) {
+                if (obj.CustomerId == objectDetail.CustomerId) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
+                    data.splice(index, 1);
+                }
+                self.loadData();
+            });
 
         }
     }
@@ -81,8 +93,6 @@ class BaseJS {
                 isValid = false;
             }
         })
-
-
         //Nếu valid thì gán cho 1 object
         if (isValid) {
             // Lấy ra các input có các trường là fieldName
@@ -115,7 +125,11 @@ class BaseJS {
     * Hàm Edit thông tin
     * Author: Lê Mạnh
     */
+
+    //TODO : đang làm dở edit infor
     btnEditOnClick() {
+        self = this;
+
         this.FormMode = 'Edit';
         // Lấy thông tin bản ghi đã chọn trong danh sách
         var recordSelected = $('#tbCustomer tbody tr.row-selected');
@@ -123,7 +137,7 @@ class BaseJS {
         // Lấy dữ liệu chi tiết bản ghi đã chọn
         var id = recordSelected.data('keyId');
         var objectDetail = recordSelected.data('data');
-        
+        debugger;
         
         // Binding dữ liệu vào các input tương ứng trên form chi tiết
         //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
@@ -132,9 +146,6 @@ class BaseJS {
             var fieldName = $(input).attr('fieldName');
             input.value = objectDetail[fieldName];
         });
-        
-        
-        
 
         // Hiển thị dialog chi tiết
         $(".form-dialog").show();
@@ -142,18 +153,18 @@ class BaseJS {
             $.each(inputs, function (index, input) {
                 var fieldName = $(input).attr('fieldName');
                 objectDetail[fieldName] = input.value;
-            });
-            $.each(data, function (index, obj) {
-                if (obj.CustomerCode == objectDetail.CustomerCode) {
-                    data[index] = objectDetail;
-                    return false;
-                }
                 
             });
-            
+
+            //$.each(data, function (index, obj) {
+            //    if (obj.CustomerId == objectDetail.CustomerId) {
+            //        data.splice(index, 1, objectDetail);
+            //    }               
+            //});
+            self.loadData();
         });
         
-        this.loadData();
+        
 
     }
 
@@ -189,10 +200,10 @@ class BaseJS {
                     $(tr).append(td);
 
 
-                })
+                });
 
                 $("#tbCustomer tbody").append(tr);
-            })
+            });
         } catch (e) {
 
         }
