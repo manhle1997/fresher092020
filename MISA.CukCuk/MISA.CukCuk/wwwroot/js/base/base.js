@@ -16,12 +16,15 @@ class BaseJS {
      * Hàm tạo sự kiện cho button
      * */
     initEvents() {
+        var self = this;
         $("#toolbar-item-add").click(function () {
+            self.FormMode = 'Add';
             $(".form-dialog input").val('');
             $(".form-dialog input").removeClass('not-required')
             $(".form-dialog").show();
         });
-
+        $('#toolbar-item-edit').click(this.btnEditOnClick.bind(this));
+        $('#toolbar-item-delete').click(this.btnDeleteOnClick.bind(this))
         $('#btn_save').click(this.btnSaveOnClick.bind(this))
         $(".btn-close, #btn_close").click(function () {
             $(".form-dialog").hide();
@@ -49,6 +52,21 @@ class BaseJS {
 
 
     /**
+     * Hàm xóa dữ liệu được chọn
+     * Author: Lê Mạnh
+     * */
+    btnDeleteOnClick() {
+        //Lấy id của bản ghi được chọn
+        var id = this.getRecordIdSelected();
+
+        // Hiển thị thông báo xác nhận xóa
+        var result = confirm("Bạn có muốn xóa khách hàng này");
+        if (result) {
+
+        }
+    }
+
+    /**
     * Thực hiên lưu dữ liệu
     * Author: Lê Mạnh
     * */
@@ -64,7 +82,7 @@ class BaseJS {
             }
         })
 
-        
+
         //Nếu valid thì gán cho 1 object
         if (isValid) {
             // Lấy ra các input có các trường là fieldName
@@ -74,10 +92,16 @@ class BaseJS {
             $.each(inputs, function (index, input) {
                 var fieldName = $(input).attr('fieldName');
                 var value = $(input).val();
-                customer[fieldName] = value;         
+                customer[fieldName] = value;
             });
-            data.push(customer);
-            debugger;
+            if (self.FormMode == 'Add') {
+                alert('add');
+                data.push(customer);
+            }
+            else {
+                alert('edit');
+            }
+
             self.Data = data;
             //Load lại data         
             self.loadData();
@@ -85,6 +109,52 @@ class BaseJS {
             return;
         }
         //gọi sẻvice thực hiện lư dữ liệu
+    }
+
+    /**
+    * Hàm Edit thông tin
+    * Author: Lê Mạnh
+    */
+    btnEditOnClick() {
+        this.FormMode = 'Edit';
+        // Lấy thông tin bản ghi đã chọn trong danh sách
+        var recordSelected = $('#tbCustomer tbody tr.row-selected');
+
+        // Lấy dữ liệu chi tiết bản ghi đã chọn
+        var id = recordSelected.data('keyId');
+        var objectDetail = recordSelected.data('data');
+        
+        
+        // Binding dữ liệu vào các input tương ứng trên form chi tiết
+        //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
+        var inputs = $('.dialog input');
+        $.each(inputs, function (index, input) {
+            var fieldName = $(input).attr('fieldName');
+            input.value = objectDetail[fieldName];
+        });
+        
+        
+        
+
+        // Hiển thị dialog chi tiết
+        $(".form-dialog").show();
+        $('#btn_save').click(function () {
+            $.each(inputs, function (index, input) {
+                var fieldName = $(input).attr('fieldName');
+                objectDetail[fieldName] = input.value;
+            });
+            $.each(data, function (index, obj) {
+                if (obj.CustomerCode == objectDetail.CustomerCode) {
+                    data[index] = objectDetail;
+                    return false;
+                }
+                
+            });
+            
+        });
+        
+        this.loadData();
+
     }
 
 
@@ -99,6 +169,7 @@ class BaseJS {
             var data2 = this.Data;
             var self = this;
             var fields = $('#tbCustomer thead .thead td')
+            var keyId = $('#tbCustomer').attr('keyId');
             $.each(data2, function (index, obj) {
                 var tr = $(`<tr></tr>`);
                 $.each(fields, function (index, field) {
@@ -113,7 +184,8 @@ class BaseJS {
                     } else {
                         var td = $(`<td title="` + value + `">` + value + `</td>`);
                     }
-
+                    $(tr).data('keyId', obj[keyId]);//Thêm data 'keyId' có giá trị là obj.CustomerId vào 'tr'
+                    $(tr).data('data', obj); //Thêm data 'data' có giá trị là obj vào 'tr'
                     $(tr).append(td);
 
 
@@ -138,6 +210,8 @@ class BaseJS {
         this.loadData();
     }
 
+
+
     /**
      * Đổi màu hàng được chọn
      * Author: Lê Mạnh
@@ -145,6 +219,20 @@ class BaseJS {
     rowOnClick() {
         $(this).siblings().removeClass('row-selected')
         $(this).addClass('row-selected');
+    }
+
+
+
+    /**
+     * Lấy Id của bản ghi được chọn trong danh sách
+     * */
+    getRecordIdSelected() {
+        // Lấy thông tin bản ghi đã chọn trong danh sách
+        var recordSelected = $('#tbCustomer tbody tr.row-selected');
+
+        // Lấy dữ liệu chi tiết bản ghi đã chọn
+        var id = recordSelected.data('keyId');
+        return id;
     }
 }
 

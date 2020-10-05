@@ -128,7 +128,7 @@
                         <div class="toolbar-item-icon-edit"></div>
                         <div class="toolbar-item-text">Sửa</div>
                     </button>
-                    <button class="">
+                    <button class="" id="toolbar-item-delete">
                         <div class="toolbar-item-icon-delete"></div>
                         <div class="toolbar-item-text">Xóa</div>
                     </button>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="grid-div">
                     <div class="grid">
-                        <table width="100%" id="tbCustomer">
+                        <table width="100%" id="tbCustomer" keyId="CustomerId">
                             <thead>
                                 <tr class="thead">
                                     <td fieldName="CustomerCode">Mã khách hàng</td>
@@ -254,27 +254,26 @@
             </div>
             <div class="dialog-footer">
                 <div class="footer-left">
-                    <div id="btn_help">
-                        <div class="help_icon"></div>
+                    <button id="btn_help">
+                        <span class="help_icon"></span>
                         <p class="help-text">Giúp</p>
 
-                    </div>
+                    </button>
                 </div>
                 <div class="footer-right">
-                    <div id="btn_save">
-                        <div class="save_icon"></div>
+                    <button id="btn_save">
+                        <span class="save_icon"></span>
                         <p>Cất</p>
-
-                    </div>
-                    <div id="btn_save_and_add">
-                        <div class="save_and_add_icon"></div>
+                    </button>
+                    <button id="btn_save_and_add">
+                        <span class="save_and_add_icon"></span>
                         <p>Cất & Thêm</p>
 
-                    </div>
-                    <div id="btn_close">
-                        <div class="close_icon"></div>
+                    </button>
+                    <button id="btn_close">
+                        <span class="close_icon"></span>
                         <p>Hủy bỏ</p>
-                    </div>
+                    </button>
                 </div>
 
             </div>

@@ -120,7 +120,7 @@
             align-items: center;
             display: flex;
             border: 1px solid #ccc;
-            width: 86px;
+            width: 91px;
             height: 28px;
             cursor: pointer;
         }
@@ -144,7 +144,7 @@
             border: 1px solid #ccc;
             display: flex;
             align-items: center;
-            width: 70px;
+            width: 76px;
             height: 28px;
             cursor: pointer;
         }
@@ -164,7 +164,7 @@
             margin-left: 10px;
             display: flex;
             align-items: center;
-            width: 122px;
+            width: 126px;
             height: 28px;
             cursor: pointer;
         }
@@ -184,7 +184,7 @@
             margin-left: 10px;
             display: flex;
             align-items: center;
-            width: 92px;
+            width: 99px;
             height: 28px;
             cursor: pointer;
         }

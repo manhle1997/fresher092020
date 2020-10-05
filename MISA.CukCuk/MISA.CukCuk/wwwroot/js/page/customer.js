@@ -17,29 +17,12 @@ class CustomerJS extends BaseJS {
     }
     initEvents() {
         super.initEvents();
-        $('#toolbar-item-edit').click(this.btnEditOnClick);
         
+
     }
 
 
-    /**
-     * Hàm Edit thông tin
-     * Author: Lê Mạnh
-     *
-     */
-    btnEditOnClick() {
-        // Lấy thông tin bản ghi đã chọn trong danh sách
-        var recordSelected = $('#tbCustomer tbody tr.row-selected');
-        
 
-        // Lấy dữ liệu chi tiết bản ghi đã chọn
-        var 
-
-        // Binding dữ liệu vào các input tương ứng trên form chi tiết
-
-
-        // Hiển thị dialog chi tiết
-    }
 
 }
 /**
@@ -47,6 +30,7 @@ class CustomerJS extends BaseJS {
  * */
 var data = [
     {
+        CustomerId: 1,
         CustomerCode: "KH0001",
         CustomerName: "Lê Quốc Mạnh",
         CustomerCompany: "Đại Học Bách Khoa",
@@ -58,6 +42,7 @@ var data = [
 
     },
     {
+        CustomerId: 2,
         CustomerCode: "KH0002",
         CustomerName: "Lê Quốc Cường",
         CustomerCompany: "Đại Học Bách Khoa",
@@ -69,6 +54,7 @@ var data = [
 
     },
     {
+        CustomerId: 3,
         CustomerCode: "KH0003",
         CustomerName: "Lê Quốc Hùng",
         CustomerCompany: "Đại Học Bách Khoa",
