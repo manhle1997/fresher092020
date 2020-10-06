@@ -5,9 +5,8 @@ $(document).ready(function () {
 })
 
 /**
- * class quản lí các function cho trang customer
+ * class quản lí các function cho trang employee
  * */
-
 class EmployeeJS extends BaseJS {
     constructor() {
         super();
@@ -15,8 +14,6 @@ class EmployeeJS extends BaseJS {
     getData() {
         this.Data = data;
     }
-
-
 }
 
 var data = [];

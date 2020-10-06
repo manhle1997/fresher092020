@@ -22,6 +22,7 @@ class BaseJS {
             $(".form-dialog input").val('');
             $(".form-dialog input").removeClass('not-required')
             $(".form-dialog").show();
+            $("#customer-code").focus();
         });
         $('#toolbar-item-edit').click(this.btnEditOnClick.bind(this));
         $('#toolbar-item-delete').click(this.btnDeleteOnClick.bind(this))
@@ -36,17 +37,15 @@ class BaseJS {
     }
 
 
+
     //#region Validate
     /**
      * Validate bắt buộc nhập
      * Author: lê Mạnh
      * */
     validateRequired(sender) {
-        //lấy dữ liệu đã nhập\
-
         validData.validateRequired(sender.currentTarget);
 
-        //nếu chưa nhập thì set border màudor
     }
     //#endregion
 
@@ -108,6 +107,10 @@ class BaseJS {
                     var fieldName = $(input).attr('fieldName');
                     var value = $(input).val();
                     customer[fieldName] = value;
+
+                    var x = data.length;
+                    customer["CustomerId"] = data[x-1]+1;
+
                 });
                 if (self.FormMode == 'Add') {
                     alert('Thêm dữ liệu thành công');
@@ -121,7 +124,6 @@ class BaseJS {
                         }
                     });
                 }
-
                 self.Data = data;
                 //Load lại data         
                 self.loadData();
@@ -156,8 +158,6 @@ class BaseJS {
                 // Lấy dữ liệu chi tiết bản ghi đã chọn
                 var id = recordSelected.data('keyId');
                 var objectDetail = recordSelected.data('data');
-                debugger;
-
                 // Binding dữ liệu vào các input tương ứng trên form chi tiết
                 //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
                 var inputs = $('.dialog input');
@@ -172,7 +172,6 @@ class BaseJS {
 
         }
     }
-
 
     /**
      * Load dữ liệu 
@@ -221,6 +220,10 @@ class BaseJS {
         this.Data = [];
     }
 
+    /**
+     * Hàm nạp lại dữ liệu
+     * Author: Lê Mạnh
+     * */
     btnReloadDataOnClick() {
         this.loadData();
     }
@@ -244,7 +247,6 @@ class BaseJS {
     getRecordIdSelected() {
         // Lấy thông tin bản ghi đã chọn trong danh sách
         var recordSelected = $('#tbCustomer tbody tr.row-selected');
-
         // Lấy dữ liệu chi tiết bản ghi đã chọn
         var id = recordSelected.data('keyId');
         return id;
