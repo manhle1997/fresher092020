@@ -69,7 +69,7 @@ class BaseJS {
             var id = recordSelected.data('keyId');
             var objectDetail = recordSelected.data('data');
             $.each(data, function (index, obj) {
-                if (obj.CustomerId == objectDetail.CustomerId) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
+                if (obj.CustomerCode == objectDetail.CustomerCode) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
                     data.splice(index, 1);
                 }
                 self.loadData();
@@ -84,6 +84,7 @@ class BaseJS {
     * */
     btnSaveOnClick() {
         self = this;
+        
         //Validate dữ liệu
         //Check bắt buộc nhập
         var isValid = true;
@@ -110,6 +111,12 @@ class BaseJS {
             }
             else {
                 alert('edit');
+                debugger;
+                $.each(data, function (index, obj) {
+                    if (obj.CustomerCode == customer.CustomerCode) {
+                        data.splice(index, 1, customer);
+                    }
+                });
             }
 
             self.Data = data;
@@ -118,7 +125,7 @@ class BaseJS {
             $(".form-dialog").hide();
             return;
         }
-        //gọi sẻvice thực hiện lư dữ liệu
+        //gọi service thực hiện lưu dữ liệu
     }
 
     /**
@@ -128,44 +135,31 @@ class BaseJS {
 
     //TODO : đang làm dở edit infor
     btnEditOnClick() {
-        self = this;
+        try {
+            self = this;
 
-        this.FormMode = 'Edit';
-        // Lấy thông tin bản ghi đã chọn trong danh sách
-        var recordSelected = $('#tbCustomer tbody tr.row-selected');
+            this.FormMode = 'Edit';
+            // Lấy thông tin bản ghi đã chọn trong danh sách
+            var recordSelected = $('#tbCustomer tbody tr.row-selected');
 
-        // Lấy dữ liệu chi tiết bản ghi đã chọn
-        var id = recordSelected.data('keyId');
-        var objectDetail = recordSelected.data('data');
-        debugger;
-        
-        // Binding dữ liệu vào các input tương ứng trên form chi tiết
-        //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
-        var inputs = $('.dialog input');
-        $.each(inputs, function (index, input) {
-            var fieldName = $(input).attr('fieldName');
-            input.value = objectDetail[fieldName];
-        });
+            // Lấy dữ liệu chi tiết bản ghi đã chọn
+            var id = recordSelected.data('keyId');
+            var objectDetail = recordSelected.data('data');
+            debugger;
 
-        // Hiển thị dialog chi tiết
-        $(".form-dialog").show();
-        $('#btn_save').click(function () {
+            // Binding dữ liệu vào các input tương ứng trên form chi tiết
+            //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
+            var inputs = $('.dialog input');
             $.each(inputs, function (index, input) {
                 var fieldName = $(input).attr('fieldName');
-                objectDetail[fieldName] = input.value;
-                
+                input.value = objectDetail[fieldName];
             });
 
-            //$.each(data, function (index, obj) {
-            //    if (obj.CustomerId == objectDetail.CustomerId) {
-            //        data.splice(index, 1, objectDetail);
-            //    }               
-            //});
-            self.loadData();
-        });
-        
-        
+            // Hiển thị dialog chi tiết
+            $(".form-dialog").show();   
+        } catch (e) {
 
+        } 
     }
 
 
@@ -174,7 +168,6 @@ class BaseJS {
      * Author: Lê Mạnh
      * */
     loadData() {
-
         try {
             $("#tbCustomer tbody").empty();
             var data2 = this.Data;
