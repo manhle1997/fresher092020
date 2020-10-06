@@ -22,6 +22,7 @@ class BaseJS {
             $(".form-dialog input").val('');
             $(".form-dialog input").removeClass('not-required')
             $(".form-dialog").show();
+            $("#customer-code").focus();
         });
         $('#toolbar-item-edit').click(this.btnEditOnClick.bind(this));
         $('#toolbar-item-delete').click(this.btnDeleteOnClick.bind(this))
@@ -42,11 +43,7 @@ class BaseJS {
      * Author: lê Mạnh
      * */
     validateRequired(sender) {
-        //lấy dữ liệu đã nhập\
-
         validData.validateRequired(sender.currentTarget);
-
-        //nếu chưa nhập thì set border màudor
     }
     //#endregion
 
@@ -108,6 +105,10 @@ class BaseJS {
                     var fieldName = $(input).attr('fieldName');
                     var value = $(input).val();
                     customer[fieldName] = value;
+                    var x = data.length;
+                    customer["CustomerId"] = data[x-1]+1;
+                    debugger;
+                    
                 });
                 if (self.FormMode == 'Add') {
                     alert('Thêm dữ liệu thành công');
@@ -121,7 +122,6 @@ class BaseJS {
                         }
                     });
                 }
-
                 self.Data = data;
                 //Load lại data         
                 self.loadData();
@@ -221,6 +221,11 @@ class BaseJS {
         this.Data = [];
     }
 
+
+    /**
+     * Hàm nạp lại dữ liệu
+     * Author: Lê Mạnh
+     * */
     btnReloadDataOnClick() {
         this.loadData();
     }
@@ -244,7 +249,6 @@ class BaseJS {
     getRecordIdSelected() {
         // Lấy thông tin bản ghi đã chọn trong danh sách
         var recordSelected = $('#tbCustomer tbody tr.row-selected');
-
         // Lấy dữ liệu chi tiết bản ghi đã chọn
         var id = recordSelected.data('keyId');
         return id;
