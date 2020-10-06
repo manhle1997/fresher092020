@@ -59,22 +59,25 @@ class BaseJS {
         self = this;
         //Lấy id của bản ghi được chọn
         var id = this.getRecordIdSelected();
+        if (id == null) {//Nếu không có Id thì in ra thông báo
+            alert('Vui lòng chọn khách hàng muốn xóa');
+        }
+        else {
+            // Hiển thị thông báo xác nhận xóa
+            var result = confirm("Bạn có muốn xóa khách hàng này");
+            if (result) {
+                var recordSelected = $('#tbCustomer tbody tr.row-selected');
 
-        // Hiển thị thông báo xác nhận xóa
-        var result = confirm("Bạn có muốn xóa khách hàng này");
-        if (result) {
-            var recordSelected = $('#tbCustomer tbody tr.row-selected');
-
-            // Lấy dữ liệu chi tiết bản ghi đã chọn
-            var id = recordSelected.data('keyId');
-            var objectDetail = recordSelected.data('data');
-            $.each(data, function (index, obj) {
-                if (obj.CustomerCode == objectDetail.CustomerCode) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
-                    data.splice(index, 1);
-                }
-                self.loadData();
-            });
-
+                // Lấy dữ liệu chi tiết bản ghi đã chọn
+                var id = recordSelected.data('keyId');
+                var objectDetail = recordSelected.data('data');
+                $.each(data, function (index, obj) {
+                    if (obj.CustomerCode == objectDetail.CustomerCode) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
+                        data.splice(index, 1);
+                    }
+                    self.loadData();
+                });
+            }
         }
     }
 
@@ -83,49 +86,52 @@ class BaseJS {
     * Author: Lê Mạnh
     * */
     btnSaveOnClick() {
-        self = this;
-        
-        //Validate dữ liệu
-        //Check bắt buộc nhập
-        var isValid = true;
-        var inputRequireds = $('input[required]');
-        $.each(inputRequireds, function (index, input) {
-            if (!validData.validateRequired(input)) {
-                isValid = false;
-            }
-        })
-        //Nếu valid thì gán cho 1 object
-        if (isValid) {
-            // Lấy ra các input có các trường là fieldName
-            var inputs = $('input[fieldName]');
-            //build object dữ liệu
-            var customer = {};
-            $.each(inputs, function (index, input) {
-                var fieldName = $(input).attr('fieldName');
-                var value = $(input).val();
-                customer[fieldName] = value;
-            });
-            if (self.FormMode == 'Add') {
-                alert('add');
-                data.push(customer);
-            }
-            else {
-                alert('edit');
-                debugger;
-                $.each(data, function (index, obj) {
-                    if (obj.CustomerCode == customer.CustomerCode) {
-                        data.splice(index, 1, customer);
-                    }
-                });
-            }
+        try {
+            self = this;
 
-            self.Data = data;
-            //Load lại data         
-            self.loadData();
-            $(".form-dialog").hide();
-            return;
+            //Validate dữ liệu
+            //Check bắt buộc nhập
+            var isValid = true;
+            var inputRequireds = $('input[required]');
+            $.each(inputRequireds, function (index, input) {
+                if (!validData.validateRequired(input)) {
+                    isValid = false;
+                }
+            })
+            //Nếu valid thì gán cho 1 object
+            if (isValid) {
+                // Lấy ra các input có các trường là fieldName
+                var inputs = $('input[fieldName]');
+                //build object dữ liệu
+                var customer = {};
+                $.each(inputs, function (index, input) {
+                    var fieldName = $(input).attr('fieldName');
+                    var value = $(input).val();
+                    customer[fieldName] = value;
+                });
+                if (self.FormMode == 'Add') {
+                    alert('Thêm dữ liệu thành công');
+                    data.push(customer);
+                }
+                else {
+                    alert('Chỉnh sửa dữ liệu thành công');
+                    $.each(data, function (index, obj) {
+                        if (obj.CustomerCode == customer.CustomerCode) {
+                            data.splice(index, 1, customer);
+                        }
+                    });
+                }
+
+                self.Data = data;
+                //Load lại data         
+                self.loadData();
+                $(".form-dialog").hide();
+                return;
+            }
+            //gọi service thực hiện lưu dữ liệu
+        } catch (e) {
+
         }
-        //gọi service thực hiện lưu dữ liệu
     }
 
     /**
@@ -136,30 +142,35 @@ class BaseJS {
     //TODO : đang làm dở edit infor
     btnEditOnClick() {
         try {
+            //Lấy id của bản ghi được chọn
+            var id = this.getRecordIdSelected();
             self = this;
+            if (id == null) {//Nếu không có Id thì in ra thông báo
+                alert('Vui lòng chọn khách hàng muốn chỉnh sửa thông tin');
+            }
+            else {
+                this.FormMode = 'Edit';
+                // Lấy thông tin bản ghi đã chọn trong danh sách
+                var recordSelected = $('#tbCustomer tbody tr.row-selected');
 
-            this.FormMode = 'Edit';
-            // Lấy thông tin bản ghi đã chọn trong danh sách
-            var recordSelected = $('#tbCustomer tbody tr.row-selected');
+                // Lấy dữ liệu chi tiết bản ghi đã chọn
+                var id = recordSelected.data('keyId');
+                var objectDetail = recordSelected.data('data');
+                debugger;
 
-            // Lấy dữ liệu chi tiết bản ghi đã chọn
-            var id = recordSelected.data('keyId');
-            var objectDetail = recordSelected.data('data');
-            debugger;
-
-            // Binding dữ liệu vào các input tương ứng trên form chi tiết
-            //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
-            var inputs = $('.dialog input');
-            $.each(inputs, function (index, input) {
-                var fieldName = $(input).attr('fieldName');
-                input.value = objectDetail[fieldName];
-            });
-
-            // Hiển thị dialog chi tiết
-            $(".form-dialog").show();   
+                // Binding dữ liệu vào các input tương ứng trên form chi tiết
+                //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
+                var inputs = $('.dialog input');
+                $.each(inputs, function (index, input) {
+                    var fieldName = $(input).attr('fieldName');
+                    input.value = objectDetail[fieldName];
+                });
+                // Hiển thị dialog chi tiết
+                $(".form-dialog").show();
+            }
         } catch (e) {
 
-        } 
+        }
     }
 
 
