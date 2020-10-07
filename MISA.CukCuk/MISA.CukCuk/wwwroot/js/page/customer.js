@@ -17,12 +17,7 @@ class CustomerJS extends BaseJS {
     }
     initEvents() {
         super.initEvents();
-        
-
     }
-
-
-
 
 }
 /**
