@@ -1,0 +1,232 @@
+﻿.form-dialog {
+    display: none;
+}
+
+.dialog-model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: .4
+}
+
+.dialog {
+    position: fixed;
+    width: 660px;
+    height: 400px;
+    background-color: #ffffff;
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+    border-radius: 5px;
+    border: 5px solid #0072bc;
+}
+
+    .dialog .dialog-titlebar {
+        width: 100%;
+        background-color: #0072bc;
+        height: 30px;
+        color: white;
+    }
+
+        .dialog .dialog-titlebar .title {
+            float: left;
+            line-height: 25px;
+            padding-left: 4px;
+        }
+
+        .dialog .dialog-titlebar .btn-close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            float: right;
+            line-height: 13px;
+            border-radius: 50%;
+            font-weight: 500;
+            background-color: #ffffff;
+            color: #0072bc;
+            cursor: pointer;
+        }
+
+            .dialog .dialog-titlebar .btn-close:hover {
+                background-color: #ff0000;
+                color: white;
+            }
+
+    .dialog .dialog-body {
+        width: 100%;
+        position: relative;
+        padding-left: 13px;
+        padding-top: 4px;
+        line-height: 2.1;
+    }
+
+        .dialog .dialog-body .row .input-left {
+            position: absolute;
+            left: 148px;
+            margin-top: 4px;
+            height: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .dialog .dialog-body .row .input-right {
+            position: absolute;
+            /*left: 473px;*/
+            margin-top: 4px;
+            height: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .dialog .dialog-body .row #customer-name {
+            margin-left: 362px;
+        }
+
+        .dialog .dialog-body .row #customer-rankcard {
+            margin-left: 410px;
+        }
+
+        .dialog .dialog-body .row #customer-email {
+            margin-left: 394px;
+        }
+
+        .dialog .dialog-body .row #input-ngay-sinh {
+            width: 172px;
+        }
+
+        .dialog .dialog-body .row #customer-address {
+            width: calc(100% - 181px);
+        }
+
+        .dialog .dialog-body .row #employee-address {
+            width: calc(100% - 181px);
+        }
+
+        .dialog .dialog-body .row .label-right {
+            position: absolute;
+            left: 351px;
+        }
+
+        .dialog .dialog-body #comment {
+            width: calc(100% - 181px);
+            height: calc(100% - 180px);
+        }
+
+        .dialog .dialog-body #company {
+            /*width: calc(100% - 182px);*/
+        }
+
+    .dialog .dialog-footer {
+        display: flex;
+        border: 1px solid #ccc;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px;
+        height: 33px;
+        align-items: center;
+    }
+
+        .dialog .dialog-footer .footer-left {
+            position: absolute;
+            left: 10px;
+        }
+
+            .dialog .dialog-footer .footer-left #btn_help {
+                align-items: center;
+                display: flex;
+                border: 1px solid #ccc;
+                width: 91px;
+                height: 28px;
+                cursor: pointer;
+            }
+
+                .dialog .dialog-footer .footer-left #btn_help:hover {
+                    background-color: #808080;
+                }
+
+            .dialog .dialog-footer .footer-left .help_icon {
+                background-image: url('/content/img/iconhelp.png');
+                width: 22px;
+                height: 23px;
+                margin-left: 10px
+            }
+
+        .dialog .dialog-footer .footer-right {
+            display: flex;
+            position: absolute;
+            right: 10px;
+        }
+
+            .dialog .dialog-footer .footer-right #btn_save {
+                border: 1px solid #ccc;
+                display: flex;
+                align-items: center;
+                width: 76px;
+                height: 28px;
+                cursor: pointer;
+            }
+
+                .dialog .dialog-footer .footer-right #btn_save:hover {
+                    background-color: #808080;
+                }
+
+            .dialog .dialog-footer .footer-right .save_icon {
+                background-image: url('/content/img/iconsprite.png');
+                background-position: -1px -768px;
+                width: 16px;
+                height: 16px;
+                margin-left: 10px
+            }
+
+            .dialog .dialog-footer .footer-right #btn_save_and_add {
+                border: 1px solid #ccc;
+                margin-left: 10px;
+                display: flex;
+                align-items: center;
+                width: 126px;
+                height: 28px;
+                cursor: pointer;
+            }
+
+                .dialog .dialog-footer .footer-right #btn_save_and_add:hover {
+                    background-color: #808080;
+                }
+
+            .dialog .dialog-footer .footer-right .save_and_add_icon {
+                background-image: url('/content/img/iconsprite.png');
+                width: 16px;
+                height: 16px;
+                background-position: -1px -737px;
+                margin-left: 10px
+            }
+
+            .dialog .dialog-footer .footer-right #btn_close {
+                border: 1px solid #ccc;
+                margin-left: 10px;
+                display: flex;
+                align-items: center;
+                width: 99px;
+                height: 28px;
+                cursor: pointer;
+            }
+
+                .dialog .dialog-footer .footer-right #btn_close:hover {
+                    background-color: #808080;
+                }
+
+            .dialog .dialog-footer .footer-right .close_icon {
+                background-image: url('/content/img/iconsprite.png');
+                background-position: 0px -1952px;
+                width: 16px;
+                height: 16px;
+                margin-left: 10px
+            }
+
+        .dialog .dialog-footer p {
+            margin-left: 10px;
+        }
