@@ -70,10 +70,12 @@ class BaseJS {
 
                 // Lấy dữ liệu chi tiết bản ghi đã chọn
                 var id = recordSelected.data('keyId');
+                de
                 debugger;
                 var objectDetail = recordSelected.data('data');
                 $.each(data, function (index, obj) {
-                    if (obj.CustomerCode == objectDetail.CustomerCode) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
+                    if (obj.getKeyId == objectDetail[getKeyId]) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
+                        debugger;
                         data.splice(index, 1);
                     }
                     self.loadData();
@@ -225,7 +227,6 @@ class BaseJS {
         this.Data = [];
     }
 
-
     /**
      * Hàm nạp lại dữ liệu
      * Author: Lê Mạnh
@@ -233,8 +234,6 @@ class BaseJS {
     btnReloadDataOnClick() {
         this.loadData();
     }
-
-
 
     /**
      * Đổi màu hàng được chọn
@@ -245,6 +244,19 @@ class BaseJS {
         $(this).addClass('row-selected');
     }
 
+    /**
+     * Hàm lấy KeyId của các bảng
+     * Author: Lê Mạnh
+     * */
+    //TODO Làm phần lấy ra KeyID
+    getKeyId() {
+        try {
+            var keyId = $('#tbCustomer').attr('keyId');
+            return keyId;
+        } catch (e) {
+
+        }
+    }
 
 
     /**
@@ -257,5 +269,8 @@ class BaseJS {
         var id = recordSelected.data('keyId');
         return id;
     }
+
+
+
 }
 
