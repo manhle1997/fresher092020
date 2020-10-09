@@ -14,14 +14,19 @@ class EmployeeJS extends BaseJS {
     getData() {
         this.Data = data;
     }
+    initEvents() {
+        super.initEvents();
+    }
+
 }
 
 var data = [];
 for (var i = 0; i < 5; i++) {
 
     var employee = {
+        EmployeeId: (i+1),
         EmployeeCode: "KH000" + (i + 1),
-        FullName: "Lê Quốc Mạnh" + (i + 1),
+        EmployeeName: "Lê Quốc Mạnh" + (i + 1),
         Gender: "Nam",
         DateOfBirth: new Date("11/06/1997"),
         PhoneNumber: "0854681997",

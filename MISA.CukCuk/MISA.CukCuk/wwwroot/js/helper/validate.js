@@ -1,7 +1,7 @@
 ﻿var validData = {
     /**
      * Thực hiện validate các trường bắt buộc nhập
-     * @param {any} input
+     * 
      */
     validateRequired: function (input) {
         var value = $(input).val();

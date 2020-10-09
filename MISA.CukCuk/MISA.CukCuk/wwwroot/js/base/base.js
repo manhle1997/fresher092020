@@ -22,7 +22,7 @@ class BaseJS {
             $(".form-dialog input").val('');
             $(".form-dialog input").removeClass('not-required')
             $(".form-dialog").show();
-            $("#customer-code").focus();
+            $("#employee-code").focus();
         });
         $('#toolbar-item-edit').click(this.btnEditOnClick.bind(this));
         $('#toolbar-item-delete').click(this.btnDeleteOnClick.bind(this))
@@ -44,6 +44,7 @@ class BaseJS {
      * */
     validateRequired(sender) {
         validData.validateRequired(sender.currentTarget);
+
     }
     //#endregion
 
@@ -52,10 +53,12 @@ class BaseJS {
      * Hàm xóa dữ liệu được chọn
      * Author: Lê Mạnh
      * */
+    //TODO: fix bog chỗ obj.CustomerCode, để sang Employee thì không còn là CustomerCode
     btnDeleteOnClick() {
         self = this;
         //Lấy id của bản ghi được chọn
         var id = this.getRecordIdSelected();
+        debugger;
         if (id == null) {//Nếu không có Id thì in ra thông báo
             alert('Vui lòng chọn khách hàng muốn xóa');
         }
@@ -67,6 +70,7 @@ class BaseJS {
 
                 // Lấy dữ liệu chi tiết bản ghi đã chọn
                 var id = recordSelected.data('keyId');
+                debugger;
                 var objectDetail = recordSelected.data('data');
                 $.each(data, function (index, obj) {
                     if (obj.CustomerCode == objectDetail.CustomerCode) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
@@ -82,6 +86,7 @@ class BaseJS {
     * Thực hiên lưu dữ liệu
     * Author: Lê Mạnh
     * */
+    //TODO: Chỉnh sửa chỗ
     btnSaveOnClick() {
         try {
             self = this;
@@ -101,18 +106,17 @@ class BaseJS {
                 var inputs = $('input[fieldName]');
                 //build object dữ liệu
                 var customer = {};
+                var x = data.length;
+                customer["EmployeeId"] = x + 1;
                 $.each(inputs, function (index, input) {
                     var fieldName = $(input).attr('fieldName');
                     var value = $(input).val();
-                    customer[fieldName] = value;
-                    var x = data.length;
-                    customer["CustomerId"] = data[x-1]+1;
-                    debugger;
-                    
+                    customer[fieldName] = value; 
                 });
                 if (self.FormMode == 'Add') {
                     alert('Thêm dữ liệu thành công');
                     data.push(customer);
+                    
                 }
                 else {
                     alert('Chỉnh sửa dữ liệu thành công');
@@ -139,11 +143,13 @@ class BaseJS {
     * Author: Lê Mạnh
     */
 
-    //TODO : đang làm dở edit infor
+
     btnEditOnClick() {
+        debugger;
         try {
             //Lấy id của bản ghi được chọn
             var id = this.getRecordIdSelected();
+            debugger;
             self = this;
             if (id == null) {//Nếu không có Id thì in ra thông báo
                 alert('Vui lòng chọn khách hàng muốn chỉnh sửa thông tin');
@@ -156,8 +162,6 @@ class BaseJS {
                 // Lấy dữ liệu chi tiết bản ghi đã chọn
                 var id = recordSelected.data('keyId');
                 var objectDetail = recordSelected.data('data');
-                debugger;
-
                 // Binding dữ liệu vào các input tương ứng trên form chi tiết
                 //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
                 var inputs = $('.dialog input');

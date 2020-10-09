@@ -81,15 +81,15 @@
             border: 1px solid #ccc;
         }
 
-        .dialog .dialog-body .row #customer-name {
+        .dialog .dialog-body .row #employee-name {
             margin-left: 362px;
         }
 
-        .dialog .dialog-body .row #customer-rankcard {
+        .dialog .dialog-body .row #employee-position {
             margin-left: 410px;
         }
 
-        .dialog .dialog-body .row #customer-email {
+        .dialog .dialog-body .row #employee-email {
             margin-left: 394px;
         }
 
