@@ -86,7 +86,7 @@ class BaseJS {
     * Thực hiên lưu dữ liệu
     * Author: Lê Mạnh
     * */
-    //TODO: Chỉnh sửa chỗ
+    //TODO: Chỉnh sửa chỗ customercode
     btnSaveOnClick() {
         try {
             self = this;
@@ -123,6 +123,7 @@ class BaseJS {
                     $.each(data, function (index, obj) {
                         if (obj.CustomerCode == customer.CustomerCode) {
                             data.splice(index, 1, customer);
+                            debugger;
                         }
                     });
                 }
