@@ -10,6 +10,7 @@ class BaseJS {
         this.getData();
         this.loadData();
         this.initEvents();
+        this.getKeyId();
     }
 
     /**
@@ -58,7 +59,6 @@ class BaseJS {
         self = this;
         //Lấy id của bản ghi được chọn
         var id = this.getRecordIdSelected();
-        debugger;
         if (id == null) {//Nếu không có Id thì in ra thông báo
             alert('Vui lòng chọn khách hàng muốn xóa');
         }
@@ -70,12 +70,12 @@ class BaseJS {
 
                 // Lấy dữ liệu chi tiết bản ghi đã chọn
                 var id = recordSelected.data('keyId');
-                de
-                debugger;
+
                 var objectDetail = recordSelected.data('data');
                 $.each(data, function (index, obj) {
-                    if (obj.getKeyId == objectDetail[getKeyId]) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
-                        debugger;
+                    debugger;
+                    if (obj[self.getKeyId()] == objectDetail[self.getKeyId()]) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
+                        
                         data.splice(index, 1);
                     }
                     self.loadData();
@@ -108,24 +108,28 @@ class BaseJS {
                 var inputs = $('input[fieldName]');
                 //build object dữ liệu
                 var customer = {};
-                var x = data.length;
-                customer["EmployeeId"] = x + 1;
+               
                 $.each(inputs, function (index, input) {
                     var fieldName = $(input).attr('fieldName');
                     var value = $(input).val();
-                    customer[fieldName] = value; 
+                    customer[fieldName] = value;
                 });
-                if (self.FormMode == 'Add') {
+                
+                if (self.FormMode == 'Add') { 
+                    var x = data.length;
+                    customer[self.getKeyId()] = x + 1;
                     alert('Thêm dữ liệu thành công');
-                    data.push(customer);
-                    
+                    data.push(customer);                  
                 }
                 else {
+                    var id = this.getRecordIdSelected();
+                    customer[self.getKeyId()] = id;
+                    debugger;
                     alert('Chỉnh sửa dữ liệu thành công');
                     $.each(data, function (index, obj) {
-                        if (obj.CustomerCode == customer.CustomerCode) {
+                        debugger;
+                        if (obj[self.getKeyId()] == customer[self.getKeyId()]) {
                             data.splice(index, 1, customer);
-                            debugger;
                         }
                     });
                 }
@@ -148,11 +152,9 @@ class BaseJS {
 
 
     btnEditOnClick() {
-        debugger;
         try {
             //Lấy id của bản ghi được chọn
             var id = this.getRecordIdSelected();
-            debugger;
             self = this;
             if (id == null) {//Nếu không có Id thì in ra thông báo
                 alert('Vui lòng chọn khách hàng muốn chỉnh sửa thông tin');
