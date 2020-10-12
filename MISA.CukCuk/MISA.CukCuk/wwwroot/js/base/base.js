@@ -10,7 +10,6 @@ class BaseJS {
         this.getData();
         this.loadData();
         this.initEvents();
-        this.getKeyId();
     }
 
     /**
@@ -45,7 +44,6 @@ class BaseJS {
      * */
     validateRequired(sender) {
         validData.validateRequired(sender.currentTarget);
-
     }
     //#endregion
 
@@ -54,41 +52,44 @@ class BaseJS {
      * Hàm xóa dữ liệu được chọn
      * Author: Lê Mạnh
      * */
-    //TODO: fix bog chỗ obj.CustomerCode, để sang Employee thì không còn là CustomerCode
     btnDeleteOnClick() {
-        self = this;
-        //Lấy id của bản ghi được chọn
-        var id = this.getRecordIdSelected();
-        if (id == null) {//Nếu không có Id thì in ra thông báo
-            alert('Vui lòng chọn khách hàng muốn xóa');
-        }
-        else {
-            // Hiển thị thông báo xác nhận xóa
-            var result = confirm("Bạn có muốn xóa khách hàng này");
-            if (result) {
-                var recordSelected = $('#tbCustomer tbody tr.row-selected');
-
-                // Lấy dữ liệu chi tiết bản ghi đã chọn
-                var id = recordSelected.data('keyId');
-
-                var objectDetail = recordSelected.data('data');
-                $.each(data, function (index, obj) {
-                    debugger;
-                    if (obj[self.getKeyId()] == objectDetail[self.getKeyId()]) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
-                        
-                        data.splice(index, 1);
-                    }
-                    self.loadData();
-                });
+        try {
+            self = this;
+            //Lấy id của bản ghi được chọn
+            var id = this.getRecordIdSelected();
+            if (id == null) {//Nếu không có Id thì in ra thông báo
+                alert('Vui lòng chọn khách hàng muốn xóa');
             }
+            else {
+                // Hiển thị thông báo xác nhận xóa
+                var result = confirm("Bạn có muốn xóa khách hàng này");
+                if (result) {
+                    var recordSelected = $('#tbCustomer tbody tr.row-selected');
+
+                    // Lấy dữ liệu chi tiết bản ghi đã chọn
+                    var id = recordSelected.data('keyId');
+
+                    var objectDetail = recordSelected.data('data');
+                    $.each(data, function (index, obj) {
+                        debugger;
+                        if (obj[self.getKeyId()] == objectDetail[self.getKeyId()]) {//nếu id của record được chọn trùng với id nào của data thì xoá object đó
+
+                            data.splice(index, 1);
+                        }
+                        self.loadData();
+                    });
+                }
+            }
+        } catch (e) {
+
         }
+
     }
 
     /**
     * Thực hiên lưu dữ liệu
     * Author: Lê Mạnh
     * */
-    //TODO: Chỉnh sửa chỗ customercode
     btnSaveOnClick() {
         try {
             self = this;
@@ -108,18 +109,18 @@ class BaseJS {
                 var inputs = $('input[fieldName]');
                 //build object dữ liệu
                 var customer = {};
-               
+
                 $.each(inputs, function (index, input) {
                     var fieldName = $(input).attr('fieldName');
                     var value = $(input).val();
                     customer[fieldName] = value;
                 });
-                
-                if (self.FormMode == 'Add') { 
+
+                if (self.FormMode == 'Add') {
                     var x = data.length;
                     customer[self.getKeyId()] = x + 1;
                     alert('Thêm dữ liệu thành công');
-                    data.push(customer);                  
+                    data.push(customer);
                 }
                 else {
                     var id = this.getRecordIdSelected();
@@ -149,8 +150,6 @@ class BaseJS {
     * Hàm Edit thông tin
     * Author: Lê Mạnh
     */
-
-
     btnEditOnClick() {
         try {
             //Lấy id của bản ghi được chọn
@@ -187,36 +186,69 @@ class BaseJS {
      * Load dữ liệu 
      * Author: Lê Mạnh
      * */
+    //Todo Fix lỗi không binding được data lên page
     loadData() {
         try {
             $("#tbCustomer tbody").empty();
-            var data2 = this.Data;
-            var self = this;
-            var fields = $('#tbCustomer thead .thead td')
-            var keyId = $('#tbCustomer').attr('keyId');
-            $.each(data2, function (index, obj) {
-                var tr = $(`<tr></tr>`);
-                $.each(fields, function (index, field) {
-                    var fieldName = $(field).attr('fieldName');
-                    var fieldNumber = $(field).attr('fieldNumber');
+            $.ajax({
+                url: "/api/employees",
+                method: "GET",
+                //data: {},
+                dataType: "json",
+                contentType: "application/json",
+            }).done(function (response) {
+                //response được trả về là 1 mảng các đối tượng là các json
+                if (response) {
+                    var fields = $('#tbCustomer thead .thead td')
+                    var keyId = $('#tbCustomer').attr('keyId');
+                    $.each(response, function (index, obj) {
+                        var tr = $(`<tr></tr>`);
+                        $.each(fields, function (index, field) {
+                            var fieldName = $(field).attr('fieldName');
+                            var fieldNumber = $(field).attr('fieldNumber');
+                            var value = obj[fieldName];
+                            if (fieldNumber == 'DebitMoney' || fieldNumber == 'Salary') {
+                                var td = $(`<td title="` + value + `" style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
+                            } else if (fieldNumber == 'DateOfBirth') {
+                                var td = $(`<td title="` + value + `">` + commonJS.formatDate(value) + `</td>`);
+                            } else {
+                                var td = $(`<td title="` + value + `">` + value + `</td>`);
+                            }
+                            $(tr).data('keyId', obj[keyId]);//Thêm data 'keyId' có giá trị là obj.CustomerId vào 'tr'
+                            $(tr).data('data', obj); //Thêm data 'data' có giá trị là obj vào 'tr'
+                            $(tr).append(td);
+                        });
+                        $("#tbCustomer tbody").append(tr);
+                    });
+                }
+            }).fail(function (response) {
+            })
 
-                    var value = obj[fieldName];
-                    if (fieldNumber == 'DebitMoney' || fieldNumber == 'Salary') {
-                        var td = $(`<td title="` + value + `" style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
-                    } else if (fieldNumber == 'DateOfBirth') {
-                        var td = $(`<td title="` + value + `">` + commonJS.formatDate(value) + `</td>`);
-                    } else {
-                        var td = $(`<td title="` + value + `">` + value + `</td>`);
-                    }
-                    $(tr).data('keyId', obj[keyId]);//Thêm data 'keyId' có giá trị là obj.CustomerId vào 'tr'
-                    $(tr).data('data', obj); //Thêm data 'data' có giá trị là obj vào 'tr'
-                    $(tr).append(td);
+            //var data2 = this.Data;
+            //var self = this;
+            //var fields = $('#tbCustomer thead .thead td')
+            //var keyId = $('#tbCustomer').attr('keyId');
+            //$.each(data2, function (index, obj) {
+            //    var tr = $(`<tr></tr>`);
+            //    $.each(fields, function (index, field) {
+            //        var fieldName = $(field).attr('fieldName');
+            //        var fieldNumber = $(field).attr('fieldNumber');
 
+            //        var value = obj[fieldName];
+            //        if (fieldNumber == 'DebitMoney' || fieldNumber == 'Salary') {
+            //            var td = $(`<td title="` + value + `" style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
+            //        } else if (fieldNumber == 'DateOfBirth') {
+            //            var td = $(`<td title="` + value + `">` + commonJS.formatDate(value) + `</td>`);
+            //        } else {
+            //            var td = $(`<td title="` + value + `">` + value + `</td>`);
+            //        }
+            //        $(tr).data('keyId', obj[keyId]);//Thêm data 'keyId' có giá trị là obj.CustomerId vào 'tr'
+            //        $(tr).data('data', obj); //Thêm data 'data' có giá trị là obj vào 'tr'
+            //        $(tr).append(td);
+            //    });
 
-                });
-
-                $("#tbCustomer tbody").append(tr);
-            });
+            //    $("#tbCustomer tbody").append(tr);
+            //});
         } catch (e) {
 
         }
@@ -251,7 +283,6 @@ class BaseJS {
      * Hàm lấy KeyId của các bảng
      * Author: Lê Mạnh
      * */
-    //TODO Làm phần lấy ra KeyID
     getKeyId() {
         try {
             var keyId = $('#tbCustomer').attr('keyId');

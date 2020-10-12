@@ -39,16 +39,19 @@ namespace MISA.CukCuk.Controllers
                 while (mySqlDataReader.Read())
                 {
                     var employee = new Employee();
+                    //employee.EmployeeId = mySqlDataReader.GetGuid(0); //dữ liêu tự động chuển về Guid
+                    //employee.EmployeeCode = mySqlDataReader.GetString(1); // dữ liệu tự động chuyển về dạng string
                     for (int i = 0; i < mySqlDataReader.FieldCount; i++)
                     {
                         var colName = mySqlDataReader.GetName(i);
                         var value = mySqlDataReader.GetValue(i);
-                        var property = employee.GetType().GetProperty(colName);
+                        var property = employee.GetType().GetProperty(colName); //Cú pháp lấy theo tên
                         if (property != null && value != DBNull.Value)
                         {
                             property.SetValue(employee, value);
                         }
                     }
+
                     // Thêm đôi tượng khách hàng vừa build được vào list:
                     employees.Add(employee);
                 }
@@ -56,14 +59,15 @@ namespace MISA.CukCuk.Controllers
                 mySqlConnection.Close();
                 return employees;
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 throw;
             }
-            
+
         }
 
+        // Lấy danh sách nhân viên theo Id
         // GET api/<EmployeesController>/5
         [Route("{id}")]
         [HttpGet("{id}")]
@@ -93,6 +97,7 @@ namespace MISA.CukCuk.Controllers
                         property.SetValue(employee, value);
                     }
                 }
+
                 // Thêm đôi tượng khách hàng vừa build được vào list:
                 employees.Add(employee);
             }
