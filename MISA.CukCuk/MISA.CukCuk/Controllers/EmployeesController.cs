@@ -67,7 +67,7 @@ namespace MISA.CukCuk.Controllers
 
         }
 
-        // Lấy danh sách nhân viên theo Id
+        // Lấy thông tin nhân viên theo Id
         // GET api/<EmployeesController>/5
         [Route("{id}")]
         [HttpGet("{id}")]
@@ -108,22 +108,87 @@ namespace MISA.CukCuk.Controllers
 
         // POST api/<EmployeesController>
         [HttpPost]
-        public bool Post([FromBody] Employee value)
+        public bool Post([FromBody] Employee employee)
         {
             var employees = new List<Employee>();
+            string connectionString = "Server=35.194.166.58;Port=3306;Database=MISACukCuk_F09_LQMANH;Uid=nvmanh;Pwd=12345678@Abc;";
+            //Khởi tạo đối tượng mysql connection kết nối cơ sở dữ liệu
+            MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+            mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            mySqlCommand.CommandText = "PROC_InsertEmployee";
+            mySqlCommand.Parameters.AddWithValue("@EmployeeCode", employee.EmployeeCode);
+            mySqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
+            mySqlCommand.Parameters.AddWithValue("@Gender", employee.Gender);
+            mySqlCommand.Parameters.AddWithValue("@PositionId", employee.PositionId);
+            mySqlCommand.Parameters.AddWithValue("@Salary", employee.Salary);
+            mySqlCommand.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
+            mySqlCommand.Parameters.AddWithValue("@DateOfBirth", employee.DateOfBirth);
+            mySqlCommand.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
+            mySqlCommand.Parameters.AddWithValue("@TaxCode", employee.TaxCode);
+            mySqlCommand.Parameters.AddWithValue("@Email", employee.Email);
+            mySqlCommand.Parameters.AddWithValue("@Address", employee.Address);
+            mySqlCommand.Parameters.AddWithValue("@WorkStatus", employee.WorkStatus);
+            mySqlCommand.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+            mySqlCommand.Parameters.AddWithValue("@CreatedBy", "ManhLe");
+            mySqlCommand.Parameters.AddWithValue("@ModifiedDate", DateTime.Now);
+            mySqlCommand.Parameters.AddWithValue("@ModifiedBy", "ManhLe");
+            // Mở kết nối Database
+            mySqlConnection.Open();
+            //Thực thi công việc
+            var result = mySqlCommand.ExecuteNonQuery();
+            //Đóng kết nối
+            mySqlConnection.Close();
             return true;
         }
 
         // PUT api/<EmployeesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(Guid id, [FromBody] Employee employee)
         {
+            var employees = new List<Employee>();
+            string connectionString = "Server=35.194.166.58;Port=3306;Database=MISACukCuk_F09_LQMANH;Uid=nvmanh;Pwd=12345678@Abc;";
+            //Khởi tạo đối tượng mysql connection kết nối cơ sở dữ liệu
+            MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+            mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            mySqlCommand.CommandText = "PROC_UpdateEmployee";
+            mySqlCommand.Parameters.AddWithValue("@EmployeeId", id);
+            mySqlCommand.Parameters.AddWithValue("@EmployeeCode", employee.EmployeeCode);
+            mySqlCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
+            mySqlCommand.Parameters.AddWithValue("@Gender", employee.Gender);
+            mySqlCommand.Parameters.AddWithValue("@PositionId", employee.PositionId);
+            mySqlCommand.Parameters.AddWithValue("@Salary", employee.Salary);
+            mySqlCommand.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
+            mySqlCommand.Parameters.AddWithValue("@DateOfBirth", employee.DateOfBirth);
+            mySqlCommand.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
+            mySqlCommand.Parameters.AddWithValue("@TaxCode", employee.TaxCode);
+            mySqlCommand.Parameters.AddWithValue("@Email", employee.Email);
+            mySqlCommand.Parameters.AddWithValue("@Address", employee.Address);
+            mySqlCommand.Parameters.AddWithValue("@WorkStatus", employee.WorkStatus);
+            // Mở kết nối Database
+            mySqlConnection.Open();
+            //Thực thi công việc
+            var result = mySqlCommand.ExecuteNonQuery();
+            //Đóng kết nối
+            mySqlConnection.Close();
         }
 
         // DELETE api/<EmployeesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
+            var employees = new List<Employee>();
+            string connectionString = "Server=35.194.166.58;Port=3306;Database=MISACukCuk_F09_LQMANH;Uid=nvmanh;Pwd=12345678@Abc;";
+            //Khởi tạo đối tượng mysql connection kết nối cơ sở dữ liệu
+            MySqlConnection mySqlConnection = new MySqlConnection(connectionString);
+            MySqlCommand mySqlCommand = mySqlConnection.CreateCommand();
+            mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            mySqlCommand.CommandText = "PROC_DeleteEmployee";
+            mySqlCommand.Parameters.AddWithValue("@EmployeeId", id);
+            mySqlConnection.Open();
+            mySqlCommand.ExecuteNonQuery();
+            mySqlConnection.Close();
         }
     }
 }

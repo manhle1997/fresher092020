@@ -6,7 +6,8 @@
 
 class BaseJS {
 
-    constructor() {
+    constructor(url) {
+        this.url = url;
         this.getData();
         this.loadData();
         this.initEvents();
@@ -121,6 +122,16 @@ class BaseJS {
                     customer[self.getKeyId()] = x + 1;
                     alert('Thêm dữ liệu thành công');
                     data.push(customer);
+
+                    $.ajax({
+                        url: url,
+                        method: "POST",
+                        data: JSON.stringify(customer),
+                        dataType: "json",
+                        contentType: "application/json",
+                        async: false
+                    })
+
                 }
                 else {
                     var id = this.getRecordIdSelected();
@@ -191,7 +202,7 @@ class BaseJS {
         try {
             $("#tbCustomer tbody").empty();
             $.ajax({
-                url: "/api/employees",
+                url: this.url,
                 method: "GET",
                 //data: {},
                 dataType: "json",
@@ -205,8 +216,10 @@ class BaseJS {
                         var tr = $(`<tr></tr>`);
                         $.each(fields, function (index, field) {
                             var fieldName = $(field).attr('fieldName');
+                            fieldName = fieldName.charAt(0).toLowerCase() + fieldName.slice(1); //viết thường chữ cái đầu của fieldName
                             var fieldNumber = $(field).attr('fieldNumber');
                             var value = obj[fieldName];
+                            debugger;
                             if (fieldNumber == 'DebitMoney' || fieldNumber == 'Salary') {
                                 var td = $(`<td title="` + value + `" style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
                             } else if (fieldNumber == 'DateOfBirth') {

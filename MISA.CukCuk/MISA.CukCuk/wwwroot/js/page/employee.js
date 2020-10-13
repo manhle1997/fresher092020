@@ -1,15 +1,15 @@
 ﻿
 $(document).ready(function () {
     //load dữ liệu
-    var employeeJS = new EmployeeJS();
+    var employeeJS = new EmployeeJS("/api/employees");
 })
 
 /**
  * class quản lí các function cho trang employee
  * */
 class EmployeeJS extends BaseJS {
-    constructor() {
-        super();
+    constructor(url) {
+        super(url);
     }
     getData() {
         this.Data = data;

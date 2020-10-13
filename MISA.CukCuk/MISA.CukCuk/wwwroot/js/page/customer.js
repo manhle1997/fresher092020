@@ -8,8 +8,8 @@ $(document).ready(function () {
  * class quản lí các function cho trang customer
  * */
 class CustomerJS extends BaseJS {
-    constructor() {
-        super();
+    constructor(url) {
+        super(url);
     }
     getData() {
         this.Data = data;
