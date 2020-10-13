@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "page/category/employee.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "MISA.CukCuk": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "page/category/customer.html",
+      "launchUrl": "page/category/employee.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

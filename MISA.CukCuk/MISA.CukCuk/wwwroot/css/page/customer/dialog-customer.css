@@ -13,7 +13,7 @@
 }
 .dialog{
     position: fixed;
-    width: 684px;
+    width: 660px;
     height: 400px;
     background-color: #ffffff;
     top: calc(50% - 200px);
@@ -56,7 +56,7 @@
     position: relative;
     padding-left: 10px;
     padding-top: 4px;
-    line-height: 1.75;
+    line-height: 2.1;
 }
 
     .dialog .dialog-body .row .input-left {
@@ -74,23 +74,26 @@
         border: 1px solid #ccc;
     }
     .dialog .dialog-body .row #customer-name{
-        margin-left: 356px;
+        margin-left: 358px;
     }
     .dialog .dialog-body .row #customer-rankcard {
-        margin-left: 362px;
+        margin-left: 361px;
     }
     .dialog .dialog-body .row #customer-email{
-        margin-left: 409px;
+        margin-left: 401px;
     }
     .dialog .dialog-body .row #input-ngay-sinh {
         width: 172px;
+    }
+    .dialog .dialog-body .row #customer-address {
+        width: calc(100% - 181px);
     }
     .dialog .dialog-body .row .label-right {
         position: absolute;
         left: 351px;
     }
     .dialog .dialog-body #comment {
-        width: calc(100% - 182px);
+        width: calc(100% - 181px);
         height: calc(100% - 180px);
     }
     .dialog .dialog-body #company {
@@ -106,7 +109,7 @@
     right: 0;
 
     padding: 8px;
-    height: 20px;
+    height: 33px;
     align-items: center;
 }
     .dialog .dialog-footer .footer-left{
@@ -117,7 +120,7 @@
             align-items: center;
             display: flex;
             border: 1px solid #ccc;
-            width: 86px;
+            width: 91px;
             height: 28px;
             cursor: pointer;
         }
@@ -141,7 +144,7 @@
             border: 1px solid #ccc;
             display: flex;
             align-items: center;
-            width: 70px;
+            width: 76px;
             height: 28px;
             cursor: pointer;
         }
@@ -161,7 +164,7 @@
             margin-left: 10px;
             display: flex;
             align-items: center;
-            width: 122px;
+            width: 126px;
             height: 28px;
             cursor: pointer;
         }
@@ -181,7 +184,7 @@
             margin-left: 10px;
             display: flex;
             align-items: center;
-            width: 92px;
+            width: 99px;
             height: 28px;
             cursor: pointer;
         }

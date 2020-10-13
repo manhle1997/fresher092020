@@ -5,9 +5,10 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link href="/css/common/common.css" rel="stylesheet" />
     <link href="/css/layout/main.css" rel="stylesheet" />
     <link href="/css/layout/sidebar.css" rel="stylesheet" />
-    <link href="/css/page/customer/dialog.css" rel="stylesheet" />
+    <link href="/css/page/customer/dialog-employee.css" rel="stylesheet" />
     <link href="/css/page/customer/footer-content.css" rel="stylesheet" />
     <link href="/css/element/table.css" rel="stylesheet" />
     <link href="/css/element/employee.css" rel="stylesheet" />
@@ -124,11 +125,11 @@
                         <div class="toolbar-item-icon-copy"></div>
                         <div class="toolbar-item-text">Nhân bản</div>
                     </button>
-                    <button class="">
+                    <button class="" id="toolbar-item-edit">
                         <div class="toolbar-item-icon-edit"></div>
                         <div class="toolbar-item-text">Sửa</div>
                     </button>
-                    <button class="">
+                    <button class="" id="toolbar-item-delete">
                         <div class="toolbar-item-icon-delete"></div>
                         <div class="toolbar-item-text">Xóa</div>
                     </button>
@@ -151,19 +152,19 @@
                 </div>
                 <div class="grid-div">
                     <div class="grid">
-                        <table width="100%" id="tbCustomer">
+                        <table width="100%" id="tbCustomer" keyId="EmployeeId">
                             <thead>
                                 <tr class="thead">
                                     <td fieldName="EmployeeCode">Mã nhân viên</td>
-                                    <td fieldName="FullName">Tên nhân viên</td>
-                                    <td fieldName="Gender">Giới tính</td>
+                                    <td fieldName="EmployeeName">Tên nhân viên</td>
+                                    <td fieldName="GenderName">Giới tính</td>
                                     <td fieldName="DateOfBirth" fieldNumber="DateOfBirth">Ngày sinh</td>
                                     <td fieldName="PhoneNumber">Số điện thoại</td>
                                     <td fieldName="PositionName">Vị trí</td>
                                     <td fieldName="DepartmentName">Phòng ban</td>
                                     <td fieldName="Email">Email</td>
                                     <td fieldName="Salary" fieldNumber="Salary">Mức lương</td>
-                                    <td fieldName="WorkStatus">Tình trạng công việc</td>
+                                    <td fieldName="WorkStatusName">Tình trạng công việc</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -211,43 +212,44 @@
             </div>
             <div class="dialog-body">
                 <div class="row">
-                    <label>Mã khách hàng <span style="color: red">(*)</span></label>
-                    <input type="text" id="customer-code" class="input-left" />
+                    <label>Mã nhân Viên <span style="color: red">(*)</span></label>
+                    <input type="text" id="employee-code" fieldName="EmployeeCode" class="input-left" required />
 
-                    <label class="label-right">Tên khách hàng <span style="color: red">(*)</span></label>
-                    <input type="text" id="customer-name" class="input-right" />
+                    <label class="label-right">Tên nhân viên <span style="color: red">(*)</span></label>
+                    <input type="text" id="employee-name" class="input-right" fieldName="EmployeeName" required />
                 </div>
                 <div class="row">
-                    <label>Mã thẻ thành viên</label>
-                    <input type="text" class="input-left" />
-                    <label class="label-right">Hạng thẻ</label>
-                    <input type="text" name="name" value="" class="input-right" id="customer-rankcard" />
+                    <label>Giới tính</label>
+                    <input type="text" class="input-left" fieldName="Gender" />
+
+                    <label class="label-right">Vị trí</label>
+                    <input type="text" name="name" value="" fieldName="PositionName" class="input-right" id="employee-position" />
                 </div>
                 <div class="row">
-                    <label>Nhóm khách hàng</label>
-                    <input type="text" name="name" value="" class="input-left" id="" />
+                    <label>Mức lương</label>
+                    <input type="number" name="name" value="" class="input-left" id="" fieldName="Salary" />
                 </div>
                 <div class="row">
                     <label>Số điện thoại</label>
-                    <input type="number" name="name" value="" class="input-left" />
+                    <input type="number" name="name" value="" class="input-left" fieldName="PhoneNumber" required />
                 </div>
                 <div class="row">
                     <label>Ngày sinh</label>
-                    <input type="date" name="name" value="" class="input-left" id="input-ngay-sinh" />
+                    <input type="date" name="name" value="" class="input-left" id="input-ngay-sinh" fieldName="DateOfBirth" />
                 </div>
                 <div class="row">
-                    <label>Tên công ty</label>
-                    <input type="text" name="name" id="company" class="input-left" />
+                    <label>Phòng ban</label>
+                    <input type="text" name="name" id="company" class="input-left" fieldName="DepartmentName" />
                 </div>
                 <div class="row">
                     <label>Mã số thuế</label>
-                    <input type="text" name="name" value="" class="input-left" />
+                    <input type="text" name="name" value="" class="input-left" fieldName="TaxCode" />
                     <label class="label-right">Email</label>
-                    <input type="email" name="name" value="" class="input-right" id="customer-email" />
+                    <input type="email" name="name" value="" class="input-right" id="employee-email" fieldName="Email" />
                 </div>
                 <div class="row">
                     <label>Địa chỉ</label>
-                    <input type="text" name="name" value="" class="input-left" />
+                    <input type="text" name="name" value="" class="input-left" id="employee-address" fieldName="Address" />
                 </div>
                 <div class="row">
                     <label>Ghi chú</label>
@@ -284,10 +286,12 @@
     </div>
 
     <script src="/js/lib/jquery-3.5.1.min.js"></script>
+    <script src="/js/helper/validate.js"></script>
     <script src="/js/base/base.js"></script>
-    <script src="/js/lib/dialog.js"></script>
-    <script src="/js/lib/employee.js"></script>
     <script src="/js/helper/common.js"></script>
+    <script src="/js/page/dialog.js"></script>
+    <script src="/js/page/employee.js"></script>
+
 </body>
 
 </html>
