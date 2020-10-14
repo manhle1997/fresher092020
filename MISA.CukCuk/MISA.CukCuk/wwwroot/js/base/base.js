@@ -38,6 +38,7 @@ class BaseJS {
     }
 
 
+
     //#region Validate
     /**
      * Validate bắt buộc nhập
@@ -45,6 +46,7 @@ class BaseJS {
      * */
     validateRequired(sender) {
         validData.validateRequired(sender.currentTarget);
+
     }
     //#endregion
 
@@ -115,6 +117,10 @@ class BaseJS {
                     var fieldName = $(input).attr('fieldName');
                     var value = $(input).val();
                     customer[fieldName] = value;
+
+                    var x = data.length;
+                    customer["CustomerId"] = data[x-1]+1;
+
                 });
 
                 if (self.FormMode == 'Add') {
@@ -191,7 +197,6 @@ class BaseJS {
 
         }
     }
-
 
     /**
      * Load dữ liệu 

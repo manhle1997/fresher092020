@@ -18,37 +18,7 @@ class CustomerJS extends BaseJS {
     initEvents() {
         super.initEvents();
     }
-    addData() {
-        $('#btn_save').click(function () {
-            //Lấy dữ liệu nhập từ input
-            var customerCode = $('#customer-code').val();
-            var customerName = $('#customer-name').val();
-            var customerCompany = $('#customer-company').val();
-            var customerTaxCode = $('#customer-taxcode').val();
-            var customerAddress = $('#customer-address').val();
-            var customerPhonenumber = $('#customer-phonenumber').val();
-            var customerEmail = $('#customer-email').val();
 
-            //tạo đối tượng và lưu thông tin vào mảng data
-            var customer = {
-                CustomerCode: customerCode,
-                CustomerName: customerName,
-                CustomerCompany: customerCompany,
-                TaxCode: customerTaxCode,
-                Address: customerAddress,
-                PhoneNumber: customerPhonenumber,
-                Email: customerEmail,
-                Salary: 20000000
-            }
-
-            data.push(customer);
-            
-            //thông báo
-            alert("Lưu thông tin thành công");
-            this.getData();
-            this.loadData();
-        }.bind(this));
-    }
 
 }
 /**
