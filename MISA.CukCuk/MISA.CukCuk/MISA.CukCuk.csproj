@@ -18,5 +18,10 @@
     <Folder Include="wwwroot\page\report\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MISA.Bussiness\MISA.Bussiness.csproj" />
+    <ProjectReference Include="..\MISA.Common\MISA.Common.csproj" />
+  </ItemGroup>
+
 
 </Project>

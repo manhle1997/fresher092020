@@ -181,15 +181,26 @@ class BaseJS {
                 var recordSelected = $('#tbCustomer tbody tr.row-selected');
 
                 // Lấy dữ liệu chi tiết bản ghi đã chọn
-                var id = recordSelected.data('keyId');
+                //var id = recordSelected.data('keyId');
                 var objectDetail = recordSelected.data('data');
                 // Binding dữ liệu vào các input tương ứng trên form chi tiết
                 //Load tất cả input trong dialog, với mỗi input gán cho giá trị tương ứng trong objectDetail
                 var inputs = $('.dialog input');
+                debugger;
                 $.each(inputs, function (index, input) {
                     var fieldName = $(input).attr('fieldName');
                     input.value = objectDetail[fieldName];
                 });
+                $.ajax({
+                    url: url + "/" + id,
+                    method: "POST",
+                    data: JSON.stringify(customer),
+                    dataType: "json",
+                    contentType: "application/json",
+                    async: false
+                }).done(function () {
+
+                })
                 // Hiển thị dialog chi tiết
                 $(".form-dialog").show();
             }
@@ -318,7 +329,8 @@ class BaseJS {
         // Lấy thông tin bản ghi đã chọn trong danh sách
         var recordSelected = $('#tbCustomer tbody tr.row-selected');
         // Lấy dữ liệu chi tiết bản ghi đã chọn
-        var id = recordSelected.data('keyId');
+        //var id = recordSelected.data('keyId');
+        var id = recordSelected.data("data")["employeeId"];
         return id;
     }
 
