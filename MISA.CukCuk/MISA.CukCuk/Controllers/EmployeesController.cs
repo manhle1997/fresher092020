@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MISA.Common.Models;
-using MISA.DataAccess;
 using MySql.Data.MySqlClient;
 using MISA.Bussiness.Interfaces;
 

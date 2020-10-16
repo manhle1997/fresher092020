@@ -5,16 +5,41 @@ using System.Text;
 
 namespace MISA.Bussiness.Interfaces
 {
-    /// <summary>
-    /// Interface Thêm sửa xoá danh sách khách hàng
-    /// </summary>
-    /// Author: Lê Mạnh
-    interface ICustomerBussiness
+    public interface ICustomerBussiness
     {
-        IEnumerable<Customer> GetEmployees();
-        Customer GetEmployeeById(Guid id);
+        /// <summary>
+        /// Lấy danh sách khách hàng 
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<Customer> GetCustomer();
+
+        /// <summary>
+        /// Lấy thông tin khách hàng theo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Customer GetCustomerById(Guid id);
+
+        /// <summary>
+        /// Thêm khách hàng
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         bool Insert(Customer employee);
+
+        /// <summary>
+        /// Cập nhật thông tin khách hàng
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         public bool Update(Guid id, Customer employee);
+
+        /// <summary>
+        /// Xóa thông tin khách hàng
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Delete(Guid id);
     }
 }
