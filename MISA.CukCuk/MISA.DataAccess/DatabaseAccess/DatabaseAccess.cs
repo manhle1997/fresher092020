@@ -1,6 +1,7 @@
 ﻿
 
 using MISA.Common.Models;
+using MISA.DataAccess.Interfaces;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MISA.DataAccess
 {
-    public class DatabaseAccess : IDisposable, IDatabaseAccess
+    public class DatabaseAccess : IDisposable, IEmployeeRepository
     {
         readonly string _connectionString = "Server=35.194.166.58;Port=3306;Database=MISACukCuk_F09_LQMANH;Uid=nvmanh;Pwd=12345678@Abc;";
         MySqlConnection _mySqlConnection;
@@ -158,6 +159,11 @@ namespace MISA.DataAccess
         public void Dispose()
         {
             _mySqlConnection.Close();
+        }
+
+        public bool CheckEmployeeByCode(string employeeCode)
+        {
+            throw new NotImplementedException();
         }
     }
 }

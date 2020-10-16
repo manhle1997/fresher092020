@@ -1,12 +1,15 @@
-﻿using MISA.CukCuk.Models;
+﻿using MISA.Common.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace MISA.CukCuk.Interfaces
+namespace MISA.Bussiness.Interfaces
 {
-    public interface IDatabaseAccess
+    /// <summary>
+    /// Lấy danh sách nhân viên
+    /// </summary>
+    /// Author: Mạnh Lê
+    public interface IEmployeeBussiness
     {
         IEnumerable<Employee> GetEmployees();
         Employee GetEmployeeById(Guid id);

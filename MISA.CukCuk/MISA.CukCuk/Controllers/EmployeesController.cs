@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MISA.CukCuk.Interfaces;
-using MISA.CukCuk.Models;
+using MISA.Common.Models;
+using MISA.DataAccess;
 using MySql.Data.MySqlClient;
+using MISA.Bussiness.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,10 +16,10 @@ namespace MISA.CukCuk.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        IDatabaseAccess _databaseAccess;
-        public EmployeesController(IDatabaseAccess databaseAccess)
+        IEmployeeBussiness _employeeBussiness;
+        public EmployeesController(IEmployeeBussiness employeeBussiness)
         {
-            _databaseAccess = databaseAccess;
+            _employeeBussiness = employeeBussiness;
         }
 
         //Lấy danh sách toàn bộ nhân viên
@@ -26,8 +27,8 @@ namespace MISA.CukCuk.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            using DatabaseAccess databaseAccess = new DatabaseAccess();
-            var employees = databaseAccess.GetEmployees();
+
+            var employees = _employeeBussiness.GetEmployees();
             if (employees.Count() > 0)
             {
                 return Ok(employees);
@@ -44,8 +45,7 @@ namespace MISA.CukCuk.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(Guid id)
         {
-            using DatabaseAccess databaseAccess = new DatabaseAccess();
-            var employee = databaseAccess.GetEmployeeById(id);
+            var employee = _employeeBussiness.GetEmployeeById(id);
             if (employee != null)
             {
                 return Ok(employee);
@@ -60,8 +60,7 @@ namespace MISA.CukCuk.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Employee employee)
         {
-            using DatabaseAccess databaseAccess = new DatabaseAccess();
-            var result = databaseAccess.Insert(employee);
+            var result = _employeeBussiness.Insert(employee);
             if (result == true)
             {
                 return CreatedAtAction("POST", result);
@@ -76,8 +75,7 @@ namespace MISA.CukCuk.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, [FromBody] Employee employee)
         {
-            using DatabaseAccess databaseAccess = new DatabaseAccess();
-            var result = databaseAccess.Update(id, employee);
+            var result = _employeeBussiness.Update(id, employee);
             if (result == true)
             {
                 return CreatedAtAction("POST", result);
@@ -91,9 +89,8 @@ namespace MISA.CukCuk.Controllers
         // DELETE api/<EmployeesController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
-        {
-            using DatabaseAccess databaseAccess = new DatabaseAccess();
-            var result = databaseAccess.Delete(id);
+        {         
+            var result = _employeeBussiness.Delete(id);
             if (result == true)
             {
                 return CreatedAtAction("POST", result);

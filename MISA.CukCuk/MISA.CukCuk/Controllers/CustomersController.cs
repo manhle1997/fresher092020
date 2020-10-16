@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MISA.Bussiness.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +13,11 @@ namespace MISA.CukCuk.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
+        IEmployeeBussiness _employeeBussiness;
+        public CustomersController(IEmployeeBussiness employeeBussiness)
+        {
+            _employeeBussiness = employeeBussiness;
+        }
         // GET: api/<CustomersController>
         [HttpGet]
         public IEnumerable<string> Get()

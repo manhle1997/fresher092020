@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace MISA.DataAccess.Interfaces
 {
-    interface IEmployeeRepository
+    public interface IEmployeeRepository: IDatabaseAccess
     {
+        /// <summary>
+        /// Kiểm tra thông tin nhân viên theo mã
+        /// </summary>
+        /// <param name="employeeCode"></param>
+        /// <returns>true: có, false:Không</returns>
+        bool CheckEmployeeByCode(string employeeCode);
     }
 }
