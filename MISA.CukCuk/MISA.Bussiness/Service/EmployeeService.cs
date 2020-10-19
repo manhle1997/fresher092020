@@ -8,36 +8,17 @@ using System.Text;
 
 namespace MISA.Bussiness.Service
 {
-    public class EmployeeService : IEmployeeBussiness
+    public class EmployeeService :BaseService<Employee>, IEmployeeBussiness
     {
-        IEmployeeRepository _databaseAccess;
-        public EmployeeService(IEmployeeRepository databaseAccess)
+        IEmployeeRepository _employeeRepository;
+        public EmployeeService(IEmployeeRepository employeeRepository) : base(employeeRepository)
         {
-            _databaseAccess = databaseAccess;
-        } 
-        public bool Delete(Guid id)
-        {
-            return _databaseAccess.Delete(id);
+            _employeeRepository = employeeRepository;
         }
 
-        public Employee GetEmployeeById(Guid id)
+        public bool CheckEmployeeByCode(string employeeCode)
         {
-            return _databaseAccess.GetEmployeeById(id);
-        }
-
-        public IEnumerable<Employee> GetEmployees()
-        {
-            return _databaseAccess.GetEmployees();
-        }
-
-        public bool Insert(Employee employee)
-        {
-            return _databaseAccess.Insert(employee);
-        }
-
-        public bool Update(Guid id, Employee employee)
-        {
-            return _databaseAccess.Update(id, employee);
+            return _employeeRepository.CheckEmployeeByCode(employeeCode);
         }
     }
 }

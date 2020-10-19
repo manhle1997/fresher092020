@@ -1,0 +1,41 @@
+﻿using MISA.Bussiness.Interfaces;
+using MISA.DataAccess.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MISA.Bussiness.Service
+{
+    public class BaseService<T> : IBaseBussiness<T>
+    {
+        IBaseRepository<T> _baseRepository;
+        public BaseService(IBaseRepository<T> baseRepository)
+        {
+            _baseRepository = baseRepository;
+        }
+        public int Delete(Guid Id)
+        {
+            return _baseRepository.Delete(Id);
+        }
+
+        public IEnumerable<T> Get()
+        {
+            return _baseRepository.Get();
+        }
+
+        public T GetById(Guid employeeId)
+        {
+            return _baseRepository.GetById(employeeId);
+        }
+
+        public int Insert(T employee)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(T employee)
+        {
+            return _baseRepository.Update(employee);
+        }
+    }
+}

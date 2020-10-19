@@ -1,17 +1,18 @@
-﻿using System;
+﻿using MISA.Common.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MISA.DataAccess.Interfaces
 {
-    public interface IEmployeeRepository: IDatabaseAccess
+    public interface IEmployeeRepository:IBaseRepository<Employee>
     {
+       
         /// <summary>
-        /// Kiểm tra thông tin nhân viên theo mã
+        /// Kiểm tra thông tin nhân viên theo mã nhân viên 
         /// </summary>
         /// <param name="employeeCode"></param>
         /// <returns>true: có, false:Không</returns>
+        /// Created By: Lê Mạnh
         bool CheckEmployeeByCode(string employeeCode);
     }
 }

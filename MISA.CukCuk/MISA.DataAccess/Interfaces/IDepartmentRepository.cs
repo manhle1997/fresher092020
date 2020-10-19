@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MISA.Bussiness.Interfaces
+namespace MISA.DataAccess.Interfaces
 {
-    public interface IEmployeeBussiness: IBaseBussiness<Employee>
+    public interface IDepartmentRepository: IBaseRepository<Department>
     {
     }
 }

@@ -11,40 +11,49 @@ namespace MISA.CukCuk.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class DepartmentsController : ControllerBase
     {
-        IEmployeeBussiness _employeeBussiness;
-        public CustomersController(IEmployeeBussiness employeeBussiness)
+        IDepartmentBussiness _departmentBussiness;
+        public DepartmentsController(IDepartmentBussiness departmentBussiness)
         {
-            _employeeBussiness = employeeBussiness;
+            _departmentBussiness = departmentBussiness;
         }
-        // GET: api/<CustomersController>
+        // GET: api/<DepartmentsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+
+            var departments = _departmentBussiness.Get();
+            if (departments.Count() > 0)
+            {
+                return Ok(departments);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
-        // GET api/<CustomersController>/5
+        // GET api/<DepartmentsController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<CustomersController>
+        // POST api/<DepartmentsController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<CustomersController>/5
+        // PUT api/<DepartmentsController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<CustomersController>/5
+        // DELETE api/<DepartmentsController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

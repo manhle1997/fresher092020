@@ -13,7 +13,9 @@ using Microsoft.Extensions.Logging;
 using MISA.Bussiness.Interfaces;
 using MISA.Bussiness.Service;
 using MISA.DataAccess;
+using MISA.DataAccess.DatabaseAccess;
 using MISA.DataAccess.Interfaces;
+using MISA.DataAccess.Repository;
 
 namespace MISA.CukCuk
 {
@@ -30,8 +32,13 @@ namespace MISA.CukCuk
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddScoped<IEmployeeRepository, DatabaseAccess>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IEmployeeBussiness, EmployeeService>();
+            services.AddScoped<IDepartmentBussiness, DepartmentService>();
+            services.AddScoped(typeof(IBaseBussiness<>), typeof(BaseService<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped(typeof(IDatabaseContext<>), typeof(DatabaseContext<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
