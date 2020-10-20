@@ -7,10 +7,14 @@
 class BaseJS {
 
     constructor(url) {
-        this.url = url;
+        this.geturl = url;
         this.getData();
         this.loadData();
         this.initEvents();
+        this.getDataPosition();
+        this.loadDataPosition();
+        this.getDataDepartment();
+        this.loadDataDepartment();
     }
 
     /**
@@ -94,6 +98,7 @@ class BaseJS {
     * Author: Lê Mạnh
     * */
     btnSaveOnClick() {
+        
         try {
             self = this;
 
@@ -110,50 +115,44 @@ class BaseJS {
             if (isValid) {
                 // Lấy ra các input có các trường là fieldName
                 var inputs = $('input[fieldName]');
+   
                 //build object dữ liệu
                 var customer = {};
-
+                
                 $.each(inputs, function (index, input) {
+                    
                     var fieldName = $(input).attr('fieldName');
                     var value = $(input).val();
+                    
+                    if (fieldName == "Salary") {
+                        customer[fieldName] = parseFloat(value);
+                        debugger;
+                    }
                     customer[fieldName] = value;
 
-                    var x = data.length;
-                    customer["CustomerId"] = data[x-1]+1;
 
                 });
-
                 if (self.FormMode == 'Add') {
-                    var x = data.length;
-                    customer[self.getKeyId()] = x + 1;
-                    alert('Thêm dữ liệu thành công');
-                    data.push(customer);
-
+                    //var x = data.length;
+                    //customer[self.getKeyId()] = x + 1;
+                    //alert('Thêm dữ liệu thành công');
+                    //data.push(customer);
+                    alert('add');
+                    debugger;
                     $.ajax({
-                        url: url,
+                        url: geturl,
                         method: "POST",
                         data: JSON.stringify(customer),
-                        dataType: "json",
-                        contentType: "application/json",
-                        async: false
-                    })
+                        contentType: "application/json"
+                    }).done(function (res) {
+                        self.loadData();
+                    }).fail(function (res) {
 
+                    })
                 }
                 else {
-                    var id = this.getRecordIdSelected();
-                    customer[self.getKeyId()] = id;
-                    debugger;
-                    alert('Chỉnh sửa dữ liệu thành công');
-                    $.each(data, function (index, obj) {
-                        debugger;
-                        if (obj[self.getKeyId()] == customer[self.getKeyId()]) {
-                            data.splice(index, 1, customer);
-                        }
-                    });
+                    alert("else");
                 }
-                self.Data = data;
-                //Load lại data         
-                self.loadData();
                 $(".form-dialog").hide();
                 return;
             }
@@ -192,7 +191,7 @@ class BaseJS {
                     input.value = objectDetail[fieldName];
                 });
                 $.ajax({
-                    url: url + "/" + id,
+                    url: geturl + "/" + id,
                     method: "POST",
                     data: JSON.stringify(customer),
                     dataType: "json",
@@ -218,7 +217,7 @@ class BaseJS {
         try {
             $("#tbCustomer tbody").empty();
             $.ajax({
-                url: this.url,
+                url: this.geturl,
                 method: "GET",
                 //data: {},
                 dataType: "json",
@@ -278,6 +277,70 @@ class BaseJS {
 
             //    $("#tbCustomer tbody").append(tr);
             //});
+        } catch (e) {
+
+        }
+    }
+
+    /**
+     * Lấy dữ liệu Position
+     * Author: Lê Mạnh (20/10/2020)
+     * */
+    getDataPosition() {
+        this.DataPosition = {};
+        try {
+            var self = this;
+            $.ajax({
+                url: "/api/positions",
+                method: "GET",
+                data: "",
+                contentType: "application/json",
+                dataType: "",
+                async: false,
+            }).done(function (position) {
+                self.DataPosition = position;
+            })
+        } catch (e) {
+
+        }
+    }
+
+    loadDataPosition() {
+        try {
+            var self = this;
+            $.each(this.DataPosition, function (index, obj) {
+                $('.dialog .dialog-body .work-infor .position-selected').append('<option value="' + obj["positionId"] + '">' + obj["positionName"] + '</option>');
+            })
+        } catch (e) {
+
+        }
+    }
+
+    getDataDepartment() {
+        this.DataDepartment = {};
+        try {
+            var self = this;
+            $.ajax({
+                url: "/api/departments",
+                method: "GET",
+                data: "",
+                contentType: "application/json",
+                dataType: "",
+                async: false,
+            }).done(function (department) {
+                self.DataDepartment = department;
+            })
+        } catch (e) {
+
+        }
+    }
+
+    loadDataDepartment() {
+        try {
+            var self = this;
+            $.each(this.DataDepartment, function (index, obj) {
+                $('.dialog .dialog-body .work-infor .department-selected').append('<option value="' + obj["departmentId"] + '">' + obj["departmentName"] + '</option>');
+            })
         } catch (e) {
 
         }

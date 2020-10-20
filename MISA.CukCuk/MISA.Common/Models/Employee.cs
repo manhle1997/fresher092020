@@ -46,8 +46,6 @@ namespace MISA.Common.Models
         public string TaxCode { get; set; }
         // Email nhân viên
         public string Email { get; set; }
-        // Địa chỉ nhân viên
-        public string Address { get; set; }
         // Trạng thái làm việc
         public WorkStatus WorkStatus { get; set; }
 

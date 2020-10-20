@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MISA.Bussiness.Interfaces
 {
-    public interface IEmployeeBussiness: IBaseBussiness<Employee>
+    public interface IDepartmentService: IBaseService<Department>
     {
     }
 }

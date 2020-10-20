@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MISA.Bussiness.Service
 {
-    public class BaseService<T> : IBaseBussiness<T>
+    public class BaseService<T> : IBaseService<T>
     {
         IBaseRepository<T> _baseRepository;
         public BaseService(IBaseRepository<T> baseRepository)
@@ -30,7 +30,7 @@ namespace MISA.Bussiness.Service
 
         public int Insert(T employee)
         {
-            throw new NotImplementedException();
+            return _baseRepository.Insert(employee);
         }
 
         public int Update(T employee)

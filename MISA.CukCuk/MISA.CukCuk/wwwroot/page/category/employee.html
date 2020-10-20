@@ -207,54 +207,99 @@
         <div class="dialog-model"></div>
         <div class="dialog">
             <div class="dialog-titlebar">
-                <div class="title">Khách hàng</div>
+                <div class="title">Thông tin nhân viên</div>
                 <div class="btn-close">x</div>
             </div>
             <div class="dialog-body">
-                <div class="row">
-                    <label>Mã nhân Viên <span style="color: red">(*)</span></label>
-                    <input type="text" id="employee-code" fieldName="EmployeeCode" class="input-left" required />
+                <div class="general-infor">
+                    <div class="title-general-infor"><b>Thông tin chung</b></div>
+                    <div class="left-general-infor">
+                        <div class="row">
+                            <label>Mã nhân Viên <span style="color: red">(*)</span></label>
+                            <input type="text" id="employee-code" fieldName="EmployeeCode" class="input-left" required />
+                        </div>
+                        <div class="row">
+                            <label class="label-right">Tên nhân viên <span style="color: red">(*)</span></label>
+                            <input type="text" id="employee-name" class="input-right" fieldName="EmployeeName" required />
+                        </div>
+                        <div class="row">
+                            <label>Ngày sinh</label>
+                            <input type="date" name="name" value="" fieldName="DateOfBirth" id="dateofbirth"/>
+                            <label>Giới tính</label>
+                            <select class="" id="gender">
+                                <option value=1>Nam</option>
+                                <option value=0>Nữ</option>
+                                <option value=0>Khác</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label class="label-right">Email <span style="color: red">(*)</span></label>
+                            <input type="email" name="name" value="" class="input-right" id="employee-email" fieldName="Email" required />
+                        </div>
+                        <div class="row">
+                            <label>ĐT di động <span style="color: red">(*)</span></label>
+                            <input type="text" name="name" value="" class="input-left" id="phonenumber" fieldName="PhoneNumber" required />
+                        </div>
+                        <div class="row">
+                            <label title="Số chứng minh thư nhân dân/hộ chiếu">Số CMT/HC</label>
+                            <input type="tel" name="name" value="" id="identity-number"/>
+                            <label>Ngày cấp</label>
+                            <input type="date" name="name" value="" id="identity-date"/>
+                        </div>
+                    </div>
+                    <div class="right-general-infor">
+                        <div class="avatar-box">
+                            <div></div>
+                            <button>...</button>
+                            <button></button>
+                        </div>
+                        <div class="tip-upload">
+                            <div>Chỉ được upload tệp</div>
+                            <b>.jpg .jpeg, .png, .gif</b>
+                        </div>
 
-                    <label class="label-right">Tên nhân viên <span style="color: red">(*)</span></label>
-                    <input type="text" id="employee-name" class="input-right" fieldName="EmployeeName" required />
+                    </div>
+                    <div class="row identity-place">
+                        <label>Nơi cấp CMND</label>
+                        <input type="text" name="name" value="" id="identity-place"/>
+                    </div>
                 </div>
-                <div class="row">
-                    <label>Giới tính</label>
-                    <input type="text" class="input-left" fieldName="Gender" />
+                <div class="work-infor">
+                    <div class="title-work-infor"><b>Thông tin công việc</b></div>
+                    <div class="row">
+                        <label>Vị trí</label>
+                        <select class="position-selected" fieldName="PositionId">
 
-                    <label class="label-right">Vị trí</label>
-                    <input type="text" name="name" value="" fieldName="PositionName" class="input-right" id="employee-position" />
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label>Phòng ban</label>
+                        <select class="department-selected" fieldName="DepartmentId">
+
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label>Mã số thuế cá nhân</label>
+                        <input type="text" name="name" value="" fieldName="TaxCode" />
+                        <label>Mức lương</label>
+                        <input type="number" name="name" value="" fieldName="Salary" fieldNumber="Salary"/>
+                    </div>
+                    <div class="row">
+                        <label>Ngày gia nhập</label>
+                        <input type="date" name="name" value="" />
+                        <label>Tình trạng</label>
+                        <select>
+                            <option value="0">Đã nghỉ việc</option>
+                            <option value="1">Đang thử việc</option>
+                            <option value="2">Đang làm việc</option>
+                            <option value="3">Đã nghỉ hưu</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="row">
-                    <label>Mức lương</label>
-                    <input type="number" name="name" value="" class="input-left" id="" fieldName="Salary" />
-                </div>
-                <div class="row">
-                    <label>Số điện thoại</label>
-                    <input type="number" name="name" value="" class="input-left" fieldName="PhoneNumber" required />
-                </div>
-                <div class="row">
-                    <label>Ngày sinh</label>
-                    <input type="date" name="name" value="" class="input-left" id="input-ngay-sinh" fieldName="DateOfBirth" />
-                </div>
-                <div class="row">
-                    <label>Phòng ban</label>
-                    <input type="text" name="name" id="company" class="input-left" fieldName="DepartmentName" />
-                </div>
-                <div class="row">
-                    <label>Mã số thuế</label>
-                    <input type="text" name="name" value="" class="input-left" fieldName="TaxCode" />
-                    <label class="label-right">Email</label>
-                    <input type="email" name="name" value="" class="input-right" id="employee-email" fieldName="Email" />
-                </div>
-                <div class="row">
-                    <label>Địa chỉ</label>
-                    <input type="text" name="name" value="" class="input-left" id="employee-address" fieldName="Address" />
-                </div>
-                <div class="row">
-                    <label>Ghi chú</label>
-                    <input type="text" name="name" id="comment" class="input-left" />
-                </div>
+                
+                
+
+
             </div>
             <div class="dialog-footer">
                 <div class="footer-left">

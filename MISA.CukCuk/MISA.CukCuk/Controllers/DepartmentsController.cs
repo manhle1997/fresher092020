@@ -13,8 +13,8 @@ namespace MISA.CukCuk.Controllers
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
-        IDepartmentBussiness _departmentBussiness;
-        public DepartmentsController(IDepartmentBussiness departmentBussiness)
+        IDepartmentService _departmentBussiness;
+        public DepartmentsController(IDepartmentService departmentBussiness)
         {
             _departmentBussiness = departmentBussiness;
         }

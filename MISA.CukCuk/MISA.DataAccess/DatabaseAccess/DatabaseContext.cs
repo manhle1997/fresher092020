@@ -97,7 +97,8 @@ namespace MISA.DataAccess.DatabaseAccess
         public T GetById(object id)
         {
             var employees = new List<T>();
-            _mySqlCommand.CommandText = "Proc_GetEmployeeById";
+            var className = typeof(T).Name;
+            _mySqlCommand.CommandText = $"Proc_Get{className}ById";
             _mySqlCommand.Parameters.AddWithValue("@EmployeeId", id);
             MySqlDataReader mySqlDataReader = _mySqlCommand.ExecuteReader();
             //Xử lý dữ liệu trả về

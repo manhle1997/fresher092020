@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MISA.Bussiness.Service
 {
-    public class EmployeeService :BaseService<Employee>, IEmployeeBussiness
+    public class EmployeeService :BaseService<Employee>, IEmployeeService
     {
         IEmployeeRepository _employeeRepository;
         public EmployeeService(IEmployeeRepository employeeRepository) : base(employeeRepository)

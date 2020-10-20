@@ -34,9 +34,11 @@ namespace MISA.CukCuk
             services.AddControllers();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-            services.AddScoped<IEmployeeBussiness, EmployeeService>();
-            services.AddScoped<IDepartmentBussiness, DepartmentService>();
-            services.AddScoped(typeof(IBaseBussiness<>), typeof(BaseService<>));
+            services.AddScoped<IPositionRepository, PositionRepository>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IPositionService, PositionService>();
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(IDatabaseContext<>), typeof(DatabaseContext<>));
         }

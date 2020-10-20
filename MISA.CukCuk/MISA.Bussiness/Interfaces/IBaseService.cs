@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MISA.Bussiness.Interfaces
 {
-    public interface IBaseBussiness<T>
+    public interface IBaseService<T>
     {
         /// <summary>
         /// Lấy danh sách thông tin bản ghi
