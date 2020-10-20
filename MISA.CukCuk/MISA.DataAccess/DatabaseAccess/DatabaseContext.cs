@@ -151,7 +151,8 @@ namespace MISA.DataAccess.DatabaseAccess
 
         public int Update(T employee)
         {
-            throw new NotImplementedException();
+            //TODO Làm service cập nhật thông tin nhân viên
+            return 1;
         }
 
         public int Delete(object id)

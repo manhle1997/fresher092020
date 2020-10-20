@@ -9,6 +9,7 @@
     <link href="/css/layout/main.css" rel="stylesheet" />
     <link href="/css/layout/sidebar.css" rel="stylesheet" />
     <link href="/css/page/customer/dialog-employee.css" rel="stylesheet" />
+    <link href="/css/page/customer/dialog-delete-employee.css" rel="stylesheet" />
     <link href="/css/page/customer/footer-content.css" rel="stylesheet" />
     <link href="/css/element/table.css" rel="stylesheet" />
     <link href="/css/element/employee.css" rel="stylesheet" />
@@ -155,6 +156,7 @@
                         <table width="100%" id="tbCustomer" keyId="EmployeeId">
                             <thead>
                                 <tr class="thead">
+
                                     <td fieldName="EmployeeCode">Mã nhân viên</td>
                                     <td fieldName="EmployeeName">Tên nhân viên</td>
                                     <td fieldName="GenderName">Giới tính</td>
@@ -165,6 +167,7 @@
                                     <td fieldName="Email">Email</td>
                                     <td fieldName="Salary" fieldNumber="Salary">Mức lương</td>
                                     <td fieldName="WorkStatusName">Tình trạng công việc</td>
+                                    <td style="display:none" fieldName="EmployeeId"></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -203,6 +206,14 @@
             </div>
         </div>
     </div>
+    <div class="form-dialog-delete">
+        <div class="dialog-model"></div>
+        <div class="dialog-delete">XÁC NHẬN XOÁ</div>
+    </div>
+    <div class="form-dialog-validate">
+        <div class="dialog-model"></div>
+        <div class="dialog-delete">XÁC NHẬN XOÁ</div>
+    </div>
     <div class="form-dialog">
         <div class="dialog-model"></div>
         <div class="dialog">
@@ -216,35 +227,35 @@
                     <div class="left-general-infor">
                         <div class="row">
                             <label>Mã nhân Viên <span style="color: red">(*)</span></label>
-                            <input type="text" id="employee-code" fieldName="EmployeeCode" class="input-left" required />
+                            <input type="text" id="employee-code" fieldName="employeeCode" class="input-left" required />
                         </div>
                         <div class="row">
                             <label class="label-right">Tên nhân viên <span style="color: red">(*)</span></label>
-                            <input type="text" id="employee-name" class="input-right" fieldName="EmployeeName" required />
+                            <input type="text" id="employee-name" class="input-right" fieldName="employeeName" required />
                         </div>
                         <div class="row">
                             <label>Ngày sinh</label>
-                            <input type="date" name="name" value="" fieldName="DateOfBirth" id="dateofbirth"/>
+                            <input type="date" name="name" value="" fieldName="dateOfBirth" id="dateofbirth" />
                             <label>Giới tính</label>
-                            <select class="" id="gender">
+                            <select class="" id="gender" fieldName="gender">
                                 <option value=1>Nam</option>
                                 <option value=0>Nữ</option>
-                                <option value=0>Khác</option>
+                                <option value=2>Khác</option>
                             </select>
                         </div>
                         <div class="row">
                             <label class="label-right">Email <span style="color: red">(*)</span></label>
-                            <input type="email" name="name" value="" class="input-right" id="employee-email" fieldName="Email" required />
+                            <input type="email" name="name" value="" class="input-right" id="employee-email" fieldName="email" required />
                         </div>
                         <div class="row">
                             <label>ĐT di động <span style="color: red">(*)</span></label>
-                            <input type="text" name="name" value="" class="input-left" id="phonenumber" fieldName="PhoneNumber" required />
+                            <input type="text" name="name" value="" class="input-left" id="phonenumber" fieldName="phoneNumber" required />
                         </div>
                         <div class="row">
                             <label title="Số chứng minh thư nhân dân/hộ chiếu">Số CMT/HC</label>
-                            <input type="tel" name="name" value="" id="identity-number"/>
-                            <label>Ngày cấp</label>
-                            <input type="date" name="name" value="" id="identity-date"/>
+                            <input type="tel" name="name" value="" id="identity-number" fieldName="identityNumber" />
+                            <label class="label-identityDate">Ngày cấp</label>
+                            <input type="date" name="name" value="" id="identity-date" fieldName="identityDate" />
                         </div>
                     </div>
                     <div class="right-general-infor">
@@ -261,34 +272,32 @@
                     </div>
                     <div class="row identity-place">
                         <label>Nơi cấp CMND</label>
-                        <input type="text" name="name" value="" id="identity-place"/>
+                        <input type="text" name="name" value="" id="identity-place" fieldName="identityPlace" />
                     </div>
                 </div>
                 <div class="work-infor">
                     <div class="title-work-infor"><b>Thông tin công việc</b></div>
                     <div class="row">
                         <label>Vị trí</label>
-                        <select class="position-selected" fieldName="PositionId">
-
+                        <select class="position-selected" fieldName="positionId">
                         </select>
                     </div>
                     <div class="row">
                         <label>Phòng ban</label>
-                        <select class="department-selected" fieldName="DepartmentId">
-
+                        <select class="department-selected" fieldName="departmentId">
                         </select>
                     </div>
                     <div class="row">
                         <label>Mã số thuế cá nhân</label>
-                        <input type="text" name="name" value="" fieldName="TaxCode" />
+                        <input type="text" name="name" value="" fieldName="taxCode" />
                         <label>Mức lương</label>
-                        <input type="number" name="name" value="" fieldName="Salary" fieldNumber="Salary"/>
+                        <input type="number" name="name" value="" fieldName="salary" fieldNumber="Salary" class="Salary" />
                     </div>
                     <div class="row">
                         <label>Ngày gia nhập</label>
-                        <input type="date" name="name" value="" />
+                        <input type="date" name="name" value="" fieldName="joinDate" />
                         <label>Tình trạng</label>
-                        <select>
+                        <select fieldName="workStatus">
                             <option value="0">Đã nghỉ việc</option>
                             <option value="1">Đang thử việc</option>
                             <option value="2">Đang làm việc</option>
@@ -296,29 +305,22 @@
                         </select>
                     </div>
                 </div>
-                
-                
-
-
             </div>
             <div class="dialog-footer">
                 <div class="footer-left">
                     <div id="btn_help">
                         <div class="help_icon"></div>
                         <p class="help-text">Giúp</p>
-
                     </div>
                 </div>
                 <div class="footer-right">
                     <div id="btn_save">
                         <div class="save_icon"></div>
                         <p>Cất</p>
-
                     </div>
                     <div id="btn_save_and_add">
                         <div class="save_and_add_icon"></div>
                         <p>Cất & Thêm</p>
-
                     </div>
                     <div id="btn_close">
                         <div class="close_icon"></div>

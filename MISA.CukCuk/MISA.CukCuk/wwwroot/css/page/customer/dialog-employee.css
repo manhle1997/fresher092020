@@ -2,7 +2,7 @@
     display: none;
 }
 
-.dialog-model {
+.form-dialog .dialog-model {
     position: fixed;
     top: 0;
     left: 0;
@@ -65,19 +65,17 @@
         line-height: 1.8;
     }
         .dialog .dialog-body .general-infor{
-            border: 1px solid;
         }
             .dialog .dialog-body .general-infor .left-general-infor{
-                border: 1px solid;
                 position: absolute;
-                width:480px;
+                width:490px;
             }
                 .dialog .dialog-body .general-infor .left-general-infor .row{
                     display: flex;
                     margin-bottom: 2px;
                 }
                 .dialog .dialog-body .general-infor .left-general-infor .row #employee-code {
-                    margin-left: 20px;
+                    margin-left: 19px;
                     width: calc(100% - 128px);
                 }
                 .dialog .dialog-body .general-infor .left-general-infor .row #employee-name{
@@ -99,6 +97,10 @@
                     margin-left: 36px;
                     width: calc(100% - 128px);
                 }
+                .dialog .dialog-body .general-infor .left-general-infor .row .label-identityDate{
+                    margin-left: 7px;
+                    margin-right: 4px;
+                }
                 .dialog .dialog-body .general-infor .left-general-infor .row #identity-number{
                     margin-left: 46px;
                     width: 152px;
@@ -106,12 +108,14 @@
 
                 .dialog .dialog-body .general-infor .row input#identity-place{                   
                     margin-left: 25px;
-                    width: calc(100% - 156px);
+                    width: calc(100% - 125px);
                 }
-            .dialog .dialog-body .general-infor .right-general-infor{
+            .dialog .dialog-body .general-infor .right-general-infor {
                 border: 1px solid;
                 position: absolute;
-                left: 516px;
+                left: 511px;
+                width: calc(100% - 536px);
+                text-align: center;
             }
             .dialog .dialog-body .general-infor .identity-place {
                 position: absolute;
@@ -121,6 +125,22 @@
 
         .dialog .dialog-body .work-infor{
             margin-top: 173px;
+        }
+
+        .dialog .dialog-body .work-infor .position-selected{
+            margin-left: 87px;
+            width: calc(100% - 138px);
+            height: 22px;
+        }
+
+        .dialog .dialog-body .work-infor .department-selected{
+            margin-left: 51px;
+            width: calc(100% - 138px);
+            height: 21px;
+        }
+
+        .dialog .dialog-body .work-infor .Salary{
+
         }
 
         .dialog .dialog-footer {

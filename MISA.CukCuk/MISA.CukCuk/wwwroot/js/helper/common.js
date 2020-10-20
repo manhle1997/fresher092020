@@ -9,9 +9,7 @@
             money = parseInt(money);
             return money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
         } catch (e) {
-
-        }
-        
+        }  
     },
 
     /**
@@ -29,9 +27,26 @@
             datetime = dd + '/' + mm + '/' + yyyy;
             return datetime;
         } catch (e) {
-
         }
-        
+    },
+
+    ///**
+    // * 
+    // * @param {any} datetime
+    // */
+    //convertDateToDatetimeISO(datetime) {
+    //    var dateTimeISO = datetime + 'T02:05:41';
+    //    return dateTimeISO;
+    //}
+    formatDateISO(date) {
+        debugger;
+        var now = new Date();
+
+        var day = ("0" + now.getDate()).slice(-2);
+        var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+        var today = now.getFullYear() + "-" + (month) + "-" + (day);
+        return today;
     }
 }
 

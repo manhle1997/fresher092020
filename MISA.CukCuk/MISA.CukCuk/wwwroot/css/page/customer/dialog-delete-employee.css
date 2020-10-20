@@ -1,0 +1,24 @@
+﻿.form-dialog-delete{
+    display:none;
+}
+
+.form-dialog-delete .dialog-model{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: .4
+}
+
+.form-dialog-delete .dialog-delete {
+    position: fixed;
+    width: 660px;
+    height: 400px;
+    background-color: #ffffff;
+    top: calc(50% - 200px);
+    left: calc(50% - 300px);
+    border-radius: 5px;
+    border: 5px solid #0072bc;
+}

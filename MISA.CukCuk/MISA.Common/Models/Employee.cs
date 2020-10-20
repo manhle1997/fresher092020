@@ -37,7 +37,7 @@ namespace MISA.Common.Models
         // Số điện thoại
         public string PhoneNumber { get; set; }
         // Ngày sinh
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         // Id phòng ban
         public Guid DepartmentId { get; set; }
         // Tên phòng ban làm việc
@@ -66,5 +66,10 @@ namespace MISA.Common.Models
                 }
             }
         }
+        public string IdentityNumber { get; set; }
+        public DateTime? IdentityDate { get; set; }
+        public string IdentityPlace { get; set; }
+        public DateTime? JoinDate { get; set; }
+
     }
 }
