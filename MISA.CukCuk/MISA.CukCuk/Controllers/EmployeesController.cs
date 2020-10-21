@@ -92,12 +92,12 @@ namespace MISA.CukCuk.Controllers
         /// <returns></returns>
         // PUT api/<EmployeesController>/5
         [HttpPut("{id}")]
-        public IActionResult Put([FromBody] Employee employee)
+        public IActionResult Put(Guid id,[FromBody] Employee employee)
         {
-            var result = _employeeBussiness.Update(employee);
+            var result = _employeeBussiness.Update(id,employee);
             if (result == 1)
             {
-                return CreatedAtAction("POST", result);
+                return CreatedAtAction("PUT", result);
             }
             else
             {
@@ -117,7 +117,7 @@ namespace MISA.CukCuk.Controllers
             var result = _employeeBussiness.Delete(id);
             if (result == 1)
             {
-                return CreatedAtAction("POST", result);
+                return CreatedAtAction("DELETE", result);
             }
             else
             {

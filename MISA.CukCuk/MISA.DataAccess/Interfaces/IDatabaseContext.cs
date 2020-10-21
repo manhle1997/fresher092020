@@ -12,7 +12,7 @@ namespace MISA.DataAccess.Interfaces
         object Get(string storeName, string code);
         T GetById(object employeeId);
         int Insert(T employee);
-        int Update(T employee);
+        int Update(Guid id,T employee);
         int Delete(object id);
     }
 }

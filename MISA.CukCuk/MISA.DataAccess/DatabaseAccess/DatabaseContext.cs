@@ -145,14 +145,32 @@ namespace MISA.DataAccess.DatabaseAccess
             //Thực thi công việc
             var result = _mySqlCommand.ExecuteNonQuery();
             return result;
-
-
         }
 
-        public int Update(T employee)
+        public int Update(Guid id,T employee)
         {
-            //TODO Làm service cập nhật thông tin nhân viên
-            return 1;
+            // lấy dữ liệu từ database;
+            // khởi tạo thông tin kết nối
+            //var customers = new List<Customer>();
+            var entityName = typeof(T).Name;
+            //_sqlCommand.Parameters.Clear();
+            _mySqlCommand.CommandText = $"Proc_Update{entityName}";
+            _mySqlCommand.Parameters.AddWithValue($"@{entityName}Id", id);
+            MySqlCommandBuilder.DeriveParameters(_mySqlCommand);
+            var parameters = _mySqlCommand.Parameters;
+            var properties = typeof(T).GetProperties();
+            foreach (MySqlParameter param in parameters)
+            {
+                var paramName = param.ParameterName.Replace("@", string.Empty);
+                var property = employee.GetType().GetProperty(paramName);
+                //var property = entity.GetType().GetProperty(paramName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                if (paramName == $"{entityName}Id")
+                    param.Value = id;
+                else if (property != null)
+                    param.Value = property.GetValue(employee);
+            }
+            var affectRows = _mySqlCommand.ExecuteNonQuery();
+            return affectRows;
         }
 
         public int Delete(object id)

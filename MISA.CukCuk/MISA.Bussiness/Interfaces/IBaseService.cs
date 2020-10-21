@@ -13,7 +13,7 @@ namespace MISA.Bussiness.Interfaces
         IEnumerable<T> Get();
         T GetById(Guid employeeId);
         int Insert(T employee);
-        int Update(T employee);
+        int Update(Guid id,T employee);
         int Delete(Guid Id); 
 
 

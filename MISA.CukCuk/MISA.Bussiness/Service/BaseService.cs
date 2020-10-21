@@ -33,9 +33,9 @@ namespace MISA.Bussiness.Service
             return _baseRepository.Insert(employee);
         }
 
-        public int Update(T employee)
+        public int Update(Guid id,T employee)
         {
-            return _baseRepository.Update(employee);
+            return _baseRepository.Update(id,employee);
         }
     }
 }

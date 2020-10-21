@@ -15,7 +15,8 @@ class BaseJS {
         this.loadDataPosition();
         this.getDataDepartment();
         this.loadDataDepartment();
-        
+        this.getLastedEmployeeCode();
+        this.getRecordIdSelected();
     }
 
     /**
@@ -30,6 +31,7 @@ class BaseJS {
             $(".form-dialog").show();
             $("#employee-code").focus();
             self.getLastedEmployeeCode();
+
         });
         $('#toolbar-item-edit').click(this.btnEditOnClick.bind(this));
         $('#toolbar-item-delete').click(this.btnDeleteOnClick.bind(this))
@@ -41,9 +43,38 @@ class BaseJS {
 
         $('#toolbar-item-reload').click(this.btnReloadDataOnClick.bind(this));
         $('input[required]').blur(this.validateRequired);
+        $('.btn-copy-item').click(this.btnCopyOnClick.bind(this));
+        
     }
 
+    btnCopyOnClick() {
+        var self = this
+        var trSelected = $("table tr.row-selected");
+        var id = 0;
+        // Hiển thị dialog chi tiết
+        id = selg.getRecordIdSelected();
+        $.ajax({
+            url: self.geturl + "/" + id,
+            method: "GET",
+            data: "",
+            dataType: "json",
+            contentType: "application/json",
+            async: false
+        }).done(function (res) {
 
+            res['employeeCode'] = self.lastedCode;
+            $.ajax({
+                url: "/api/employees",
+                method: "POST",
+                data: JSON.stringify(res),
+                contentType: "application/json"
+            }).done(function (res) {
+                self.loadData();
+            }).fail(function (res) {
+
+            })
+        })
+    }
 
     //#region Validate
     /**
@@ -62,32 +93,38 @@ class BaseJS {
      * Author: Lê Mạnh
      * */
     btnDeleteOnClick() {
-        debugger;
         try {
+            debugger;
             var self = this
             var trSelected = $("table tr.row-selected");
-            // Hiển thị dialog chi tiết       
-            debugger;
-            if (trSelected) {
+            if (trSelected.length > 0) {
+                $('.form-dialog-delete').show();
+                var id = self.getRecordIdSelected();
                 debugger;
-                //TODO Hiển thị bảng xác nhận
-                alert('vui lòng chọn nguoi muon xoa');                     
+                $('.btn-yes-delete').click(function () {
+                    $.ajax({
+                        url: self.geturl + "/" + id,
+                        method: "DELETE",
+                        data: "",
+                        dataType: "json",
+                        contentType: "application/json",
+                        async: false
+                    }).done(function (employee) {
+                        self.loadData();
+                        $('.form-dialog-delete').hide();
+                    }).fail(function (employee) {
+                    })
+                })
+                $('.btn-no-delete').click(function () {
+                    $('.form-dialog-delete').hide();
+                    trSelected.removeClass('row-selected');
+                })
+                
             }
             else {
-                var id = $(trSelected).children()[10].textContent;
-                $.ajax({
-                    url: self.geturl + "/" + id,
-                    method: "DELETE",
-                    data: "",
-                    dataType: "json",
-                    contentType: "application/json",
-                    async: false
-                }).done(function (employee) {
-                    self.loadData();
-                }).fail(function (employee) {
-                })
+                alert("Không có bản ghi nào được chọn");
             }
-            
+
 
         } catch (e) {
 
@@ -137,7 +174,6 @@ class BaseJS {
 
             });
             if (self.FormMode == 'Add') {
-
                 alert('add');
                 $.ajax({
                     url: "/api/employees",
@@ -186,7 +222,9 @@ class BaseJS {
             var self = this
             var trSelected = $("table tr.row-selected");
             // Hiển thị dialog chi tiết
-            var id = $(trSelected).children()[10].textContent;
+            //var id = $(trSelected).children()[10].textContent;
+            var id = this.getRecordIdSelected();
+            debugger;
             $.ajax({
                 url: self.geturl + "/" + id,
                 method: "GET",
@@ -224,6 +262,8 @@ class BaseJS {
      * */
     //Todo Fix lỗi không binding được data lên page
     loadData() {
+        var self = this;
+        self.getLastedEmployeeCode();
         try {
             $("#tbCustomer tbody").empty();
             $.ajax({
@@ -263,7 +303,7 @@ class BaseJS {
                     });
                 }
             }).fail(function (response) {
-            })   
+            })
         } catch (e) {
 
         }
@@ -368,6 +408,7 @@ class BaseJS {
     getKeyId() {
         try {
             var keyId = $('#tbCustomer').attr('keyId');
+            debugger;
             return keyId;
         } catch (e) {
 
@@ -387,10 +428,12 @@ class BaseJS {
         return id;
     }
 
-
+    /**
+     * Lấy Id mới nhất của nhân viên
+     * */
     getLastedEmployeeCode() {
-        debugger;
         this.lastedCode = 0;
+        debugger;
         try {
             var self = this;
             $.ajax({
@@ -405,6 +448,7 @@ class BaseJS {
                 self.lastedCode = self.lastedCode.slice(0, 4) + (parseInt(self.lastedCode.slice(4)) + 1);
                 $('#employee-code').val($('#employee-code').val() + self.lastedCode);
             })
+            return self.lastedCode;
         } catch (e) {
 
         }

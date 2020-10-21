@@ -35,7 +35,7 @@ namespace MISA.DataAccess.Interfaces
         /// <param name="employee"></param>
         /// <returns></returns>
         /// Author: Lê Mạnh (18/10/2020)
-        int Update(T employee);
+        int Update(Guid id, T employee);
 
         /// <summary>
         /// Xoá thông tin bản ghi

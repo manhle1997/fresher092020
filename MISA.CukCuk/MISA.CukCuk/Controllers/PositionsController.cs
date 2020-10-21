@@ -90,12 +90,12 @@ namespace MISA.CukCuk.Controllers
         /// Author: Lê Mạnh (20/10/2020)
         // PUT api/<PositionsController>/5
         [HttpPut("{id}")]
-        public IActionResult Put([FromBody] Position position)
+        public IActionResult Put(Guid id, [FromBody] Position position)
         {
-            var result = _positionService.Update(position);
+            var result = _positionService.Update(id, position);
             if (result == 1)
             {
-                return CreatedAtAction("POST", result);
+                return CreatedAtAction("PUT", result);
             }
             else
             {
