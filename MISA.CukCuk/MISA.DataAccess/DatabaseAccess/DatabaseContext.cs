@@ -24,11 +24,12 @@ namespace MISA.DataAccess.DatabaseAccess
             //kiểu tương tác với procedure
             _mySqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
         }
+
         /// <summary>
         /// Lấy dữ liệu của nhân viên
         /// </summary>
         /// <returns>Employees</returns>
-        /// Author: Mạnh Lê
+        /// Author: Lê Mạnh (20/10/2020)
         public IEnumerable<T> Get()
         {
             var employees = new List<T>();
@@ -59,6 +60,12 @@ namespace MISA.DataAccess.DatabaseAccess
             return employees;
         }
 
+        /// <summary>
+        /// Lấy dữ liệu nhân viên theo storeName
+        /// </summary>
+        /// <param name="storeName"></param>
+        /// <returns></returns>
+        /// Author: Lê Mạnh (20/10/2020)
         public IEnumerable<T> Get(string storeName)
         {
             var entities = new List<T>();
@@ -94,6 +101,7 @@ namespace MISA.DataAccess.DatabaseAccess
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        /// Author: Lê Mạnh (20/10/2020)
         public T GetById(object id)
         {
             var employees = new List<T>();
@@ -125,6 +133,7 @@ namespace MISA.DataAccess.DatabaseAccess
         /// </summary>
         /// <param name="employee"></param>
         /// <returns></returns>
+        /// Author: Lê Mạnh (20/10/2020)
         public int Insert(T entity)
         {
             var entityName = typeof(T).Name;
@@ -147,6 +156,12 @@ namespace MISA.DataAccess.DatabaseAccess
             return result;
         }
 
+        /// <summary>
+        /// Chỉnh sửa thông tin bản ghi theo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         public int Update(Guid id,T employee)
         {
             // lấy dữ liệu từ database;
@@ -173,6 +188,12 @@ namespace MISA.DataAccess.DatabaseAccess
             return affectRows;
         }
 
+        /// <summary>
+        /// Xoá bản ghi được chọn
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// Author: Lê Mạnh (20/10/2020)
         public int Delete(object id)
         {
             var entityName = typeof(T).Name;
@@ -188,8 +209,12 @@ namespace MISA.DataAccess.DatabaseAccess
             return affectRows;
         }
 
+        /// <summary>
+        /// Hàm huỷ
+        /// </summary>
         public void Dispose()
         {
+            //đóng kết nối database
             _mySqlConnection.Close();
         }
 

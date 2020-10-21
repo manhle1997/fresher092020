@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MISA.Bussiness.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,38 +11,114 @@ namespace MISA.CukCuk.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController : ControllerBase
+    public class BaseController<T> : ControllerBase
     {
-        // GET: api/<BaseController>
+        IBaseService<T> _baseBussiness;
+        public BaseController(IBaseService<T> baseBussiness)
+        {
+            _baseBussiness = baseBussiness;
+        }
+
+        /// <summary>
+        /// Lấy danh sách toàn bộ bản ghi
+        /// </summary>
+        /// <returns></returns>
+        // GET: api/<EmployeesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+
+            var employees = _baseBussiness.Get();
+            if (employees.Count() > 0)
+            {
+                return Ok(employees);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
-        // GET api/<BaseController>/5
+        /// <summary>
+        /// Lấy danh sách nhân viên theo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // GET api/<EmployeesController>/5
+        [Route("{id}")]
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(Guid id)
         {
-            return "value";
+            var employee = _baseBussiness.GetById(id);
+            if (employee != null)
+            {
+                return Ok(employee);
+            }
+            else
+            {
+                return NoContent();
+            }
         }
 
-        // POST api/<BaseController>
+        /// <summary>
+        /// Tạo mới nhân viên
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        // POST api/<EmployeesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] T employee)
         {
+            var result = _baseBussiness.Insert(employee);
+            if (result == 1)
+            {
+                return CreatedAtAction("POST", result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
-        // PUT api/<BaseController>/5
+        /// <summary>
+        /// Cập nhật thông tin nhân viên theo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="employee"></param>
+        /// <returns></returns>
+        // PUT api/<EmployeesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(Guid id, [FromBody] T employee)
         {
+            var result = _baseBussiness.Update(id, employee);
+            if (result == 1)
+            {
+                return CreatedAtAction("PUT", result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
-        // DELETE api/<BaseController>/5
+        /// <summary>
+        /// Xoá thông tin nhân viên theo Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        // DELETE api/<EmployeesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(Guid id)
         {
+            var result = _baseBussiness.Delete(id);
+            if (result == 1)
+            {
+                return CreatedAtAction("DELETE", result);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

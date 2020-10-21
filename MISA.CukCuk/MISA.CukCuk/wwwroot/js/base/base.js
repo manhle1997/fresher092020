@@ -19,6 +19,7 @@ class BaseJS {
         this.getRecordIdSelected();
     }
 
+    //#region InitEvents
     /**
      * Hàm tạo sự kiện cho button
      * */
@@ -46,35 +47,48 @@ class BaseJS {
         $('.btn-copy-item').click(this.btnCopyOnClick.bind(this));
         
     }
+    //#endregion
 
+    //#region Copy
+    /**
+     * Nhân bản bản ghi với Code tăng lên 1 và mọi thông tin khác đều giống nhau
+     * Author: Lê Mạnh (20/10/2020)
+     * */
     btnCopyOnClick() {
         var self = this
         var trSelected = $("table tr.row-selected");
         var id = 0;
         // Hiển thị dialog chi tiết
-        id = selg.getRecordIdSelected();
-        $.ajax({
-            url: self.geturl + "/" + id,
-            method: "GET",
-            data: "",
-            dataType: "json",
-            contentType: "application/json",
-            async: false
-        }).done(function (res) {
-
-            res['employeeCode'] = self.lastedCode;
+        
+        if (trSelected.length > 0) {
+            id = self.getRecordIdSelected();
             $.ajax({
-                url: "/api/employees",
-                method: "POST",
-                data: JSON.stringify(res),
-                contentType: "application/json"
+                url: self.geturl + "/" + id,
+                method: "GET",
+                data: "",
+                dataType: "json",
+                contentType: "application/json",
+                async: false
             }).done(function (res) {
-                self.loadData();
-            }).fail(function (res) {
 
-            })
-        })
+                res['employeeCode'] = self.lastedCode;
+                $.ajax({
+                    url: "/api/employees",
+                    method: "POST",
+                    data: JSON.stringify(res),
+                    contentType: "application/json"
+                }).done(function (res) {
+                    self.loadData();
+                }).fail(function (res) {
+
+                })
+            }).fail()
+        } else {
+            alert("Vui lòng chọn nhân viên bạn muốn nhân bản");
+        }
+        
     }
+    //#endregion
 
     //#region Validate
     /**
@@ -319,7 +333,7 @@ class BaseJS {
     //#endregion
 
 
-
+    //#region get and load Department, Position
     /**
      * Lấy dữ liệu Position
      * Author: Lê Mạnh (20/10/2020)
@@ -396,6 +410,7 @@ class BaseJS {
 
         }
     }
+    //#endregion
 
     /**
      * Hàm lấy dữ liệu

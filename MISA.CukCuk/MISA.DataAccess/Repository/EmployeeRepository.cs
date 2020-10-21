@@ -13,9 +13,19 @@ namespace MISA.DataAccess.Repository
         {
         }
 
+        /// <summary>
+        /// Check employee by Code
+        /// </summary>
+        /// <param name="employeeCode"></param>
+        /// <returns></returns>
+        /// Author: Lê Mạnh (20/10/200)
         public bool CheckEmployeeByCode(string employeeCode)
         {
-            throw new NotImplementedException();
+            var objectValue = _databaseContext.Get("Proc_GetEmployeeByCode", employeeCode);
+            if (objectValue == null)
+                return false;
+            else
+                return true;
         }
 
         

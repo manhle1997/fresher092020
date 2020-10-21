@@ -1,7 +1,7 @@
 ﻿var validData = {
     /**
      * Thực hiện validate các trường bắt buộc nhập
-     * 
+     * Author: Lê Mạnh (20/10/2020)
      */
     validateRequired: function (input) {
         var value = $(input).val();

@@ -3,6 +3,7 @@
     /**
      * Hàm định đạng tiền tệ
      * @param {number} money
+     * author: Lê Mạnh (20/10/2020)
      */
     formatMoney(money) {
         try {
@@ -15,6 +16,7 @@
     /**
      * Hàm định dạng ngày tháng chuẩn dd/MM/yyyy    
      * @param {any} date
+     * author: Lê Mạnh (20/10/2020)
      */
 
     formatDate(date) {
@@ -31,12 +33,10 @@
     },
 
     ///**
-    // * 
+    // * Formant ISO date
     // * @param {any} datetime
     // */
-    //convertDateToDatetimeISO(datetime) {
-    //    var dateTimeISO = datetime + 'T02:05:41';
-    //    return dateTimeISO;
+    //author: Lê Mạnh (20/10/2020)
     //}
     formatDateISO(date) {
         debugger;
