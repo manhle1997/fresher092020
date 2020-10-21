@@ -209,8 +209,9 @@
     <div class="form-dialog-delete">
         <div class="dialog-model"></div>
         <div class="dialog-delete">
-            <div>Bạn có muốn xoá nhân viên này không</div>
-            <div>
+            <div class="delete-confirm-title">CUKCUK - Quản lý nhà hàng</div>
+            <div class="delete-confirm-text">Bạn có muốn xoá nhân viên này không</div>
+            <div class="delete-confirm-button">
                 <button class="btn-yes-delete">Có</button>
                 <button class="btn-no-delete">Không</button>
             </div>
@@ -239,7 +240,7 @@
                         <div class="row">
                             <label>Ngày sinh</label>
                             <input type="date" name="name" value="" fieldName="dateOfBirth" id="dateofbirth" />
-                            <label>Giới tính</label>
+                            <label class="label-gender">Giới tính</label>
                             <select class="" id="gender" fieldName="gender">
                                 <option value=1>Nam</option>
                                 <option value=0>Nữ</option>
@@ -258,14 +259,14 @@
                             <label title="Số chứng minh thư nhân dân/hộ chiếu">Số CMT/HC</label>
                             <input type="tel" name="name" value="" id="identity-number" fieldName="identityNumber" />
                             <label class="label-identityDate">Ngày cấp</label>
-                            <input type="date" name="name" value="" id="identity-date" fieldName="identityDate" />
+                            <input type="date" name="name" value="" id="identity-date" fieldName="identityDate" class="identityDate" />
                         </div>
                     </div>
                     <div class="right-general-infor">
                         <div class="avatar-box">
-                            <div></div>
+                            <div style="height: 74px;"></div>
                             <button>...</button>
-                            <button></button>
+                            <button>X</button>
                         </div>
                         <div class="tip-upload">
                             <div>Chỉ được upload tệp</div>
@@ -292,15 +293,15 @@
                     </div>
                     <div class="row">
                         <label>Mã số thuế cá nhân</label>
-                        <input type="text" name="name" value="" fieldName="taxCode" />
+                        <input type="text" name="name" value="" fieldName="taxCode" class="taxCode" />
                         <label>Mức lương</label>
                         <input type="number" name="name" value="" fieldName="salary" fieldNumber="Salary" class="Salary" />
                     </div>
                     <div class="row">
                         <label>Ngày gia nhập</label>
-                        <input type="date" name="name" value="" fieldName="joinDate" />
+                        <input type="date" name="name" value="" fieldName="joinDate" class="joinDate" />
                         <label>Tình trạng</label>
-                        <select fieldName="workStatus">
+                        <select fieldName="workStatus" class="workStatus">
                             <option value="0">Đã nghỉ việc</option>
                             <option value="1">Đang thử việc</option>
                             <option value="2">Đang làm việc</option>

@@ -94,13 +94,15 @@ class BaseJS {
      * */
     btnDeleteOnClick() {
         try {
-            debugger;
             var self = this
             var trSelected = $("table tr.row-selected");
+            debugger;
             if (trSelected.length > 0) {
                 $('.form-dialog-delete').show();
                 var id = self.getRecordIdSelected();
-                debugger;
+                var name = $(trSelected)[0].children[1].textContent;
+                $('.form-dialog-delete .delete-confirm-text').text('Bạn có muốn xoá nhân viên ' + name + ' không ?');
+
                 $('.btn-yes-delete').click(function () {
                     $.ajax({
                         url: self.geturl + "/" + id,
@@ -174,7 +176,7 @@ class BaseJS {
 
             });
             if (self.FormMode == 'Add') {
-                alert('add');
+                alert('Thêm mới nhân viên thành công');
                 $.ajax({
                     url: "/api/employees",
                     method: "POST",
@@ -187,10 +189,9 @@ class BaseJS {
                 })
             }
             else {
-
-                alert("else");
+                
                 var trSelected = $("table tr.row-selected");
-                var id = $(trSelected).children()[10].textContent;
+                var id = this.getRecordIdSelected();
                 $.ajax({
                     url: self.geturl + "/" + id,
                     method: "PUT",
@@ -201,6 +202,7 @@ class BaseJS {
                 }).fail(function (res) {
 
                 })
+                alert("Sửa thông tin thành công");
             }
             $(".form-dialog").hide();
             return;
@@ -218,36 +220,42 @@ class BaseJS {
     * Author: Lê Mạnh
     */
     btnEditOnClick() {
+        this.FormMode = 'Edit';
         try {
             var self = this
             var trSelected = $("table tr.row-selected");
             // Hiển thị dialog chi tiết
             //var id = $(trSelected).children()[10].textContent;
-            var id = this.getRecordIdSelected();
-            debugger;
-            $.ajax({
-                url: self.geturl + "/" + id,
-                method: "GET",
-                data: "",
-                dataType: "json",
-                contentType: "application/json",
-                async: false
-            }).done(function (employee) {
-                var objId = employee;
-                var inputs = $("input[fieldName], select[fieldName]");
-                $.each(inputs, function (index, input) {
-                    debugger;
-                    var fieldName = $(input).attr('fieldName');
-                    if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
-                        debugger
-                        $(input).val(commonJS.formatDateISO(objId[fieldName]));
-                    }
-                    else {
-                        $(input).val(objId[fieldName]);
-                    }
-                })
-            }).fail()
-            $(".form-dialog").show();
+            if (trSelected.length > 0) {
+                var id = this.getRecordIdSelected();
+                $.ajax({
+                    url: self.geturl + "/" + id,
+                    method: "GET",
+                    data: "",
+                    dataType: "json",
+                    contentType: "application/json",
+                    async: false
+                }).done(function (employee) {
+                    var objId = employee;
+                    var inputs = $("input[fieldName], select[fieldName]");
+                    $.each(inputs, function (index, input) {
+                        debugger;
+                        var fieldName = $(input).attr('fieldName');
+                        if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
+                            debugger
+                            $(input).val(commonJS.formatDateISO(objId[fieldName]));
+                        }
+                        else {
+                            $(input).val(objId[fieldName]);
+                        }
+                    })
+                }).fail()
+                $(".form-dialog").show();
+            }
+            else {
+                alert('Vui lòng chọn nhân viên muốn sửa thông tin');
+            }
+            
 
         } catch (e) {
 
@@ -335,6 +343,10 @@ class BaseJS {
         }
     }
 
+    /**
+     * Load dữ liệu position lên form
+     * Author: Lê Mạnh (20/10/2020)
+     * */
     loadDataPosition() {
         try {
             var self = this;
@@ -346,6 +358,10 @@ class BaseJS {
         }
     }
 
+    /**
+     * Lấy dữ liệu department 
+     * Author: Lê Mạnh (20/10/2020)
+     * */
     getDataDepartment() {
         this.DataDepartment = {};
         try {
@@ -365,6 +381,11 @@ class BaseJS {
         }
     }
 
+
+    /**
+     * Load dữ liệu department lên form
+     * Author: Lê Mạnh (20/10/2020)
+     * */
     loadDataDepartment() {
         try {
             var self = this;
@@ -378,7 +399,7 @@ class BaseJS {
 
     /**
      * Hàm lấy dữ liệu
-     * Author: Lê Mạnh
+     * Author: Lê Mạnh (20/10/2020)
      * */
     getData() {
         this.Data = [];
@@ -394,7 +415,7 @@ class BaseJS {
 
     /**
      * Đổi màu hàng được chọn
-     * Author: Lê Mạnh
+     * Author: Lê Mạnh (20/10/2020)
      * */
     rowOnClick() {
         $(this).siblings().removeClass('row-selected')
@@ -403,7 +424,7 @@ class BaseJS {
 
     /**
      * Hàm lấy KeyId của các bảng
-     * Author: Lê Mạnh
+     * Author: Lê Mạnh (20/10/2020)
      * */
     getKeyId() {
         try {
@@ -418,6 +439,7 @@ class BaseJS {
 
     /**
      * Lấy Id của bản ghi được chọn trong danh sách
+     * Author: Lê Mạnh (20/10/2020)
      * */
     getRecordIdSelected() {
         // Lấy thông tin bản ghi đã chọn trong danh sách
@@ -430,10 +452,10 @@ class BaseJS {
 
     /**
      * Lấy Id mới nhất của nhân viên
+     * Author: Lê Mạnh (20/10/2020)
      * */
     getLastedEmployeeCode() {
         this.lastedCode = 0;
-        debugger;
         try {
             var self = this;
             $.ajax({

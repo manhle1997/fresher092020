@@ -2,15 +2,15 @@
     display: none;
 }
 
-.form-dialog .dialog-model {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #000000;
-    opacity: .4
-}
+    .form-dialog .dialog-model {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000000;
+        opacity: .4
+    }
 
 .dialog {
     position: fixed;
@@ -64,96 +64,137 @@
         padding-top: 4px;
         line-height: 1.8;
     }
-        .dialog .dialog-body .general-infor{
+        .dialog .dialog-body input,select{
+            border: 0.5px solid #ccc;
         }
-            .dialog .dialog-body .general-infor .left-general-infor{
+
+        .dialog .dialog-body .general-infor {
+        }
+
+            .dialog .dialog-body .general-infor .left-general-infor {
                 position: absolute;
-                width:490px;
+                width: 490px;
             }
-                .dialog .dialog-body .general-infor .left-general-infor .row{
+
+                .dialog .dialog-body .general-infor .left-general-infor .row {
                     display: flex;
                     margin-bottom: 2px;
                 }
-                .dialog .dialog-body .general-infor .left-general-infor .row #employee-code {
-                    margin-left: 19px;
-                    width: calc(100% - 128px);
-                }
-                .dialog .dialog-body .general-infor .left-general-infor .row #employee-name{
-                    margin-left: 17px;
-                    width: calc(100% - 128px);
-                }
-                .dialog .dialog-body .general-infor .left-general-infor .row #dateofbirth{
-                    margin-left: 59px;
-                }
-                .dialog .dialog-body .general-infor .left-general-infor .row #gender{
-                    margin-left: 15px;
-                    width: calc(100% - 330px);
-                }
-                .dialog .dialog-body .general-infor .left-general-infor .row #employee-email{
-                    margin-left: 67px;
-                    width: calc(100% - 128px);
-                }
-                .dialog .dialog-body .general-infor .left-general-infor .row #phonenumber{
-                    margin-left: 36px;
-                    width: calc(100% - 128px);
-                }
-                .dialog .dialog-body .general-infor .left-general-infor .row .label-identityDate{
-                    margin-left: 7px;
-                    margin-right: 4px;
-                }
-                .dialog .dialog-body .general-infor .left-general-infor .row #identity-number{
-                    margin-left: 46px;
-                    width: 152px;
-                }
 
-                .dialog .dialog-body .general-infor .row input#identity-place{                   
-                    margin-left: 25px;
-                    width: calc(100% - 125px);
-                }
+                    .dialog .dialog-body .general-infor .left-general-infor .row #employee-code {
+                        margin-left: 19px;
+                        width: calc(100% - 128px);
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row #employee-name {
+                        margin-left: 17px;
+                        width: calc(100% - 128px);
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row #dateofbirth {
+                        margin-left: 59px;
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row .label-gender {
+                        margin-left: 7px;
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row #gender {
+                        margin-left: 18px;
+                        width: calc(100% - 340px);
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row #employee-email {
+                        margin-left: 67px;
+                        width: calc(100% - 128px);
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row #phonenumber {
+                        margin-left: 36px;
+                        width: calc(100% - 128px);
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row .label-identityDate {
+                        margin-left: 7px;
+                        margin-right: 4px;
+                    }
+                    .dialog .dialog-body .general-infor .left-general-infor .row .identityDate {
+                        margin-left: 9px;
+                        width: calc(100% - 343px);
+                    }
+
+                    .dialog .dialog-body .general-infor .left-general-infor .row #identity-number {
+                        margin-left: 46px;
+                        width: 138px;
+                    }
+
+            .dialog .dialog-body .general-infor .row input#identity-place {
+                margin-left: 25px;
+                width: calc(100% - 125px);
+            }
+
             .dialog .dialog-body .general-infor .right-general-infor {
-                border: 1px solid;
+                border: 0px solid #ccc;
                 position: absolute;
                 left: 511px;
                 width: calc(100% - 536px);
                 text-align: center;
+                height: 148px;
             }
+                .dialog .dialog-body .general-infor .right-general-infor .avatar-box {
+                    background-color: aquamarine;
+                    height: 101px;
+                }
+
             .dialog .dialog-body .general-infor .identity-place {
                 position: absolute;
                 width: calc(100% - 31px);
                 margin-top: 153px;
             }
 
-        .dialog .dialog-body .work-infor{
+        .dialog .dialog-body .work-infor {
             margin-top: 173px;
         }
 
-        .dialog .dialog-body .work-infor .position-selected{
-            margin-left: 87px;
-            width: calc(100% - 138px);
-            height: 22px;
-        }
+            .dialog .dialog-body .work-infor .position-selected {
+                margin-left: 87px;
+                width: calc(100% - 138px);
+                height: 22px;
+            }
 
-        .dialog .dialog-body .work-infor .department-selected{
-            margin-left: 51px;
-            width: calc(100% - 138px);
-            height: 21px;
-        }
+            .dialog .dialog-body .work-infor .department-selected {
+                margin-left: 51px;
+                width: calc(100% - 138px);
+                height: 21px;
+            }
 
-        .dialog .dialog-body .work-infor .Salary{
+            .dialog .dialog-body .work-infor .taxCode {
+                width: 138px;
+            }
 
-        }
+            .dialog .dialog-body .work-infor .Salary {
+                width: calc(100% - 360px);
+            }
+            .dialog .dialog-body .work-infor .joinDate {
+                margin-left: 30px;
+                width: calc(100% - 519px);
+            }
+            .dialog .dialog-body .work-infor .workStatus {
+                margin-left: 6px;
+                width: calc(100% - 354px);
+            }
 
-        .dialog .dialog-footer {
-            display: flex;
-            border: 1px solid #ccc;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 8px;
-            height: 33px;
-            align-items: center;
-        }
+    .dialog .dialog-footer {
+        display: flex;
+        border: 1px solid #ccc;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 8px;
+        height: 33px;
+        align-items: center;
+    }
 
         .dialog .dialog-footer .footer-left {
             position: absolute;
