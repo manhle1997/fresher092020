@@ -55,8 +55,9 @@ class BaseJS {
      * Author: Lê Mạnh (20/10/2020)
      * */
     btnCopyOnClick() {
-       
+        
         var self = this;
+        self.FormMode = 'Add';
         self.getLastedEmployeeCode();
         var trSelected = $("table tr.row-selected");
         var id = 0;
