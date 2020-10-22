@@ -30,8 +30,8 @@ class BaseJS {
             $(".form-dialog input").val('');
             $(".form-dialog input").removeClass('not-required')
             $(".form-dialog").show();
+            $("#employee-code").val(self.getLastedEmployeeCode());
             $("#employee-code").focus();
-            self.getLastedEmployeeCode();
 
         });
         $('#toolbar-item-edit').click(this.btnEditOnClick.bind(this));
@@ -55,7 +55,9 @@ class BaseJS {
      * Author: Lê Mạnh (20/10/2020)
      * */
     btnCopyOnClick() {
-        var self = this
+       
+        var self = this;
+        self.getLastedEmployeeCode();
         var trSelected = $("table tr.row-selected");
         var id = 0;
         // Hiển thị dialog chi tiết
@@ -70,17 +72,21 @@ class BaseJS {
                 contentType: "application/json",
                 async: false
             }).done(function (res) {
-
-                res['employeeCode'] = self.lastedCode;
-                $.ajax({
-                    url: "/api/employees",
-                    method: "POST",
-                    data: JSON.stringify(res),
-                    contentType: "application/json"
-                }).done(function (res) {
-                    self.loadData();
-                }).fail(function (res) {
-
+                var objId = res;
+                $(".form-dialog").show();
+                var inputs = $("input[fieldName], select[fieldName]");
+                $.each(inputs, function (index, input) {
+                  
+                    var fieldName = $(input).attr('fieldName');
+                    if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
+                        
+                        $(input).val(commonJS.formatDateISO(objId[fieldName]));
+                    } else if (fieldName == "employeeCode") {
+                        $(input).val(self.getLastedEmployeeCode());
+                    }
+                    else {
+                        $(input).val(objId[fieldName]);
+                    }
                 })
             }).fail()
         } else {
@@ -251,6 +257,7 @@ class BaseJS {
                     async: false
                 }).done(function (employee) {
                     var objId = employee;
+                    $(".form-dialog").show();
                     var inputs = $("input[fieldName], select[fieldName]");
                     $.each(inputs, function (index, input) {
                         debugger;
@@ -264,7 +271,7 @@ class BaseJS {
                         }
                     })
                 }).fail()
-                $(".form-dialog").show();
+               
             }
             else {
                 alert('Vui lòng chọn nhân viên muốn sửa thông tin');
@@ -483,7 +490,7 @@ class BaseJS {
             }).done(function (employee) {
                 self.lastedCode = employee[employee.length - 1]["employeeCode"];
                 self.lastedCode = self.lastedCode.slice(0, 4) + (parseInt(self.lastedCode.slice(4)) + 1);
-                $('#employee-code').val($('#employee-code').val() + self.lastedCode);
+               // $('#employee-code').val($('#employee-code').val() + self.lastedCode);
             })
             return self.lastedCode;
         } catch (e) {

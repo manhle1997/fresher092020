@@ -54,7 +54,9 @@ body {
         }
 
             .main .header .account .account-notify {
-                background-image: url();
+                background-image: url('/content/img/globe.png');
+                width:25px;
+                height: 25px;
             }
 
             .main .header .account .account-avatar {

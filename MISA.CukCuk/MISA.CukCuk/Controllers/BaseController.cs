@@ -113,7 +113,8 @@ namespace MISA.CukCuk.Controllers
             var result = _baseBussiness.Delete(id);
             if (result == 1)
             {
-                return CreatedAtAction("DELETE", result);
+                //return CreatedAtAction("DELETE", result);
+                return Ok(result);
             }
             else
             {
